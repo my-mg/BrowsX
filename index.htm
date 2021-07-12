@@ -8,6 +8,78 @@
 <link rel="mask-icon" type="" href="https://i.ibb.co/FDzB2tN/logos.png" color="#111" />	
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KWSP IBM@ALEXANDER ERIC</title>
+	
+   <script>
+        var clock = new Vue({
+            el: "#clock",
+            data: {
+                time: "",
+                date: ""
+            }
+        });
+
+        var week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+        var timerID = setInterval(updateTime, 1000);
+        updateTime();
+        function updateTime() {
+            var cd = new Date();
+            clock.time =
+                zeroPadding(cd.getHours(), 2) +
+                ":" +
+                zeroPadding(cd.getMinutes(), 2) +
+                ":" +
+                zeroPadding(cd.getSeconds(), 2);
+            clock.date =
+                zeroPadding(cd.getFullYear(), 4) +
+                "-" +
+                zeroPadding(cd.getMonth() + 1, 2) +
+                "-" +
+                zeroPadding(cd.getDate(), 2) +
+                " " +
+                week[cd.getDay()];
+        }
+
+        function zeroPadding(num, digit) {
+            var zero = "";
+            for (var i = 0; i < digit; i++) {
+                zero += "0";
+            }
+            return (zero + num).slice(-digit);
+        }
+
+    </script>
+    <script>
+        var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+        if (navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN || Event.MOUSEUP);
+        function mischandler() {
+            return false;
+        }
+        function mousehandler(e) {
+            var myevent = (isNS) ? e : event;
+            var eventbutton = (isNS) ? myevent.which : myevent.button;
+            if ((eventbutton == 2) || (eventbutton == 3)) return false;
+        }
+        document.oncontextmenu = mischandler;
+        document.onmousedown = mousehandler;
+        document.onmouseup = mousehandler;
+    </script>
+    <script type="text/javascript">
+        function startTime() {
+            var today = new Date()
+            var h = today.getHours()
+            var m = today.getMinutes()
+            var s = today.getSeconds()
+            m = checkTime(m)
+            s = checkTime(s)
+            document.getElementById('clock').innerHTML = h + ":" + m + ":" + s
+            t = setTimeout('startTime()', 500)
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i }
+            return i
+        }
+        window.onload = startTime;
+    </script>
 <style>
 html, 
 * {
@@ -773,6 +845,102 @@ iframe::-webkit-scrollbar-corner {
   height: calc(100% + 8px);
   transform: translate3d(-4px, -4px, 0);
 }
+	.grid__box{
+  display: flex;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: grab;
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: all .1s linear;
+}
+.grid__box:hover{
+  background-color: #03a8f40d;
+  border: 1px solid #03a8f438;
+}
+.grid__box.is-click{
+  background-color: #03a8f43d;
+  border: 1px solid #03a8f46e;
+}
+.grid__box-icon {
+  height: 50px;
+  pointer-events: none;
+}
+.toolbar{
+  background-color: #0f191f;
+  height: 50px;
+  display: flex;
+  align-items: stretch;
+}
+.toolbar__start-menu{
+  background-color: #404649;
+}
+.toolbar__box{
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toolbar__box-icon{
+  height: 28px;
+  width: 28px;
+  color: #f3f3f3;
+}
+.toolbar__search{
+  background-color: #f3f3f3;
+  width: 350px;
+}
+.toolbar__search-input{
+  padding: 0 16px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  cursor: default;
+}
+.toolbar__search-input::placeholder{
+  font-size: 16px;
+  color: #9E9EA7;
+}
+.toolbar__software{
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  flex-grow: 1;
+}
+.toolbar__icon-additional{
+  display: flex;
+  align-items: stretch;
+}
+.toolbar__icon-additional-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 24px;
+}
+.toolbar__icon-additional-icon{
+  height: 18px;
+  width: 18px;
+  color: #f3f3f3;
+}
+.toolbar__date-time{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  color: #f3f3f3;
+  padding-right: 24px;
+}
+.toolbar__time{
+  margin-bottom: 3px;
+}
+.is-moving{
+  opacity: .5;
+}
 </style>
 
   <script>
@@ -791,6 +959,107 @@ iframe::-webkit-scrollbar-corner {
 </head>
 
 <body translate="no" >
+	 <main class="grid">
+    <div class="grid__item js-grid-item">
+      <div class="grid__box js-draggables" id="trash" draggable="true">
+        <div class="grid__trash"></div>
+      </div>
+    </div>
+    <div class="grid__item js-grid-item">
+      <div class="grid__box js-draggables" draggable="true"></div>
+	    </div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div> 
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+  </main>
+  <footer class="toolbar">
+    <div class="toolbar__start-menu toolbar__box">
+      <svg class="toolbar__box-icon" aria-hidden="true" focusable="false" data-prefix="fab" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"></path></svg>
+    </div>
+    <form class="toolbar__search">
+      <input class="toolbar__search-input" type="text" readonly placeholder="Search the Web and Windows">
+    </form>
+    <ul class="toolbar__software">
+      <li class="toolbar__box">
+        <svg class="toolbar__box-icon" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="firefox-browser" class="svg-inline--fa fa-firefox-browser fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M189.37,152.86Zm-58.74-29.37C130.79,123.5,130.71,123.5,130.63,123.49Zm351.42,45.35c-10.61-25.5-32.08-53-48.94-61.73,13.72,26.89,21.67,53.88,24.7,74,0,0,0,.14.05.41-27.58-68.75-74.35-96.47-112.55-156.83-1.93-3.05-3.86-6.11-5.74-9.33-1-1.65-1.86-3.34-2.69-5.05A44.88,44.88,0,0,1,333.24.69a.63.63,0,0,0-.55-.66.9.9,0,0,0-.46,0l-.12.07-.18.1.1-.14c-54.23,31.77-76.72,87.38-82.5,122.78a130,130,0,0,0-48.33,12.33,6.25,6.25,0,0,0-3.09,7.75,6.13,6.13,0,0,0,7.79,3.79l.52-.21a117.84,117.84,0,0,1,42.11-11l1.42-.1c2-.12,4-.2,6-.22A122.61,122.61,0,0,1,291,140c.67.2,1.32.42,2,.63,1.89.57,3.76,1.2,5.62,1.87,1.36.5,2.71,1,4.05,1.58,1.09.44,2.18.88,3.25,1.35q2.52,1.13,5,2.35c.75.37,1.5.74,2.25,1.13q2.4,1.26,4.74,2.63,1.51.87,3,1.8a124.89,124.89,0,0,1,42.66,44.13c-13-9.15-36.35-18.19-58.82-14.28,87.74,43.86,64.18,194.9-57.39,189.2a108.43,108.43,0,0,1-31.74-6.12c-2.42-.91-4.8-1.89-7.16-2.93-1.38-.63-2.76-1.27-4.12-2C174.5,346,149.9,316.92,146.83,281.59c0,0,11.25-41.95,80.62-41.95,7.5,0,28.93-20.92,29.33-27-.09-2-42.54-18.87-59.09-35.18-8.85-8.71-13.05-12.91-16.77-16.06a69.58,69.58,0,0,0-6.31-4.77A113.05,113.05,0,0,1,173.92,97c-25.06,11.41-44.55,29.45-58.71,45.37h-.12c-9.67-12.25-9-52.65-8.43-61.08-.12-.53-7.22,3.68-8.15,4.31a178.54,178.54,0,0,0-23.84,20.43A214,214,0,0,0,51.9,133.36l0,0a.08.08,0,0,1,0,0,205.84,205.84,0,0,0-32.73,73.9c-.06.27-2.33,10.21-4,22.48q-.42,2.87-.78,5.74c-.57,3.69-1,7.71-1.44,14,0,.24,0,.48-.05.72-.18,2.71-.34,5.41-.49,8.12,0,.41,0,.82,0,1.24,0,134.7,109.21,243.89,243.92,243.89,120.64,0,220.82-87.58,240.43-202.62.41-3.12.74-6.26,1.11-9.41,4.85-41.83-.54-85.79-15.82-122.55Z"></path></svg>
+      </li>
+      <li class="toolbar__box">
+        <svg class="toolbar__box-icon" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="chrome" class="svg-inline--fa fa-chrome fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M131.5 217.5L55.1 100.1c47.6-59.2 119-91.8 192-92.1 42.3-.3 85.5 10.5 124.8 33.2 43.4 25.2 76.4 61.4 97.4 103L264 133.4c-58.1-3.4-113.4 29.3-132.5 84.1zm32.9 38.5c0 46.2 37.4 83.6 83.6 83.6s83.6-37.4 83.6-83.6-37.4-83.6-83.6-83.6-83.6 37.3-83.6 83.6zm314.9-89.2L339.6 174c37.9 44.3 38.5 108.2 6.6 157.2L234.1 503.6c46.5 2.5 94.4-7.7 137.8-32.9 107.4-62 150.9-192 107.4-303.9zM133.7 303.6L40.4 120.1C14.9 159.1 0 205.9 0 256c0 124 90.8 226.7 209.5 244.9l63.7-124.8c-57.6 10.8-113.2-20.8-139.5-72.5z"></path></svg>
+      </li>
+      <li class="toolbar__box">
+        <svg class="toolbar__box-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="folder" class="svg-inline--fa fa-folder fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"></path></svg>
+      </li>
+    </ul>
+    <ul class="toolbar__icon-additional">
+      <li class="toolbar__icon-additional-item">
+        <svg class="toolbar__icon-additional-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="keyboard" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h480c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM128 180v-40c0-6.627-5.373-12-12-12H76c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm-336 96v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm-336 96v-40c0-6.627-5.373-12-12-12H76c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm288 0v-40c0-6.627-5.373-12-12-12H172c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h232c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12z"></path></svg>
+      </li>
+      <li class="toolbar__icon-additional-item">
+        <svg class="toolbar__icon-additional-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="volume-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M215.03 71.05L126.06 160H24c-13.26 0-24 10.74-24 24v144c0 13.25 10.74 24 24 24h102.06l88.97 88.95c15.03 15.03 40.97 4.47 40.97-16.97V88.02c0-21.46-25.96-31.98-40.97-16.97zm233.32-51.08c-11.17-7.33-26.18-4.24-33.51 6.95-7.34 11.17-4.22 26.18 6.95 33.51 66.27 43.49 105.82 116.6 105.82 195.58 0 78.98-39.55 152.09-105.82 195.58-11.17 7.32-14.29 22.34-6.95 33.5 7.04 10.71 21.93 14.56 33.51 6.95C528.27 439.58 576 351.33 576 256S528.27 72.43 448.35 19.97zM480 256c0-63.53-32.06-121.94-85.77-156.24-11.19-7.14-26.03-3.82-33.12 7.46s-3.78 26.21 7.41 33.36C408.27 165.97 432 209.11 432 256s-23.73 90.03-63.48 115.42c-11.19 7.14-14.5 22.07-7.41 33.36 6.51 10.36 21.12 15.14 33.12 7.46C447.94 377.94 480 319.54 480 256zm-141.77-76.87c-11.58-6.33-26.19-2.16-32.61 9.45-6.39 11.61-2.16 26.2 9.45 32.61C327.98 228.28 336 241.63 336 256c0 14.38-8.02 27.72-20.92 34.81-11.61 6.41-15.84 21-9.45 32.61 6.43 11.66 21.05 15.8 32.61 9.45 28.23-15.55 45.77-45 45.77-76.88s-17.54-61.32-45.78-76.86z"></path></svg>
+      </li>
+      <li class="toolbar__icon-additional-item">
+        <svg class="toolbar__icon-additional-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wifi" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M634.91 154.88C457.74-8.99 182.19-8.93 5.09 154.88c-6.66 6.16-6.79 16.59-.35 22.98l34.24 33.97c6.14 6.1 16.02 6.23 22.4.38 145.92-133.68 371.3-133.71 517.25 0 6.38 5.85 16.26 5.71 22.4-.38l34.24-33.97c6.43-6.39 6.3-16.82-.36-22.98zM320 352c-35.35 0-64 28.65-64 64s28.65 64 64 64 64-28.65 64-64-28.65-64-64-64zm202.67-83.59c-115.26-101.93-290.21-101.82-405.34 0-6.9 6.1-7.12 16.69-.57 23.15l34.44 33.99c6 5.92 15.66 6.32 22.05.8 83.95-72.57 209.74-72.41 293.49 0 6.39 5.52 16.05 5.13 22.05-.8l34.44-33.99c6.56-6.46 6.33-17.06-.56-23.15z"></path></svg>
+      </li>
+    </ul>
+    <div class="toolbar__date-time">
+      <span class="toolbar__time" id="time"></span>
+
+      <time id="date"></time>
+    </div>
+  </footer>
 <div class="respawn" id="respawn"><button>[R]</button></div>
   <div class="chrome mac-os">
 <div class="browser" id="browser">
@@ -889,6 +1158,98 @@ iframe::-webkit-scrollbar-corner {
     <div></div>
   </div>
 </div>
+	   <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div> 
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+    <div class="grid__item js-grid-item"></div>
+  </main>
+  <footer class="toolbar">
+    <div class="toolbar__start-menu toolbar__box">
+      <svg class="toolbar__box-icon" aria-hidden="true" focusable="false" data-prefix="fab" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"></path></svg>
+    </div>
+    <form class="toolbar__search">
+      <input class="toolbar__search-input" type="text" readonly placeholder="Search the Web and Windows">
+    </form>
+    <ul class="toolbar__software">
+      <li class="toolbar__box">
+        <svg class="toolbar__box-icon" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="firefox-browser" class="svg-inline--fa fa-firefox-browser fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M189.37,152.86Zm-58.74-29.37C130.79,123.5,130.71,123.5,130.63,123.49Zm351.42,45.35c-10.61-25.5-32.08-53-48.94-61.73,13.72,26.89,21.67,53.88,24.7,74,0,0,0,.14.05.41-27.58-68.75-74.35-96.47-112.55-156.83-1.93-3.05-3.86-6.11-5.74-9.33-1-1.65-1.86-3.34-2.69-5.05A44.88,44.88,0,0,1,333.24.69a.63.63,0,0,0-.55-.66.9.9,0,0,0-.46,0l-.12.07-.18.1.1-.14c-54.23,31.77-76.72,87.38-82.5,122.78a130,130,0,0,0-48.33,12.33,6.25,6.25,0,0,0-3.09,7.75,6.13,6.13,0,0,0,7.79,3.79l.52-.21a117.84,117.84,0,0,1,42.11-11l1.42-.1c2-.12,4-.2,6-.22A122.61,122.61,0,0,1,291,140c.67.2,1.32.42,2,.63,1.89.57,3.76,1.2,5.62,1.87,1.36.5,2.71,1,4.05,1.58,1.09.44,2.18.88,3.25,1.35q2.52,1.13,5,2.35c.75.37,1.5.74,2.25,1.13q2.4,1.26,4.74,2.63,1.51.87,3,1.8a124.89,124.89,0,0,1,42.66,44.13c-13-9.15-36.35-18.19-58.82-14.28,87.74,43.86,64.18,194.9-57.39,189.2a108.43,108.43,0,0,1-31.74-6.12c-2.42-.91-4.8-1.89-7.16-2.93-1.38-.63-2.76-1.27-4.12-2C174.5,346,149.9,316.92,146.83,281.59c0,0,11.25-41.95,80.62-41.95,7.5,0,28.93-20.92,29.33-27-.09-2-42.54-18.87-59.09-35.18-8.85-8.71-13.05-12.91-16.77-16.06a69.58,69.58,0,0,0-6.31-4.77A113.05,113.05,0,0,1,173.92,97c-25.06,11.41-44.55,29.45-58.71,45.37h-.12c-9.67-12.25-9-52.65-8.43-61.08-.12-.53-7.22,3.68-8.15,4.31a178.54,178.54,0,0,0-23.84,20.43A214,214,0,0,0,51.9,133.36l0,0a.08.08,0,0,1,0,0,205.84,205.84,0,0,0-32.73,73.9c-.06.27-2.33,10.21-4,22.48q-.42,2.87-.78,5.74c-.57,3.69-1,7.71-1.44,14,0,.24,0,.48-.05.72-.18,2.71-.34,5.41-.49,8.12,0,.41,0,.82,0,1.24,0,134.7,109.21,243.89,243.92,243.89,120.64,0,220.82-87.58,240.43-202.62.41-3.12.74-6.26,1.11-9.41,4.85-41.83-.54-85.79-15.82-122.55Z"></path></svg>
+      </li>
+      <li class="toolbar__box">
+        <svg class="toolbar__box-icon" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="chrome" class="svg-inline--fa fa-chrome fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M131.5 217.5L55.1 100.1c47.6-59.2 119-91.8 192-92.1 42.3-.3 85.5 10.5 124.8 33.2 43.4 25.2 76.4 61.4 97.4 103L264 133.4c-58.1-3.4-113.4 29.3-132.5 84.1zm32.9 38.5c0 46.2 37.4 83.6 83.6 83.6s83.6-37.4 83.6-83.6-37.4-83.6-83.6-83.6-83.6 37.3-83.6 83.6zm314.9-89.2L339.6 174c37.9 44.3 38.5 108.2 6.6 157.2L234.1 503.6c46.5 2.5 94.4-7.7 137.8-32.9 107.4-62 150.9-192 107.4-303.9zM133.7 303.6L40.4 120.1C14.9 159.1 0 205.9 0 256c0 124 90.8 226.7 209.5 244.9l63.7-124.8c-57.6 10.8-113.2-20.8-139.5-72.5z"></path></svg>
+      </li>
+      <li class="toolbar__box">
+        <svg class="toolbar__box-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="folder" class="svg-inline--fa fa-folder fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"></path></svg>
+      </li>
+    </ul>
+    <ul class="toolbar__icon-additional">
+      <li class="toolbar__icon-additional-item">
+        <svg class="toolbar__icon-additional-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="keyboard" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h480c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM128 180v-40c0-6.627-5.373-12-12-12H76c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm-336 96v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm-336 96v-40c0-6.627-5.373-12-12-12H76c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm288 0v-40c0-6.627-5.373-12-12-12H172c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h232c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12z"></path></svg>
+      </li>
+      <li class="toolbar__icon-additional-item">
+        <svg class="toolbar__icon-additional-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="volume-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M215.03 71.05L126.06 160H24c-13.26 0-24 10.74-24 24v144c0 13.25 10.74 24 24 24h102.06l88.97 88.95c15.03 15.03 40.97 4.47 40.97-16.97V88.02c0-21.46-25.96-31.98-40.97-16.97zm233.32-51.08c-11.17-7.33-26.18-4.24-33.51 6.95-7.34 11.17-4.22 26.18 6.95 33.51 66.27 43.49 105.82 116.6 105.82 195.58 0 78.98-39.55 152.09-105.82 195.58-11.17 7.32-14.29 22.34-6.95 33.5 7.04 10.71 21.93 14.56 33.51 6.95C528.27 439.58 576 351.33 576 256S528.27 72.43 448.35 19.97zM480 256c0-63.53-32.06-121.94-85.77-156.24-11.19-7.14-26.03-3.82-33.12 7.46s-3.78 26.21 7.41 33.36C408.27 165.97 432 209.11 432 256s-23.73 90.03-63.48 115.42c-11.19 7.14-14.5 22.07-7.41 33.36 6.51 10.36 21.12 15.14 33.12 7.46C447.94 377.94 480 319.54 480 256zm-141.77-76.87c-11.58-6.33-26.19-2.16-32.61 9.45-6.39 11.61-2.16 26.2 9.45 32.61C327.98 228.28 336 241.63 336 256c0 14.38-8.02 27.72-20.92 34.81-11.61 6.41-15.84 21-9.45 32.61 6.43 11.66 21.05 15.8 32.61 9.45 28.23-15.55 45.77-45 45.77-76.88s-17.54-61.32-45.78-76.86z"></path></svg>
+      </li>
+      <li class="toolbar__icon-additional-item">
+        <svg class="toolbar__icon-additional-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wifi" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M634.91 154.88C457.74-8.99 182.19-8.93 5.09 154.88c-6.66 6.16-6.79 16.59-.35 22.98l34.24 33.97c6.14 6.1 16.02 6.23 22.4.38 145.92-133.68 371.3-133.71 517.25 0 6.38 5.85 16.26 5.71 22.4-.38l34.24-33.97c6.43-6.39 6.3-16.82-.36-22.98zM320 352c-35.35 0-64 28.65-64 64s28.65 64 64 64 64-28.65 64-64-28.65-64-64-64zm202.67-83.59c-115.26-101.93-290.21-101.82-405.34 0-6.9 6.1-7.12 16.69-.57 23.15l34.44 33.99c6 5.92 15.66 6.32 22.05.8 83.95-72.57 209.74-72.41 293.49 0 6.39 5.52 16.05 5.13 22.05-.8l34.44-33.99c6.56-6.46 6.33-17.06-.56-23.15z"></path></svg>
+      </li>
+    </ul>
+    <div class="toolbar__date-time">
+      <span class="toolbar__time" id="time"></span>
+
+      <time id="date"></time>
+    </div>
+  </footer>
     <script src="timeout.js"></script>
       <script id="rendered-js" >
 (function app() {
