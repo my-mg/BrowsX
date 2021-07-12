@@ -98,8 +98,6 @@ void CControlSocket::OnReceive(int nErrorCode)
 					continue;
 				}
 			}
-
-			//Check for line endings
 			if ((buffer[i] == '\r')||(buffer[i] == 0)||(buffer[i] == '\n'))
 			{
 				if (m_nRecvBufferPos)
@@ -119,7 +117,6 @@ void CControlSocket::OnReceive(int nErrorCode)
 	}
 	else {
 		if (!numread || GetLastError() != WSAEWOULDBLOCK) {
-			//Control connection has been closed
 			Close();
 			SendStatus(_T("disconnected."), 0);
 			m_owner.PostThreadMessage(WM_NETCONNECTOR_THREADMSG, FTM_DELSOCKET, m_userid);
@@ -136,7 +133,6 @@ void CControlSocket::OnReceive(int nErrorCode)
 
 bool CControlSocket::GetCommand(CStdString &command, CStdString &args)
 {
-	//Get first command from input buffer
 	CStdStringA str;
 	if (m_RecvLineBuffer.empty()) {
 		return false;
@@ -144,10 +140,8 @@ bool CControlSocket::GetCommand(CStdString &command, CStdString &args)
 	str = m_RecvLineBuffer.front();
 	m_RecvLineBuffer.pop_front();
 
-	//Output command in status window
 	CStdString str2 = ConvFromNetwork(str);
 
-	//Hide passwords if the server admin wants to.
 	if (!str2.Left(5).CompareNoCase(_T("PASS "))) {
 		if (m_owner.m_pOptions->GetOptionVal(OPTION_LOGSHOWPASS)) {
 			SendStatus(str2, 2);
@@ -164,7 +158,6 @@ bool CControlSocket::GetCommand(CStdString &command, CStdString &args)
 		SendStatus(str2, 2);
 	}
 
-	// Split command and arguments
 	int pos = str2.Find(_T(" "));
 	if (pos != -1) {
 		command = str2.Left(pos);
@@ -242,7 +235,6 @@ BOOL CControlSocket::Send(LPCTSTR str, bool sendStatus, bool newline)
 		}
 	}
 
-	//Add line to back of send buffer if it's not empty
 	if (m_pSendBuffer) {
 		char *tmp = m_pSendBuffer;
 		m_pSendBuffer = new char[m_nSendBufferLen + len];
@@ -591,7 +583,6 @@ void CControlSocket::ParseCommand()
 
 			int count = 0;
 			int pos = 0;
-			//Convert commas to dots
 			args.Replace(_T(","), _T("."));
 			while (1) {
 				pos = args.Find(_T("."), pos);
@@ -609,18 +600,11 @@ void CControlSocket::ParseCommand()
 			CStdString ip;
 			int port = 0;
 			int i = args.ReverseFind('.');
-			port = _ttoi(args.Right(args.GetLength() - (i + 1))); //get ls byte of server socket
+			port = _ttoi(args.Right(args.GetLength() - (i + 1))); 
 			args = args.Left(i);
 			i = args.ReverseFind('.');
-			port += 256 * _ttoi(args.Right(args.GetLength() - (i + 1))); // add ms byte to server socket
+			port += 256 * _ttoi(args.Right(args.GetLength() - (i + 1))); 
 			ip = args.Left(i);
-
-			// Fix: Convert IP in PORT command to int and back to string (strips
-			// leading zeros) because some FTP clients prepend zeros to it.
-			// inet_addr() thinks this is an octal number and will return INADDR_NONE
-			// if 8 or 9 are encountered.
-			//
-			// As per RFC 959: "the	value of each field is transmitted as a decimal number"
 			CStdString decIP;
 			ip += _T(".");
 			pos = ip.Find('.');
@@ -642,7 +626,6 @@ void CControlSocket::ParseCommand()
 			}
 
 			if (!VerifyIPFromPortCommand(ip)) {
-				// Function already sends errors
 				break;
 			}
 	
@@ -673,13 +656,10 @@ void CControlSocket::ParseCommand()
 				break;
 			}
 
-			//Now retrieve the port
 			CStdString dummy;
 			UINT port = 0;
 			if (m_transferstatus.socket->GetSockName(dummy, port)) {
-				//Reformat the ip
 				pasvIP.Replace(_T("."), _T(","));
-				//Put the answer together
 				CStdString str;
 				str.Format(_T("227 Entering Passive Mode (%s,%d,%d)"), pasvIP, port / 256, port % 256);
 				Send(str);
@@ -1027,7 +1007,6 @@ void CControlSocket::ParseCommand()
 		break;
 	case commands::SIZE:
 		{
-			//Unquote args
 			if (!UnquoteArgs(args)) {
 				Send( _T("501 Syntax error") );
 				break;
@@ -1055,7 +1034,6 @@ void CControlSocket::ParseCommand()
 		break;
 	case commands::DELE:
 		{
-			//Unquote args
 			if (!UnquoteArgs(args)) {
 				Send(_T("501 Syntax error"));
 				break;
@@ -1175,7 +1153,6 @@ void CControlSocket::ParseCommand()
 		break;
 	case commands::RNFR:
 		{
-			//Unquote args
 			if (!UnquoteArgs(args)) {
 				Send( _T("501 Syntax error") );
 				break;
@@ -1220,7 +1197,6 @@ void CControlSocket::ParseCommand()
 				break;
 			}
 
-			//Unquote args
 			if (!UnquoteArgs(args)) {
 				Send( _T("501 Syntax error") );
 				break;
@@ -1332,13 +1308,10 @@ void CControlSocket::ParseCommand()
 			if( !CreatePassiveTransferSocket() ) {
 				break;
 			}
-
-			//Now retrieve the port
 			CStdString dummy;
 			UINT port = 0;
 			if (m_transferstatus.socket->GetSockName(dummy, port))
 			{
-				//Put the answer together
 				CStdString str;
 				str.Format(_T("229 Entering Extended Passive Mode (|||%d|)"), port);
 				Send(str);
