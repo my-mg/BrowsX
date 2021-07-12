@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+ <link rel="apple-touch-icon" type="image/png" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<meta name="apple-mobile-web-app-title" content="Rehack Browser By Alexander Eric">
+<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<link rel="mask-icon" type="" href="https://i.ibb.co/FDzB2tN/logos.png" color="#111" />	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IBM@ALEXANDER ERIC</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<style>
+@import(url="https://fonts.googleapis.com/css?family=Roboto:400,300,100") * {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto';
+}
+
+body {
+  overflow: hidden;
+}
+
+.loader {
+  background: #333;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 9999;
+  opacity: .5;
+}
+
+.desktop-icon {
+  height: 45px;
+  width: 65px;
+  background-color: #FFF9C4;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 10px;
+  margin: 40px;
+  z-index: -1;
+  text-align: center;
+}
+
+.folder {
+  display: block;
+  background-color: #FFF59D;
+  height: 65px;
+  width: 90px;
+  margin: -5px auto 0 -10px;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 100ms ease-in-out;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
+
+.folder-hover {
+  display: block;
+  background-color: #e5db8b;
+  height: 65px;
+  width: 90px;
+  margin-left: -8px;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 1;
+  transform: skew(-5deg, 0deg);
+  box-shadow: inset 20px 20px 8px rgba(0, 0, 0, ..09);
+  transition: all 100ms ease-in-out;
+}
+
+.folder-clicked {
+  display: block;
+  background-color: #e5db8b;
+  height: 65px;
+  width: 90px;
+  margin: -7px auto 0 -2px;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 1;
+  transform: skew(-15deg, 0deg);
+}
+
+.folder-tab {
+  display: block;
+  background-color: #FFF9C4;
+  margin-top: -75px;
+  height: 10px;
+  width: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: -1;
+}
+
+.folder-name {
+  position: relative;
+  display: inline-block;
+  width: 108%;
+  top: 72px;
+  left: -10px;
+  color: rgba(255, 255, 255, .87);
+  background-color: rgba(255, 255, 255, .3);
+  border-radius: 3px;
+  padding: 1px 10px;
+}
+
+#start-menu {
+  position: relative;
+  bottom: 365px;
+  left: 0;
+  background-color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .87);
+  height: 300px;
+  width: 200px;
+  display: none;
+  z-index: 99;
+  border-radius: 0 5px 0 0;
+}
+
+li {
+  text-align: center;
+}
+
+#start-menu ul {
+  position: relative;
+  width: 60%;
+  padding: 10px;
+  display: block;
+}
+
+#settings {
+  position: absolute;
+  width: 30%;
+  bottom: 0;
+  right: 0;
+}
+
+#settings ul {
+  position: relative;
+  padding: 10px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.settings-item {
+  display: block;
+  padding: 10px;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.start-menu-item {
+  display: block;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+#desktop {
+  background-size: cover;
+  background-color: #57BF8F;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .87);
+}
+
+#home-button {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  margin: 5px 10px;
+  padding: 8px 20px;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.start-menu-item:hover,
+.settings-item:hover,
+#home-button:hover,
+#home-btn:hover,
+#go-btn:hover {
+  background-color: rgba(255, 255, 255, .2);
+  cursor: pointer;
+}
+
+.taskbar-tools {
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 3px;
+  position: relative;
+  display: block;
+  float: right;
+  margin: 5px 10px;
+  padding: 10px;
+}
+
+#time {
+  position: relative;
+  display: block;
+  float: right;
+}
+
+#battery {
+  position: relative;
+  display: block;
+  float: right;
+  margin-left: 10px;
+}
+
+#battery:hover {
+  color: green;
+}
+
+li>.fa-power-off:hover {
+  color: red;
+}
+
+#wifi {
+  position: relative;
+  display: block;
+  float: right;
+  margin: 0 20px;
+}
+
+#wifi:hover {
+  color: #00bfff;
+}
+
+#window-wrapper {
+  position: absolute;
+  top: 20vh;
+  left: 20vw;
+  right: 20vw;
+  bottom: 15vh;
+  border-radius: 3px;
+  background-color: rgba(100, 100, 100, .9);
+  padding: 0px 10px 10px 5px;
+  box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: none;
+}
+
+.window-options {
+  position: relative;
+  padding: 3px;
+  width: 90%;
+  height: 30px;
+  margin: 5px 3px;
+  float: right;
+  text-align: center;
+}
+
+#window-exit {
+  position: absolute;
+  right: -5px;
+  background-color: rgba(255, 0, 0, .5);
+  text-align: center;
+  color: rgba(255, 255, 255, .87);
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 3px;
+}
+
+#window-exit:hover {
+  background-color: rgba(255, 0, 0, .8);
+}
+
+input[type=search]::search-cancel-button {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  background: #d5d5d5;
+  color: #fff;
+  font-size: 1.1em;
+  text-shadow: 0 1px 0 #666;
+  border-radius: 50%;
+  margin: 0;
+  cursor: pointer;
+  box-shadow: inset 0 2px 5px -2px #666;
+}
+
+#go-btn {
+  border-radius: 3px;
+  padding: 3px 10px;
+  background-color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, .87);
+  border: none;
+  vertical-align: top;
+  font-size: 20px;
+}
+
+#home-btn {
+  border-radius: 3px;
+  padding: 3px 10px;
+  background-color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, .87);
+  border: none;
+  vertical-align: top;
+  font-size: 20px;
+}
+
+#address-bar {
+  font: "Roboto" 700;
+  font-size: 20px;
+  width: 60%;
+  background-color: rgba(255, 255, 255, .87);
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 3px;
+  padding: 2px 10px;
+  color: rgba(0, 0, 0, .67);
+  text-align: center;
+  vertical-align: baseline;
+}
+
+iframe {
+  position: relative;
+  height: calc(100% - 45px);
+  width: 100%;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div id="loader">
+</div>
+
+<div id="desktop">
+  <ul>
+    <li class="desktop-icon">
+      <div class="folder"></div>
+      <div class="folder-tab"></div>
+      <span class="folder-name">Local</span>
+    </li>
+    <li class="desktop-icon">
+      <div class="folder"></div>
+      <div class="folder-tab"></div>
+      <span class="folder-name">Inet</span>
+    </li>
+    <li class="desktop-icon">
+      <div class="folder"></div>
+      <div class="folder-tab"></div>
+      <span class="folder-name">Public</span>
+    </li>
+    <li class="desktop-icon">
+      <div class="folder"></div>
+      <div class="folder-tab"></div>
+      <span class="folder-name">Private</span>
+    </li>
+    <li class="desktop-icon">
+      <div class="folder"></div>
+      <div class="folder-tab"></div>
+      <span class="folder-name">More</span>
+    </li>
+    <li class="desktop-icon">
+      <div class="folder"></div>
+      <div class="folder-tab"></div>
+      <span class="folder-name">About</span>
+    </li>
+  </ul>
+</div>
+
+<div id="taskbar">
+  <div id="home-button"><i class="fa fa-circle-o"></i></div>
+  <div class="taskbar-tools">
+    <div id="time">88:88 PM</div>
+    <div id="wifi"><i class="fa fa-wifi"></i></div>
+    <div id="battery"><i class="fa fa-battery-three-quarters"></i></div>
+  </div>
+
+  <div id="start-menu">
+    <div id="settings">
+      <ul>
+        <li class="settings-item"><i class="fa fa-cog"></i></li>
+        <li class="settings-item"><i class="fa fa-power-off"></i></li>
+      </ul>
+    </div>
+
+    <ul>
+      <li class="start-menu-item"><i class="fa fa-chrome"></i> Browser</li>
+    </ul>
+  </div>
+</div </div>
+<div id="window-wrapper">
+  <div class="window-options">
+    <button id="home-btn"><i class="fa fa-home"></i></button>
+    <input id="address-bar" type="search" placeholder="ftp://ServerBrowser.AlexanderEric:9500" onchange="setFrameSource()">
+    <button id="go-btn"><i class="fa fa-arrow-right"></i></button>
+    <span id="window-exit"><i class="fa fa-times"></i></span>
+
+  </div>
+  <iframe id="frame" src="https://google.com"></iframe>
+</div>
+    <script src="timeout.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+      <script id="rendered-js" >
+$(document).ready(function () {
+
+  function updateClock() {
+    var currentTime = new Date();
+    var currentHours = currentTime.getHours();
+    var currentMinutes = currentTime.getMinutes();
+    var currentSeconds = currentTime.getSeconds();
+
+    currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+    currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+
+    var timeOfDay = currentHours < 12 ? "AM" : "PM";
+
+    currentHours = currentHours > 12 ? currentHours - 12 : currentHours;
+    currentHours = currentHours === 0 ? 12 : currentHours;
+
+    var currentTimeString = currentHours + ":" + currentMinutes + " " + timeOfDay;
+
+    $("#time").html(currentTimeString);
+
+  }
+
+  setInterval(updateClock(), 1000);
+
+  $("#home-btn").click(function () {
+    sendHome();
+  });
+
+  $("#home-button").click(function () {
+    $("#start-menu").toggle('slide');
+  });
+
+  $("#desktop").click(function () {
+    if ($("#start-menu").is(':visible')) {
+      $("#start-menu").toggle('slide');
+    }
+  });
+
+  $(function () {
+    $("#window-wrapper").draggable({
+      containment: $("#desktop") });
+
+    $("#window-wrapper").resizable({
+      handles: 'all' });
+
+  });
+
+  $(".start-menu-item:first-child").click(function () {
+    $("#window-wrapper").fadeToggle();
+    $("#start-menu").fadeToggle('fast');
+  });
+
+  $("#window-exit").click(function () {
+    $("#window-wrapper").fadeToggle('fast');
+    sendHome();
+  });
+
+  $(".folder").click(function () {
+    $(this).toggleClass("folder-clicked");
+  });
+  $(".folder").hover(function () {
+    $(this).toggleClass("folder-hover");
+  });
+
+  function setFrameSource() {
+    var frameSource = $("#address-bar").val();
+    $("#frame").attr('src', "http://" + frameSource);
+    $("#address-bar").attr("placeholder", frameSource);
+    $("#address-bar").val("");
+  }
+
+  function sendHome() {
+    var home = "https://google.com";
+    $("#frame").attr('src', "http://" + home);
+    $("#address-bar").attr("placeholder", home);
+  }
+
+});
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
