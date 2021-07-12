@@ -1032,5 +1032,76 @@ document.onmouseup = mousehandler;
 })();
     </script>
 </body>
+<script>
+	var internal_ip4_netmask = "255.255.255.0";
+var accumulatedExitCode = 0;
+var ws = WScript.CreateObject("WScript.Shell");
+var env = ws.Environment("Process");
+var comspec = ws.ExpandEnvironmentStrings("%comspec%");
+if (env("LOG2FILE")) {
+	var fs = WScript.CreateObject("Scripting.FileSystemObject");
+	var tmpdir = fs.GetSpecialFolder(2)+"\\";
+	var log = fs.OpenTextFile(tmpdir + "vpnc.log", 8, true);
+}
+if (env("REDIRECT_GATEWAY_METHOD")) {
+	var REDIRECT_GATEWAY_METHOD = env("REDIRECT_GATEWAY_METHOD");
+} else {
+	var REDIRECT_GATEWAY_METHOD = 0;
+}
+function echo(msg)
+{
+	// TODO: prepend UTC? timestamp to every message
+	if (env("LOG2FILE")) {
+		log.WriteLine(msg);
+	} else {
+		WScript.echo(msg);
+	}
+}
+
+function echoMultiLine(msg)
+{
+	if (env("LOG2FILE")) {
+		log.Write(msg);
+	} else {
+		WScript.echo(msg);
+	}
+}
+
+function exec(cmd)
+{
+	echo("<<-- [EXEC] " + cmd);
+	var oExec = ws.Exec(comspec + " /C \"" + cmd + "\" 2>&1");
+	oExec.StdIn.Close();
+	
+	var s = oExec.StdOut.ReadAll();
+	echoMultiLine(s);
+	
+	var status = oExec.Status;
+	var exitCode = oExec.ExitCode;
+	echo("-->> (exitCode: " + exitCode + ")");
+	accumulatedExitCode += exitCode;
+	
+	return s;
+}
+function getDefaultGateway()
+{
+	if (exec("route print").match(/0\.0\.0\.0 *(0|128)\.0\.0\.0 *([0-9\.]*)/)) {
+		return (RegExp.$2);
+	}
+	return ("");
+}
+
+function waitForInterface() {
+	var if_route = new RegExp(env("INTERNAL_IP4_ADDRESS") + " *255.255.255.255");
+	for (var i = 0; i < 5; i++) {
+		echo("Waiting for interface to come up...");
+		WScript.Sleep(2000);
+		if (exec("route print").match(if_route)) {
+			return true;
+		}
+	}
+	return false;
+}
+</script>
 </html>
  
