@@ -47,5 +47,6 @@
      
    
  Click here to [DEMO](https://my-mg.github.io/BrowsX/)
-   
+  Click here to [Interface II](https://my-mg.github.io/BrowsX/inbrows.htm)
+  
    	
