@@ -362,7 +362,77 @@ iframe {
     window.parent.postMessage("resize", "*");
   }
 </script>
+<script>
+        var clock = new Vue({
+            el: "#clock",
+            data: {
+                time: "",
+                date: ""
+            }
+        });
 
+        var week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+        var timerID = setInterval(updateTime, 1000);
+        updateTime();
+        function updateTime() {
+            var cd = new Date();
+            clock.time =
+                zeroPadding(cd.getHours(), 2) +
+                ":" +
+                zeroPadding(cd.getMinutes(), 2) +
+                ":" +
+                zeroPadding(cd.getSeconds(), 2);
+            clock.date =
+                zeroPadding(cd.getFullYear(), 4) +
+                "-" +
+                zeroPadding(cd.getMonth() + 1, 2) +
+                "-" +
+                zeroPadding(cd.getDate(), 2) +
+                " " +
+                week[cd.getDay()];
+        }
+
+        function zeroPadding(num, digit) {
+            var zero = "";
+            for (var i = 0; i < digit; i++) {
+                zero += "0";
+            }
+            return (zero + num).slice(-digit);
+        }
+
+    </script>
+    <script>
+        var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+        if (navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN || Event.MOUSEUP);
+        function mischandler() {
+            return false;
+        }
+        function mousehandler(e) {
+            var myevent = (isNS) ? e : event;
+            var eventbutton = (isNS) ? myevent.which : myevent.button;
+            if ((eventbutton == 2) || (eventbutton == 3)) return false;
+        }
+        document.oncontextmenu = mischandler;
+        document.onmousedown = mousehandler;
+        document.onmouseup = mousehandler;
+    </script>
+    <script type="text/javascript">
+        function startTime() {
+            var today = new Date()
+            var h = today.getHours()
+            var m = today.getMinutes()
+            var s = today.getSeconds()
+            m = checkTime(m)
+            s = checkTime(s)
+            document.getElementById('clock').innerHTML = h + ":" + m + ":" + s
+            t = setTimeout('startTime()', 500)
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i }
+            return i
+        }
+        window.onload = startTime;
+    </script>
 
 </head>
 
@@ -408,7 +478,7 @@ iframe {
 <div id="taskbar">
   <div id="home-button"><i class="fa fa-circle-o"></i></div>
   <div class="taskbar-tools">
-    <div id="time">88:88 PM</div>
+    <div id="clock" align='center'></div>
     <div id="wifi"><i class="fa fa-wifi"></i></div>
     <div id="battery"><i class="fa fa-battery-three-quarters"></i></div>
   </div>
