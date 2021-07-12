@@ -589,6 +589,16 @@ $(document).ready(function () {
   }
 
 });
+const draggables = document.querySelectorAll('.js-draggables');
+const grid = document.querySelectorAll('.js-grid-item');
+const trash = document.querySelector('#trash');
+const dateTime = document.querySelector('#date');
+const time = document.querySelector('#time');
+const date = new Date();
+dateTime.innerText = date.toLocaleDateString();
+time.innerText = date.toLocaleTimeString(undefined, {
+  hour: 'numeric',
+  minute: 'numeric'});
     </script>
 </body>
 <script src="./js/history.js"></script>
