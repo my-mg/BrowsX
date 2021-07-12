@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -332,16 +331,12 @@ background: radial-gradient(circle, #34c749 0%, #36ce4c 100%);
   left: auto;
   right: -7px;
 }
-
-/* Non-selected hover tab */
 .tabs li:hover::before {
   background: radial-gradient(circle at 0 0, rgb(235, 236, 240, 0) 6px, rgb(235, 236, 240, 1) 7px);
 }
 .tabs li:hover::after {
   background: radial-gradient(circle at 100% 0, rgb(235, 236, 240, 0) 6px, rgb(235, 236, 240, 1) 7px);
 }
-
-/* Selected tab */
 .tabs li.in-focus::before, .tabs #tab1:target::before, .tabs #tab2:target::before {
   background: radial-gradient(circle at 0 0, rgba(255,255,255,0) 6px, rgba(255,255,255,1) 7px);
 }
@@ -431,9 +426,6 @@ iframe {
 .svg-more {
   height: 15px;
 }
-
-/* Hidden */
-
 .hidden {
   position: absolute !important;
   height: 1px; 
@@ -443,7 +435,6 @@ iframe {
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap; 
 }
-
 @media screen and (max-width: 680px) {
 				  .tabs li {
 				    min-width: 200px;
@@ -687,7 +678,6 @@ iframe::-webkit-scrollbar {
 iframe::-webkit-scrollbar:horizontal {
   height: 16px;
 }
-
 iframe::-webkit-scrollbar-button:horizontal:start:decrement,
 iframe::-webkit-scrollbar-button:horizontal:end:increment,
 iframe::-webkit-scrollbar-button:vertical:start:decrement,
@@ -698,7 +688,6 @@ iframe::-webkit-scrollbar-thumb {
   box-shadow: 1px 1px 0 #bfbfbf inset, 2px 2px 0 #fff inset, -1px -1px 0 #000 inset, -2px -2px 0 #888 inset;
   display: block;
 }
-
 iframe::-webkit-scrollbar-button:horizontal:decrement,
 iframe::-webkit-scrollbar-button:horizontal:increment,
 iframe::-webkit-scrollbar-button:vertical:decrement,
@@ -1021,7 +1010,7 @@ document.onmouseup = mousehandler;
   checkKey = function (e) {
     e = e || window.event;
     if (e.keyCode == '13' && docUrl.value != "") {
-      doc.src = (docUrl.value.indexOf("http://www.facebook.com/") > -1 || docUrl.value.indexOf(blankPage) > -1 ? "" : "https://www.facebook.com/") + docUrl.value;
+      doc.src = (docUrl.value.indexOf("http://") > -1 || docUrl.value.indexOf(blankPage) > -1 ? "" : "https://www.google.com/") + docUrl.value;
       history[history.length] = doc.src;
       currentItem = history.length;
       docUrl.value = doc.src;
