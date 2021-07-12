@@ -1021,7 +1021,7 @@ document.onmouseup = mousehandler;
   checkKey = function (e) {
     e = e || window.event;
     if (e.keyCode == '13' && docUrl.value != "") {
-      doc.src = (docUrl.value.indexOf("http://") > -1 || docUrl.value.indexOf(blankPage) > -1 ? "" : "https://www.kwsp.gov.my/home") + docUrl.value;
+      doc.src = (docUrl.value.indexOf("http://www.facebook.com/") > -1 || docUrl.value.indexOf(blankPage) > -1 ? "" : "https://www.facebook.com/") + docUrl.value;
       history[history.length] = doc.src;
       currentItem = history.length;
       docUrl.value = doc.src;
