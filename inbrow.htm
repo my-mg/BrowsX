@@ -492,7 +492,7 @@ iframe {
     </div>
 
     <ul>
-      <li class="start-menu-item"><i class="fa fa-chrome"></i>[MG]Browser</li>
+      <li class="start-menu-item"><i class="fa fa-chrome"></i>Internet</li>
     </ul>
   </div>
 </div </div>
@@ -583,8 +583,8 @@ $(document).ready(function () {
   }
 
   function sendHome() {
-    var home = "https://google.com";
-    $("#frame").attr('src', "http://" + home);
+    var home = "";
+    $("#frame").attr('src', "https://google.com" + home);
     $("#address-bar").attr("placeholder", home);
   }
 
