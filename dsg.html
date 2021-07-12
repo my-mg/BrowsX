@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<meta name="apple-mobile-web-app-title" content="Rehack Browser By Alexander Eric">
+<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<link rel="mask-icon" type="" href="https://i.ibb.co/FDzB2tN/logos.png" color="#111" />	
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>UIBM@Alexander Eric</title>
+  
+  
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+  
+<style>
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fBBc9.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Open Sans';
+}
+#boxGame {
+  background: #333;
+  padding: 0;
+}
+#boxGame #boxControls {
+  position: relative;
+  padding: 0;
+  height: 100%;
+  color: #fff;
+  float: left;
+  left: 0;
+  background: #333333;
+  border-right: 1px solid #232323;
+}
+#boxGame #boxControls h1 {
+  margin: 0;
+  padding: 14px;
+  color: #fff;
+  background: #232323;
+  font-size: 24px;
+}
+#boxGame #boxControls .controls {
+  padding: 14px 14px;
+  border-bottom: 1px solid #222;
+}
+#boxGame #boxControls .controls:last-child {
+  border: none;
+}
+#boxGame #boxControls button {
+  text-transform: uppercase;
+  background: #434343;
+  border: none;
+  outline: none;
+  box-shadow: 0px 2px 0px #222;
+  padding: 7px 14px;
+  margin: 7px 3.5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+#boxGame #boxControls button:hover {
+  background: #545454;
+}
+#boxGame #boxControls button:active {
+  background: #313131;
+}
+#boxGame #boxControls #reset {
+  background: #E53935;
+  box-shadow: 0 2px 0 #fff;
+}
+#boxGame #workspace {
+  height: 100%;
+  min-height: 500px;
+  background: #424242;
+  border-left: 1px solid #545454;
+  margin: 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#boxGame #workspace #box {
+  background: #6983BE;
+  color: #fff;
+  max-width: 260px;
+  max-height: 260px;
+  position: relative;
+  top: 160px;
+  left: 44%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#boxGame #workspace .show {
+  visibility: visible;
+}
+#boxGame #workspace .hide {
+  opacity: 0;
+}
+#boxGame #workspace .square {
+  padding: 14px;
+  border-radius: 4px;
+  width: 160px;
+  height: 160px;
+}
+#boxGame #workspace .circle {
+  border-radius: 100% !important;
+}
+#boxGame #workspace .moon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 15px 15px 0 0 black;
+}
+#boxGame #workspace .red {
+  background: #FF5551 !important;
+}
+#boxGame #workspace .yellow {
+  background: #FFFF43 !important;
+}
+#boxGame #workspace .green {
+  background: #A6F140 !important;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div id="boxGame" class="container-fluid">
+  <div id="boxControls" class="col-md-2">
+    <h1>Browser Panel</h1>
+    <div id="displayControls" class="controls">
+      <button id="showBtn">Show box</button>
+      <button id="hideBtn">Hide box</button>
+    </div>
+    <div id="animateControls" class="controls">
+      <button id="up">Animate up</button>
+      <button id="right">Animate right</button>
+      <button id="down">Animate down</button>
+      <button id="left">Animate left</button>
+    </div>
+    <div id="styleControls" class="controls">
+      <button id="shape">Change shape</button>
+      <button id="color">Randomize color</button>
+      <button id="sizeUp">Size up</button>
+      <button id="sizeDown">Size down</button>
+    </div>
+    <div class="controls">
+      <button id="reset">Reset</button>
+    </div>
+  </div>
+  <div id="workspace" class="col-md-10">
+    <div id="box" class="square"></div>
+  </div>
+</div>
+    <script src="./timeout.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script id="rendered-js" >
+
+$('#showBtn').click(function () {
+  $("#box").fadeIn("slow");
+});
+$('#hideBtn').click(function () {
+  $("#box").fadeOut("slow");
+});
+$('#up').click(function () {
+  $("#box").animate({
+    top: "-=46px" });
+
+});
+$('#right').click(function () {
+  $("#box").animate({
+    left: "+=46px" });
+
+});
+$('#down').click(function () {
+  $("#box").animate({
+    top: "+=46px" });
+
+});
+$('#left').click(function () {
+  $("#box").animate({
+    left: "-=46px" });
+
+});
+$('#shape').click(function () {
+  var colorIndex = Math.random();
+  if (colorIndex <= 0.5) {
+    $("#box").toggleClass('circle');
+    $("#box").toggleClass('square');
+  } else if (colorIndex >= 0.5) {
+    $("#box").toggleClass('.square');
+  }
+});
+
+$('#color').click(function () {
+  var colorIndex = Math.random();
+  if (colorIndex < 0.3) {
+    $("#box").toggleClass('red');
+  } else if (colorIndex > 0.3 && colorIndex < 0.6) {
+    $("#box").toggleClass('yellow');
+  } else {
+    $("#box").toggleClass('green');
+  }
+});
+$('#sizeUp').click(function () {
+  $("#box").css('height', '+=20px');
+  $("#box").css('width', '+=20px');
+});
+$('#sizeDown').click(function () {
+  $("#box").css('height', '-=20px');
+  $("#box").css('width', '-=20px');
+});
+$('#reset').click(function () {
+  $("#box").removeClass('red');
+  $("#box").removeClass('yellow');
+  $("#box").removeClass('green');
+  $("#box").removeClass('circle');
+  $('#box').css('width', '140px');
+  $('#box').css('height', '140px');
+  $('#box').css('top', '160px');
+  $('#box').css('left', '44%');
+});
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
