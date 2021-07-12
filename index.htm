@@ -72,9 +72,6 @@ p {
   font-size: 1rem;
   white-space: nowrap;
 }
-
-/* Rows/Positioning */
-
 .top-row, .middle-row, .the-website {
   width: 100%;
   display: flex;
@@ -89,28 +86,19 @@ background: linear-gradient(0deg, rgba(222,225,230,1) 0%, rgba(225,227,232,1) 10
   box-shadow: inset 0 1px 1px #f2f3f6;
   justify-content: start;
 }
-
 .mac-os-controls, .tab, .new-tab {
   position: relative;
   display: flex;
 }
-
 .mac-os-controls {
   justify-self: start;
 }
-
 .tabs {
   justify-self: center;
 }
-
 .new-tab {
   justify-self: end;
 }
-
-
-
-/* Details */
-
 .mac-os-controls {
   align-self: center;
   padding-bottom: 6px;
@@ -289,14 +277,12 @@ background: radial-gradient(circle, #34c749 0%, #36ce4c 100%);
   pointer-events: auto;
   cursor: default !important;
 }
-
 .svg-close {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .tabs .close:hover, .tabs .close:focus {
   background-color: rgba(219, 219, 220, 1);
   transition: all ease .5s;
@@ -380,7 +366,6 @@ iframe {
   display: block;
   border: none;
 }
-
 .browser-controls li, .settings li, .new-tab {
   height: 28px;
   width: 28px;
@@ -916,10 +901,9 @@ document.onmouseup = mousehandler;
     
     <div class="omnibar" tabindex="0">
       <ul>
-        <li><svg class="svg-ssl" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M9.06,4.15H8.58v-1A2.41,2.41,0,0,0,6.18.76H5.82a2.41,2.41,0,0,0-2.4,2.41v1H2.94A.94.94,0,0,0,2,5.09v5.12a.94.94,0,0,0,.94.94H9.06a.94.94,0,0,0,.94-.94V5.09A.94.94,0,0,0,9.06,4.15Zm-4.64-1a1.41,1.41,0,0,1,1.4-1.41h.36a1.41,1.41,0,0,1,1.4,1.41v1H4.42Z" style="fill:#626365"/></svg></li>
-        
-        <li class="url"><p>ftp://Localhost://Folder/Path/File.type</p></li>
-<!--         <li class="url"><textarea>ftp://Localhost://Folder/Path/File.type</textarea></li> -->
+        <li><svg class="svg-ssl" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M9.06,4.15H8.58v-1A2.41,2.41,0,0,0,6.18.76H5.82a2.41,2.41,0,0,0-2.4,2.41v1H2.94A.94.94,0,0,0,2,5.09v5.12a.94.94,0,0,0,.94.94H9.06a.94.94,0,0,0,.94-.94V5.09A.94.94,0,0,0,9.06,4.15Zm-4.64-1a1.41,1.41,0,0,1,1.4-1.41h.36a1.41,1.41,0,0,1,1.4,1.41v1H4.42Z" style="fill:#626365"/></svg></li>        
+<li class="url"><p>https://pencen.gov.kwsp</p></li>
+<li class="url"><textarea>ftp://Localhost://Folder/Path/File.type</textarea></li> -->
         
         <li class="favorite"><svg class="svg-favorite" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8,3.87,9.08,6.72l.25.64h3.31l-1.88,1.5-.5.39.15.62.69,3-2.57-1.6L8,10.89l-.53.33-2.58,1.6.7-3,.15-.62-.5-.39L3.36,7.36H6.68l.24-.64L8,3.87M8,1.06,6,6.36H.5L4.62,9.64l-1.26,5.3L8,12.07l4.64,2.87-1.26-5.3L15.5,6.36H10L8,1.06Z" style="fill:#626365"/></svg></li>
       </ul>
