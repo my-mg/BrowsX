@@ -45,6 +45,6 @@
  License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
     
 Click here to [DEMO](https://my-mg.github.io/BrowsX/)
- | Click here to [Interface II](https://my-mg.github.io/BrowsX/inbrow.htm)
+ | Click here to [Interface II](https://my-mg.github.io/BrowsX/inbrow.htm) | Click Here for [Design Ref](https://my-mg.github.io/BrowsX/dsg.html)
   
    	
