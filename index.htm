@@ -829,22 +829,6 @@ iframe::-webkit-scrollbar-corner {
   </ul>
   <hr/>
   <div class="navigation">
-    <form>
-<script>
-var isNS = (navigator.appName == "Netscape") ? 1 : 0;
-if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
-function mischandler(){
-return false;
-}
-function mousehandler(e){
-var myevent = (isNS) ? e : event;
-var eventbutton = (isNS) ? myevent.which : myevent.button;
-if((eventbutton==2)||(eventbutton==3)) return false;
-}
-document.oncontextmenu = mischandler;
-document.onmousedown = mousehandler;
-document.onmouseup = mousehandler;
-</script>
     <div class="mac-os-controls">
       <ul>
         </ul>
@@ -859,21 +843,16 @@ document.onmouseup = mousehandler;
         </li>
         <li id="tab2">
           <span class="favicon"></span>
-          <p>MG:Title</p><span class="round">
+          <p>MG:Title</p><span class="round"></span>
           <button class="close"><p class="hidden">Close Tab</p><svg class="svg-close" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><path d="M5.56,4.5,8.21,1.85A.75.75,0,0,0,7.15.79L4.5,3.44,1.85.79A.75.75,0,0,0,.79,1.85L3.44,4.5.79,7.15a.75.75,0,0,0,0,1.06.75.75,0,0,0,1.06,0L4.5,5.56,7.15,8.21a.75.75,0,0,0,1.06,0,.75.75,0,0,0,0-1.06Z" style="fill:#3c4043"/></svg></button>
-       </span>
         </li>
       </ul>
     </div>
-    
     <div class="divider"></div>
-    
     <div class="new-tab">
       <svg class="svg-new" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M12.05,6H8V2A1,1,0,0,0,6,2V6H2A1,1,0,0,0,2,8H6v4.05a1,1,0,0,0,2,0V8h4.05a1,1,0,0,0,0-2Z" style="fill:#3c4043"/></svg>
     </div>
-    
   </div>
-  
   <div class="middle-row">
     <div class="browser-controls">
       <ul>
@@ -887,16 +866,21 @@ document.onmouseup = mousehandler;
         <li><svg class="svg-ssl" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M9.06,4.15H8.58v-1A2.41,2.41,0,0,0,6.18.76H5.82a2.41,2.41,0,0,0-2.4,2.41v1H2.94A.94.94,0,0,0,2,5.09v5.12a.94.94,0,0,0,.94.94H9.06a.94.94,0,0,0,.94-.94V5.09A.94.94,0,0,0,9.06,4.15Zm-4.64-1a1.41,1.41,0,0,1,1.4-1.41h.36a1.41,1.41,0,0,1,1.4,1.41v1H4.42Z" style="fill:#626365"/></svg></li>        
 <li class="url"><p>https://pencen.gov.kwsp</p></li>
 <li class="url"><font color="red">Not Secure [Users Not Pencent Yet]</font color></li> 
-        
-        <li class="favorite"><svg class="svg-favorite" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8,3.87,9.08,6.72l.25.64h3.31l-1.88,1.5-.5.39.15.62.69,3-2.57-1.6L8,10.89l-.53.33-2.58,1.6.7-3,.15-.62-.5-.39L3.36,7.36H6.68l.24-.64L8,3.87M8,1.06,6,6.36H.5L4.62,9.64l-1.26,5.3L8,12.07l4.64,2.87-1.26-5.3L15.5,6.36H10L8,1.06Z" style="fill:#626365"/></svg></li>
-      </ul>
-    </div>
-    <div class="settings">
+ <li class="favorite"><svg class="svg-favorite" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8,3.87,9.08,6.72l.25.64h3.31l-1.88,1.5-.5.39.15.62.69,3-2.57-1.6L8,10.89l-.53.33-2.58,1.6.7-3,.15-.62-.5-.39L3.36,7.36H6.68l.24-.64L8,3.87M8,1.06,6,6.36H.5L4.62,9.64l-1.26,5.3L8,12.07l4.64,2.87-1.26-5.3L15.5,6.36H10L8,1.06Z" style="fill:#626365"/></svg></li>
+</ul>
+ </div>
+ <div class="settings">
       <ul>
         <li><p class="hidden">More</p><svg class="svg-more" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 14"><circle cx="2" cy="2.07" r="1.5" style="fill:#5f6368"/><circle cx="2" cy="7.09" r="1.5" style="fill:#5f6368"/><circle cx="2" cy="12.11" r="1.5" style="fill:#5f6368"/></svg></li>
       </ul>
     </div>
   </div>
+  <hr/>
+  <div class="navigation">
+    <form>
+    </form>
+  </div>
+  <hr/>
   <iframe id="doc" src=""></iframe>
   <hr/>
   <div class="window-bottom">
@@ -904,10 +888,6 @@ document.onmouseup = mousehandler;
     <div></div>
     <div></div>
   </div>
-</div>
-  </div>
-</div>
- 
 </div>
     <script src="timeout.js"></script>
       <script id="rendered-js" >
