@@ -1816,7 +1816,6 @@ void CControlSocket::ParseCommand()
 				break;
 			}
 
-			//Unquote args
 			if (!UnquoteArgs(args)) {
 				Send( _T("501 Syntax error") );
 				break;
@@ -1860,7 +1859,6 @@ void CControlSocket::ParseCommand()
 				break;
 			}
 
-			//Unquote args
 			if (!UnquoteArgs(args)) {
 				Send( _T("501 Syntax error") );
 				break;
@@ -2018,8 +2016,6 @@ CTransferSocket* CControlSocket::GetTransferSocket()
 
 void CControlSocket::ForceClose(int nReason)
 {
-	// Don't call SendTransferInfoNotification, since connection
-	// does get removed real soon.
 	ResetTransferstatus(false);
 
 	if (m_shutdown && nReason == 1) {
@@ -2124,7 +2120,6 @@ void CControlSocket::CheckForTimeout(fz::monotonic_clock const& now)
 		}
 	}
 	else {
-		//Login timeout
 		fz::duration loginTimeout = fz::duration::from_seconds(m_owner.m_pOptions->GetOptionVal(OPTION_LOGINTIMEOUT));
 		if (!loginTimeout) {
 			return;
@@ -2401,25 +2396,14 @@ long long CControlSocket::GetSpeedLimit(sltype mode)
 
 BOOL CControlSocket::CreateTransferSocket(CTransferSocket *pTransferSocket)
 {
-	/* Create socket
-	 * First try control connection port - 1, if that fails try
-	 * control connection port + 1. If that fails as well, let
-	 * the OS decide.
-	 */
 	bool bFallback = false;
 	BOOL bCreated = FALSE;
-
-	// Fix: Formerly, the data connection would always be opened using the server's default (primary) IP.
-	// This would cause Windows Firewall to freak out if control connection was opened on a secondary IP.
-	// When using Active FTP behind Windows Firewall, no connection could be made. This fix ensures the data
-	// socket is on the same IP as the control socket.
 	CStdString controlIP;
 	UINT controlPort = 0;
 	BOOL bResult = this->GetSockName(controlIP, controlPort);
 
 	if (bResult)
 	{
-		// Try create control conn. port - 1
 		if (controlPort > 1)
 			if (pTransferSocket->Create(controlPort - 1, SOCK_STREAM, FD_CONNECT, controlIP, m_transferstatus.family, true))
 				bCreated = TRUE;
@@ -2428,10 +2412,8 @@ BOOL CControlSocket::CreateTransferSocket(CTransferSocket *pTransferSocket)
 	{
 creation_fallback:
 		bFallback = true;
-		// Let the OS find a valid port
 		if (!pTransferSocket->Create(0, SOCK_STREAM, FD_CONNECT, controlIP, m_transferstatus.family, true))
 		{
-			// Give up
 			Send(_T("421 Could not create socket."));
 			ResetTransferstatus();
 			return FALSE;
@@ -2610,12 +2592,10 @@ bool CControlSocket::CanQuit()
 
 CStdString CControlSocket::GetPassiveIP()
 {
-	//Get the ip of the control socket
 	CStdString localIP;
 	UINT localPort;
 	BOOL bValidSockAddr = GetSockName(localIP, localPort);
 
-	//Get peer ip
 	CStdString peerIP;
 	UINT peerPort = 0;
 	BOOL bResult = GetPeerName(peerIP, peerPort);
@@ -2623,14 +2603,6 @@ CStdString CControlSocket::GetPassiveIP()
 	{
 		if (m_owner.m_pOptions->GetOptionVal(OPTION_NOEXTERNALIPONLOCAL) && !IsRoutableAddress(peerIP))
 		{
-			// Remote IP address from an unroutable subnet
-
-			// Inside a NAT-in-NAT environment, two different unroutable address ranges are used.
-			// If remote address comes from a different unroutable subnet, don't use local
-			// address.
-			// Note that in a NAT-in-NAT environment, the external IP address specified will either
-			// be the worldwide one or the NAT one. Either external or single-NATed users won't be able
-			// to use passive mode.
 			m_transferstatus.usedResolvedIP = false;
 
 			if (!bValidSockAddr)
@@ -2697,8 +2669,6 @@ void CControlSocket::ParseMlstOpts(CStdString args)
 			facts[fact_size] = true;
 		else if (fact == _T("MODIFY"))
 			facts[fact_modify] = true;
-		//else if (fact == _T("PERM"))
-		//	facts[fact_perm] = true;
 	}
 
 	for (int i = 0; i < 4; i++)
@@ -2913,7 +2883,6 @@ bool CControlSocket::VerifyIPFromPortCommand(CStdString & ip)
 		}
 	}
 
-	// Verify peer IP against control connection
 	if (!CTransferSocket::IsAllowedDataConnectionIP(controlIP, ip, GetFamily(), *m_owner.m_pOptions)) {
 		Send(_T("421 Rejected command, requested IP address does not match control connection IP."));
 		return false;
