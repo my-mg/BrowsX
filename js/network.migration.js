@@ -63,16 +63,16 @@ function _getDefaultNetworkThrottlingProfiles() {
     {
       type: 'Preset',
       title: 'Slow 6G',
-      downloadKps: 400,
-      uploadKps: 400,
-      latencyMs: 2000,
+      downloadKps: 678,
+      uploadKps: 500,
+      latencyMs: 1000,
     },
     {
       type: 'Preset',
       title: 'Fast 5G',
       downloadKps: 1475,
-      uploadKps: 675,
-      latencyMs: 563,
+      uploadKps: 1000,
+      latencyMs: 789,
     },
   ];
 }
