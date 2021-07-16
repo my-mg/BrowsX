@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<meta name="apple-mobile-web-app-title" content="Rehack Browser By Alexander Eric">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/FDzB2tN/logos.png" />
+
+<link rel="mask-icon" type="" href="https://i.ibb.co/FDzB2tN/logos.png" color="#111" />
+
+
+  <title>REHACK@ALEXANDER ERIC</title>
+  
+  
+  
+  
+<style>
+html, body {
+  margin: 0;
+  background: #000;
+  color: #3c4043;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.chrome {
+  width: 100%;
+  background-color: #eee;
+}
+
+.mac-os {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+button, textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+ul {
+  list-style: none;
+  margin:0;
+  padding:0;
+  display: inline-flex;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* Rows/Positioning */
+
+.top-row, .middle-row, .the-website {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-row {
+  background: rgb(222,225,230);
+background: linear-gradient(0deg, rgba(222,225,230,1) 0%, rgba(225,227,232,1) 10%, rgba(225,227,232,1) 100%);
+  padding: 8px 13px 0 13px;
+  box-shadow: inset 0 1px 1px #f2f3f6;
+  justify-content: start;
+}
+
+.mac-os-controls, .tab, .new-tab {
+  position: relative;
+  display: flex;
+}
+
+.mac-os-controls {
+  justify-self: start;
+}
+
+.tabs {
+  justify-self: center;
+}
+
+.new-tab {
+  justify-self: end;
+}
+
+
+
+/* Details */
+
+.mac-os-controls {
+  align-self: center;
+  padding-bottom: 6px;
+  padding-right: 6px;
+}
+
+.mac-os-controls li {
+  width: 12px;
+  height: 12px;
+  border-radius: 15px;
+  margin-right: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mac-os-controls .os-close {
+  background: rgb(252,96,92);
+background: radial-gradient(circle, #fc605c 0%, #fc655f 100%);
+  box-shadow: inset 0 0 0 1px #df4946;
+}
+.mac-os-controls .os-minimize {
+  background: rgb(253,188,64);
+background: radial-gradient(circle, #fdbc40 0%, #fec342 100%);
+  box-shadow: inset 0 0 0 1px #dfa135;
+}
+.mac-os-controls .os-expand {
+  background: rgb(52,199,73);
+background: radial-gradient(circle, #34c749 0%, #36ce4c 100%);
+  box-shadow: inset 0 0 0 1px #26ab35;
+}
+
+.mac-os-controls svg {
+  opacity: 0;
+  height: 9px;
+  width: 9px;
+}
+
+.mac-os-controls ul:hover svg, .mac-os-controls ul:focus svg {
+  opacity: 1;
+}
+
+.middle-row {
+  padding: 5px 4px 5px 9px;
+  background-color: #fff;
+}
+
+.omnibar {
+  background-color: #f1f3f4;
+  border: solid 0px #f1f3f4;
+  color: #202124;
+  height: 28px;
+  padding: 2px;
+  border-radius: 25px;
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  transition: all ease .33s;
+}
+
+.omnibar:hover {
+  background-color: #e9ebec;
+  transition: all ease .5s;
+}
+
+.omnibar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.omnibar li:not(.url) {
+  height: 24px;
+  width: 34px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(220, 222, 224, 0);
+  transition: all ease .33s;
+}
+
+.omnibar li:not(.url):hover, .omnibar li:not(.url):focus {
+  background-color: rgba(220, 222, 224, 1);
+  transition: all ease .5s;
+}
+
+.omnibar:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #a0c4f9;
+  background-color: #fff;
+  transition: none;
+}
+
+.omnibar .url {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-grow: 1 !important;
+  position: relative;
+  text-align: left;
+}
+.omnibar .url p {
+	font-size: 1.175rem;
+	line-height: 1em;
+}
+
+.omnibar .favorite {
+  justify-self: end;
+}
+
+.omnibar textarea {
+  width: 100%;
+  position: relative;
+  height: 1em;
+  font-size: 1em;
+  line-height: 1em;
+  resize: none;
+  cursor: text;
+}
+
+/* Tabs */
+
+.tabs li {
+  width: 100%;
+  min-width: 240px;
+  background-color: rgba(225,227,232,0);
+  border-radius: 7px 7px 0 0;
+  position: relative;
+  padding: 10px 8px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+}
+
+.tabs li:hover, .tabs li:focus {
+  background-color: #ebecf0;
+}
+
+.tabs li.in-focus, .tabs #tab1:target, .tabs #tab2:target {
+  background-color: #ffffff;
+}
+
+.tabs li * {
+  line-height: 1em;
+  pointer-events: none;
+}
+
+.tabs .favicon {
+  height: 16px;
+  width: 16px;
+  background-color: gray;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
+.tabs p {
+  text-align: left;
+  color: #3c4043;
+  margin-right: 5px;
+  flex-grow: 1;
+}
+
+.tabs .close {
+  position: relative;
+  display: block;
+  height: 17px;
+  width: 17px;
+  border-radius: 15px;
+  background-color: rgba(219, 219, 220, 0);
+  transition: all ease .33s;
+  pointer-events: auto;
+  cursor: default !important;
+}
+
+.svg-close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tabs .close:hover, .tabs .close:focus {
+  background-color: rgba(219, 219, 220, 1);
+  transition: all ease .5s;
+}
+
+.tabs .close:focus {
+					outline: none;
+				}
+
+.tabs .close:before {
+					content: '';
+					height: 100%;
+					width: 14px;
+					background: linear-gradient(90deg, rgba(225,227,232,0) 0%, rgba(225,227,232,1) 75%);
+					display: block;
+					position: absolute;
+					left: -14px;
+					top: 0;
+				}
+				
+				.tabs li:hover .close:before {
+					background: linear-gradient(90deg, rgba(235, 236, 240, 0) 0%, rgba(235, 236, 240,1) 75%) !important;
+				}
+				
+				.tabs li.in-focus .close:before {
+					background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 75%) !important;
+				}
+
+/* Curved corners */
+.tabs li.in-focus, .tabs #tab1:target, .tabs #tab1:target {
+  z-index: 200;
+}
+
+.tabs li p {
+  position: relative;
+}
+
+/* Rounded parts */
+
+.tabs li::before, .tabs li::after {
+  content: '';
+  height: 7px;
+  width: 7px;
+  position: absolute;
+  bottom: 0px;
+  left: -7px;
+}
+
+.tabs li::after {
+  left: auto;
+  right: -7px;
+}
+
+/* Non-selected hover tab */
+.tabs li:hover::before {
+  background: radial-gradient(circle at 0 0, rgb(235, 236, 240, 0) 6px, rgb(235, 236, 240, 1) 7px);
+}
+.tabs li:hover::after {
+  background: radial-gradient(circle at 100% 0, rgb(235, 236, 240, 0) 6px, rgb(235, 236, 240, 1) 7px);
+}
+
+/* Selected tab */
+.tabs li.in-focus::before, .tabs #tab1:target::before, .tabs #tab2:target::before {
+  background: radial-gradient(circle at 0 0, rgba(255,255,255,0) 6px, rgba(255,255,255,1) 7px);
+}
+.tabs li.in-focus::after, .tabs #tab1:target::after, .tabs #tab2:target::after {
+  background: radial-gradient(circle at 100% 0, rgba(255,255,255,0) 6px, rgba(255,255,255,1) 7px);
+}
+
+
+
+
+.the-website {
+  background-color: #555;
+  height: 90vh;
+  height: calc( 100vh - (45px + 38px) );
+  display: flex;
+  flex-grow: 1;
+/*   flex-direction: column; */
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+.browser-controls li, .settings li, .new-tab {
+  height: 28px;
+  width: 28px;
+  border-radius: 20px;
+  background-color: rgba(238, 238, 238, 0);
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  transition: all ease .33s;
+}
+
+.browser-controls li:not(.forward):hover, .browser-controls li:not(.forward):focus, .settings li:hover, .settings li:focus, .new-tab:hover, .new-tab:focus {
+				  background-color: rgba(238, 238, 238, 1);
+				  transition: all ease .5s;
+				}
+
+.browser-controls {
+	margin-right: 3px;
+}
+
+.browser-controls li a {
+	display: flex;
+}
+.browser-controls li a:hover {
+  cursor: default;
+}
+
+.new-tab:hover, .new-tab:focus {
+  background-color: #bbbec3;
+}
+
+.new-tab {
+	margin-left: 7px;
+}
+
+
+/* Settings */
+
+.settings ul {
+  margin-left: 4px;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: #808387;
+  margin-left: -1px;
+  display: block;
+}
+
+
+
+
+/* SVG's */
+
+.svg-new {
+  height: 14px;
+  width: 14px;
+}
+
+.svg-close {
+  height: 9px;
+  width: 9px;
+}
+
+.svg-back, .svg-forward, .svg-refresh {
+  height: 16px;
+  height: 16px;
+}
+
+.svg-ssl {
+  height: 12px;
+  width: 12x;
+}
+
+.svg-favorite {
+  height: 17px;
+  width: 17px;
+}
+
+.svg-more {
+  height: 15px;
+}
+
+/* Hidden */
+
+.hidden {
+  position: absolute !important;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+
+@media screen and (max-width: 680px) {
+				  .tabs li {
+				    min-width: 200px;
+				    max-width: 200px;
+				  }
+				}
+				
+				@media screen and (max-width: 610px) {
+				  .tabs li {
+				    min-width: 180px;
+				    max-width: 180px;
+				  }
+				  .tabs .favicon {
+					  margin-right: 6px;
+				  }
+				}
+				
+				@media screen and (max-width: 520px) {
+				  .tabs li {
+				    min-width: 160px;
+				    max-width: 160px;
+				  }
+				}
+				
+				@media screen and (max-width: 470px) {
+				  .tabs li {
+				    min-width: 100px;
+				    max-width: 100px;
+				  }
+				}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div class="chrome mac-os">
+  
+  <div class="top-row">
+    
+    <div class="mac-os-controls">
+      <ul>
+        <li class="os-close"><svg class="OS-Close" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><line x1="1.88" y1="1.88" x2="7.12" y2="7.12" style="fill:none;stroke:#4d0000;stroke-linecap:round;stroke-miterlimit:10"/><line x1="7.12" y1="1.88" x2="1.88" y2="7.12" style="fill:none;stroke:#4d0000;stroke-linecap:round;stroke-miterlimit:10"/></svg></li>
+        <li class="os-minimize"><svg class="OS-Minimize" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><line x1="0.94" y1="4.5" x2="8.06" y2="4.5" style="fill:none;stroke:#995700;stroke-linecap:round;stroke-miterlimit:10"/></svg></li>
+        <li class="os-expand"><svg class="OS-Expand" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><path d="M1.54,3.15V6.74a.76.76,0,0,0,.76.76H5.89Z" style="fill:#060"/><path d="M3.11,1.5H6.7a.76.76,0,0,1,.76.76V5.85Z" style="fill:#060"/></svg></li>
+      </ul>
+    </div>
+
+    <div class="tabs">
+      <ul>
+        <li class="in-focus" id="tab1">
+          <span class="favicon"></span>
+          <p>Window:MGNet</p>
+          <button class="close"><p class="hidden">Close Tab</p><svg class="svg-close" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><path d="M5.56,4.5,8.21,1.85A.75.75,0,0,0,7.15.79L4.5,3.44,1.85.79A.75.75,0,0,0,.79,1.85L3.44,4.5.79,7.15a.75.75,0,0,0,0,1.06.75.75,0,0,0,1.06,0L4.5,5.56,7.15,8.21a.75.75,0,0,0,1.06,0,.75.75,0,0,0,0-1.06Z" style="fill:#3c4043"/></svg></button>
+          <span class="round"></span>
+        </li>
+        
+        <li id="tab2">
+          <span class="favicon"></span>
+          <p>Window:MGNet</p>
+          <button class="close"><p class="hidden">Close Tab</p><svg class="svg-close" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><path d="M5.56,4.5,8.21,1.85A.75.75,0,0,0,7.15.79L4.5,3.44,1.85.79A.75.75,0,0,0,.79,1.85L3.44,4.5.79,7.15a.75.75,0,0,0,0,1.06.75.75,0,0,0,1.06,0L4.5,5.56,7.15,8.21a.75.75,0,0,0,1.06,0,.75.75,0,0,0,0-1.06Z" style="fill:#3c4043"/></svg></button>
+          <span class="round"></span>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="new-tab">
+      <svg class="svg-new" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path d="M12.05,6H8V2A1,1,0,0,0,6,2V6H2A1,1,0,0,0,2,8H6v4.05a1,1,0,0,0,2,0V8h4.05a1,1,0,0,0,0-2Z" style="fill:#3c4043"/></svg>
+    </div>
+    
+  </div>
+  
+  <div class="middle-row">
+    
+    <div class="browser-controls">
+      
+      <ul>
+        <li><a href="javascript:history.back()"><svg class="svg-back" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><path d="M13.27,6.62H3.84L7.47,3A.88.88,0,0,0,6.23,1.76L1.11,6.88a.88.88,0,0,0,0,1.24l5.12,5.12a.89.89,0,0,0,.62.26.87.87,0,0,0,.62-.26.88.88,0,0,0,0-1.24L3.84,8.38h9.43a.88.88,0,1,0,0-1.76Z" style="fill:#5f6368"/></svg></a></li>
+          <li class="forward"><svg class="svg-forward" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><path d="M13.89,6.88,8.77,1.76A.88.88,0,0,0,7.53,3l3.63,3.62H1.73a.88.88,0,0,0,0,1.76h9.43L7.53,12a.88.88,0,0,0,0,1.24.87.87,0,0,0,.62.26.89.89,0,0,0,.62-.26l5.12-5.12A.88.88,0,0,0,13.89,6.88Z" style="fill:#babcbe"/></svg></li>
+            <li><svg class="svg-refresh" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><path d="M14.28,6.62v-5L12.47,3.43A6.61,6.61,0,1,0,13.55,10a.88.88,0,0,0-1.64-.63,4.87,4.87,0,1,1-.68-4.74l-2,2Z" style="fill:#5f6368"/></svg></li>
+      </ul>
+      
+    </div>
+    
+    <div class="omnibar" tabindex="0">
+      <ul>
+        <li><svg class="svg-ssl" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M9.06,4.15H8.58v-1A2.41,2.41,0,0,0,6.18.76H5.82a2.41,2.41,0,0,0-2.4,2.41v1H2.94A.94.94,0,0,0,2,5.09v5.12a.94.94,0,0,0,.94.94H9.06a.94.94,0,0,0,.94-.94V5.09A.94.94,0,0,0,9.06,4.15Zm-4.64-1a1.41,1.41,0,0,1,1.4-1.41h.36a1.41,1.41,0,0,1,1.4,1.41v1H4.42Z" style="fill:#626365"/></svg></li>
+        
+        <li class="url"><p>ftp://ServerBrowsers/AlexanderEric/192.168.126:200</p></li>
+<!--         <li class="url"><textarea>ftp://ServerBrowsers/AlexanderEric/192.168.126:200</textarea></li> -->
+        
+        <li class="favorite"><svg class="svg-favorite" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8,3.87,9.08,6.72l.25.64h3.31l-1.88,1.5-.5.39.15.62.69,3-2.57-1.6L8,10.89l-.53.33-2.58,1.6.7-3,.15-.62-.5-.39L3.36,7.36H6.68l.24-.64L8,3.87M8,1.06,6,6.36H.5L4.62,9.64l-1.26,5.3L8,12.07l4.64,2.87-1.26-5.3L15.5,6.36H10L8,1.06Z" style="fill:#626365"/></svg></li>
+      </ul>
+    </div>
+    
+    <div class="settings">
+      <ul>
+        <!--<li class="divider"></li> -->
+        <!--<li>Profile</li> -->
+        <li><p class="hidden">More</p><svg class="svg-more" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 14"><circle cx="2" cy="2.07" r="1.5" style="fill:#5f6368"/><circle cx="2" cy="7.09" r="1.5" style="fill:#5f6368"/><circle cx="2" cy="12.11" r="1.5" style="fill:#5f6368"/></svg></li>
+      </ul>
+    </div>
+    
+  </div>
+  
+  <div class="the-website"><p style="justify-self: center; align-self: center;text-align: center; width: 100%; color: #fff;">Error Load from Xframe</p>
+    
+  </div>
+  
+</div>
+  
+  
+  
+  
+
+</body>
+
+</html>
+ 
