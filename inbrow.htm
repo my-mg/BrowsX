@@ -511,6 +511,181 @@ iframe {
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
 <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
       <script id="rendered-js" >
+        (function app() {
+  var browser = document.getElementById("browser"),
+  respawn = document.getElementById("respawn"),
+  titleBar = document.getElementsByClassName("window-title")[0],
+  titleBarH = 26,
+  userEvent = document.ontouchend ? "touchend" : "click",
+  doc = document.getElementById("doc"),
+  docWin = doc.contentWindow.document || doc.contentDocument,
+  docTitle = document.getElementById("doc_title"),
+  docUrl = document.getElementById("doc_url"),
+  blankPage = "about:blank",
+  history = [""],
+  currentItem = 1,
+  maximized = false,
+  browserPosX = window.innerWidth / 2 - browser.offsetWidth / 2,
+  browserPosY = 40,
+  spawnBrowser = function () {
+    respawn.style.display = "none";
+    browser.style.display = "inherit";
+    doc.src = "";
+  },
+  checkItem = function () {
+    var backBtn = document.getElementById("back"),
+    fwdBtn = document.getElementById("forward");
+
+    if (history.length > 1) {
+      if (currentItem == 1) {
+        backBtn.disabled = true;
+        fwdBtn.disabled = false;
+
+      } else if (currentItem == history.length) {
+        fwdBtn.disabled = true;
+        backBtn.disabled = false;
+
+      } else {
+        backBtn.disabled = false;
+        fwdBtn.disabled = false;
+      }
+    } else {
+      backBtn.disabled = true;
+      fwdBtn.disabled = true;
+    }
+    doc.onload = function () {
+      docTitle.value = docWin.title != "" ? docWin.title : docUrl.value == blankPage ? blankPage : "(Disabled due to certain cross-origin settings)";
+      docUrl.value = docWin.location.href;
+    };
+  },
+  maximize = function () {
+    if (maximized == false) {
+      browser.className = "browser maximized";
+      maximized = true;
+    } else {
+      browser.className = "browser";
+      maximized = false;
+    }
+  },
+  closeWin = function () {
+    history = [""],
+    currentItem = 1,
+    checkItem();
+    docUrl.value = "",
+    browser.style.display = "none";
+    if (maximized == true) {
+      maximize();
+    }
+    respawn.style.display = "block";
+  },
+  goBack = function () {
+    if (history.length > 0 && currentItem > 1) {
+      --currentItem;
+      doc.src = history[currentItem - 1];
+      docUrl.value = currentItem == 1 ? blankPage : doc.src;
+      checkItem();
+    }
+  },
+  goForward = function () {
+    if (currentItem != history.length && history.length > 0) {
+      ++currentItem;
+      doc.src = history[currentItem - 1];
+      docUrl.value = doc.src;
+      checkItem();
+    }
+  },
+  refreshDoc = function () {
+    if (docUrl.value != blankPage) {
+      doc.src = "";
+      doc.src = history[currentItem - 1];
+      docUrl.value = doc.src;
+    }
+  },
+  printDoc = function () {
+    doc.contentWindow.print();
+  },
+  checkKey = function (e) {
+    e = e || window.event;
+    if (e.keyCode == '13' && docUrl.value != "") {
+      doc.src = (docUrl.value.indexOf("http://") > -1 || docUrl.value.indexOf(blankPage) > -1 ? "" : "https://www.google.com/") + docUrl.value;
+      history[history.length] = doc.src;
+      currentItem = history.length;
+      docUrl.value = doc.src;
+      checkItem();
+      return false;
+    }
+  };
+  spawnBrowser();
+  document.onkeydown = checkKey;
+  var eleEvents = [
+  ["respawn", spawnBrowser],
+  ["maximize", maximize],
+  ["close", closeWin],
+  ["back", goBack],
+  ["forward", goForward],
+  ["refresh", refreshDoc],
+  ["print", printDoc]];
+  for (var i = 0; i < eleEvents.length; ++i) {if (window.CP.shouldStopExecution(0)) break;
+    document.getElementById(eleEvents[i][0]).addEventListener(userEvent, eleEvents[i][1]);
+  }window.CP.exitedLoop(0);
+
+})();
+	      var browser = document.getElementById('__browser');
+var bar = document.getElementById('__browser-bar');
+var close = document.getElementById('__close');
+var initX, initY, mousePressX, mousePressY;
+browser.style.transform = "translate(" + window.innerWidth + "px," + window.innerHeight + "px) scale(0,0)";
+
+setTimeout(function () {
+  browser.classList.add('-show');
+  browser.classList.add('-animating');
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  var x = Math.floor(Math.random() * w / 2);
+  var y = Math.floor(Math.random() * h / 2);
+  browser.dataset.x = x;
+  browser.dataset.y = y;
+  browser.style.transform = "translate(" + x + "px," + y + "px) scale(1,1)";
+  setTimeout(function () {browser.classList.remove('-animating');}, 200);
+}, 500);
+
+bar.addEventListener('mousedown', function (e) {
+  initX = browser.dataset.x || browser.offsetLeft;
+  initY = browser.dataset.y || browser.offsetTop;
+  mousePressX = event.clientX;
+  mousePressY = event.clientY;
+  window.addEventListener('mousemove', repositionElement, false);
+  window.addEventListener('mouseup', function () {
+    window.removeEventListener('mousemove', repositionElement, false);
+  }, false);
+}, false);
+
+function repositionElement(event) {
+  var x = Number(initX) + event.clientX - mousePressX;
+  var y = Number(initY) + event.clientY - mousePressY;
+  browser.style.transform = "translate(" + x + "px," + y + "px)";
+  browser.dataset.x = x;
+  browser.dataset.y = y;
+}
+
+close.addEventListener('mousedown', function (e) {
+  browser.classList.add('-animating');
+  setTimeout(function () {
+    var x = browser.dataset.x || browser.offsetLeft;
+    var y = browser.dataset.y || browser.offsetTop;
+    browser.style.transform = "translate(" + x + "px," + y + "px) scale(0.001,0.001)";
+  }, 50);
+  setTimeout(function () {
+    window.open();
+  }, 3000);
+}, false);
+
+window.open = function (URL) {
+  var x = browser.dataset.x || browser.offsetLeft;
+  var y = browser.dataset.y || browser.offsetTop;
+  browser.style.transform = "translate(" + x + "px," + y + "px) scale(1,1)";
+  setTimeout(function () {browser.classList.remove('-animating');}, 200);
+};
 $(document).ready(function () {
 
   function updateClock() {
