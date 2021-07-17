@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+   <title>OnClickFootball</title>
+  <link rel="icon" href="http://ows.rf.gd/xeditor/favicon.ico"/>
+  <link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet">
+<style>
+*{
+  user-select:none;
+}
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding-top: 35vh;
+  font-size: 2rem;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgb(255, 255, 255);
+  color: rgb(114, 114, 114);
+  text-align: center;
+  transition:500ms;
+}
+
+#game-div {
+  opacity:0;
+  width: 100%;
+  height: 85vh;
+  min-height:200px;
+  display: block;
+  border-radius: 25px;
+  background-image: url('https://images.unsplash.com/photo-1564491259531-0ab928494425?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vdGJhbGwlMjBmaWVsZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+  position: relative;
+
+}
+
+#ball {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  z-index: 10;
+  overflow:hidden;
+}
+#innerBall {
+  background-image: url("https://uploads.codesandbox.io/uploads/user/13607509-c76d-4fea-90a1-26c8d14dc896/aMz1-football.png");
+  bottom:0;
+  left:0;
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+#ballShadow {
+  background: rgba(102, 102, 102, 0.562);
+  position: absolute;
+  transform: translate(-50%, 50%);
+  border-radius: 100%;
+  height: 10px;
+  bottom: 0;
+}
+
+body {
+  overflow: hidden;
+  padding: 0rem;
+  margin:2rem;
+  font-family: "Dosis", sans-serif;
+  color: rgb(185, 185, 185);
+  background-image: url('https://images.unsplash.com/photo-1564491259531-0ab928494425?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vdGJhbGwlMjBmaWVsZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+
+#scoreBoard,
+#recordBoard,
+.recordBoard-behind {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  cursor: default;
+}
+
+#recordBoard.transitrec {
+  transition: color 0.6s, text-shadow 0.6s;
+}
+
+#scoreBoard {
+  z-index: 8;
+  transition: opacity 0.3s;
+}
+
+#scoreBoard::selection,
+#recordBoard::selection {
+  background: transparent;
+}
+
+#recordBoard,
+#recnum {
+  transition:800ms;
+  font-size: 200px;
+  color: rgb(185, 185, 185);
+  transform: translate(-50%, -50%);
+}
+
+#recordBoard.recordmode {
+  color: rgb(255, 184, 52);
+  text-shadow: 0px 0px 20px rgb(255, 218, 52);
+}
+
+.recordBoard-behind {
+  animation: afterrecord 800ms ease-out;
+  opacity: 0;
+  transform:translate(-50%, -10%);
+}
+
+#scoreBoard.scorerecordmode {
+  opacity: 0;
+}
+
+@keyframes afterrecord {
+  0% {
+    transform: translate(-50%, 10%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 10%) scale(5);
+    opacity: 0;
+    color:white;
+  }
+}
+
+
+#scoreBoard, .recordBoard-behind {
+  font-size: 50px;
+  transform: translate(-50%, 10%);
+  color: rgb(85, 85, 85);
+}
+
+.how{
+  text-align:center;
+  display:block;
+  color:black;
+  font-size:1.5rem;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+<h1 id='loader'>
+		FOOTBALL FEVER
+</h1>
+<div id="game-div">
+  <div id="ballShadow" style=" width: 45px; height: 15px; filter:blur(2px);"></div>
+  <div id="recordBoard"></div>
+  <div id="scoreBoard"></div>
+  <div id="ball">
+    <div id="innerBall" style=""></div>
+  </div>
+</div>
+<span class="how">Click On Ball To Play</span>
+
+  
+      <script id="rendered-js" >
+document.addEventListener('DOMContentLoaded', function () {
+  //Define variables for relevant DOM objexts
+  const ball = document.getElementById("ball"),
+  innerBall = document.getElementById("innerBall"),
+  gameDiv = document.getElementById("game-div"),
+  scoreBoard = document.getElementById("scoreBoard"),
+  recordBoard = document.getElementById("recordBoard"),
+  theBallShadow = document.getElementById("ballShadow"),
+  loaderScreen = document.getElementById("loader");
+  scoreBoard.innerText = "0";
+  recordBoard.innerText = "0";
+
+  let timeInterval,
+  bounces = 0,
+  record = 0,
+  speedX = 10,
+  speedY = 0,
+  positionX = 0,
+  positionY = gameDiv.clientHeight + 300,
+  stopY = false,
+  recordMode = false;
+
+  setTimeout(() => {
+    gameDiv.style.opacity = '1';
+  }, 500);
+  setTimeout(() => {
+    loaderScreen.style.opacity = '0';
+  }, 500);
+  setTimeout(() => {
+    loaderScreen.style.display = 'none';
+  }, 1000);
+
+  ball.addEventListener("click", function (event) {
+    bounces++;
+    if (bounces > record) {
+      record = bounces;
+      if (!recordMode) {
+        let recordbehind = document.createElement("div");
+        recordbehind.setAttribute("id", "recnum" + bounces);
+        recordbehind.innerText = record.toString();
+        recordbehind.setAttribute("class", "recordBoard-behind");
+        gameDiv.appendChild(recordbehind);
+        recordMode = true;
+      }
+    }
+
+    speedX = (45 - event.layerX) / 5;
+    speedY = (event.layerY + 30) / 6;
+    if (speedY > 1) {
+      stopY = false;
+    } else {
+      speedY = 0;
+    }
+  });
+
+  timeInterval = setInterval(() => {
+    if (speedY < 3 && speedY > -3 && positionY < 0.2) {
+      stopY = true;
+      speedY = 0;
+      positionY = 0;
+      bounces = 0;
+      recordMode = false;
+    }
+
+    if (!stopY) {
+      speedY -= 0.5;
+    }
+    if (positionY <= 0 && !stopY) {
+      if (speedY < 0) {
+        bounces = 0;
+        recordMode = false;
+      }
+      positionY = Math.abs(positionY);
+      speedY = Math.abs(speedY) / 2;
+    }
+    if (positionX <= 0) {
+      positionX = Math.abs(positionX);
+      speedX = Math.abs(speedX) / 1.5;
+    }
+    if (positionX + 90 > gameDiv.clientWidth) {
+      positionX = 2 * gameDiv.clientWidth - Math.abs(positionX) - 180;
+      speedX = 0 - speedX / 1.5;
+    }
+    positionY += speedY;
+    if (speedX < 0.1 && speedX > -0.1 && stopY) {
+      speedX = 0;
+    }
+    if (speedX > 0 && stopY) {
+      speedX -= 0.1;
+    }
+    if (speedX < 0 && stopY) {
+      speedX += 0.1;
+    }
+    positionX += speedX;
+    ball.style.bottom = positionY.toString() + "px";
+    ball.style.left = positionX.toString() + "px";
+    innerBall.style.transform =
+    "rotate(" + (positionX * (360 / 282.74)).toString() + "deg)";
+    theBallShadow.style.left = (positionX + 45).toString() + "px";
+    theBallShadow.style.filter =
+    "blur(" + ((positionY + 80) / 40).toString() + "px)";
+    theBallShadow.style.width = ((positionY + 225) / 5).toString() + "px";
+    if (recordMode) {
+      recordBoard.classList.add("recordmode");
+      scoreBoard.classList.add("scorerecordmode");
+    } else {
+      recordBoard.classList.remove("recordmode");
+      scoreBoard.classList.remove("scorerecordmode");
+    }
+    scoreBoard.innerText = bounces;
+    recordBoard.innerText = record;
+  }, 20);
+});
+
+window.onbeforeunload = function () {
+  clearInterval(timeInterval);
+};
+    </script>
+</body>
+</html>
