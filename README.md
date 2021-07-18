@@ -42,7 +42,9 @@
    	ALEXANDER ANAK ERIC@ERIC LAPIN
    	
 
- License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
+![Source output](media/output.png)
+
+#License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
     
 Click here to [DEMO](https://my-mg.github.io/BrowsX/)
  | Click here to [Interface II](https://my-mg.github.io/BrowsX/inbrow.htm) | Click Here for [Design Ref](https://my-mg.github.io/BrowsX/dsg.html) | Click Here for [Base](https://my-mg.github.io/BrowsX/maximize.htm) | Click Here [MOVE BAR](https://my-mg.github.io/BrowsX/movebar.htm) | | Click Here [FOOTBALL](https://my-mg.github.io/BrowsX/football.htm) | Click Here [ErrorPageGame](https://my-mg.github.io/BrowsX/LoadGame.htm)
