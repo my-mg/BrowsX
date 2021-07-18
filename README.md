@@ -52,6 +52,8 @@ Design | [Design Ref](https://my-mg.github.io/BrowsX/dsg.html)
 Move Bar | [Move Bar](https://my-mg.github.io/BrowsX/movebar.htm)
 Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 
+
+# Domain Creator (One Of The Technique for Hosting)
 ![Source output](media/output.png)
 
 ![Source output](media/output2.png)
