@@ -42,8 +42,8 @@
    	ALEXANDER ANAK ERIC@ERIC LAPIN
 	
 ## REFERENCES   	
-Contain Reference | Link
------|-------|-------------
+ContainRef | Link
+-----|--------------
 Index | [Index](https://my-mg.github.io/BrowsX/)
 Football | [Football](https://my-mg.github.io/BrowsX/football.htm)
 Base | [Base](https://my-mg.github.io/BrowsX/maximize.htm)
