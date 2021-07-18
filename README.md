@@ -53,12 +53,12 @@ Move Bar | [Move Bar](https://my-mg.github.io/BrowsX/movebar.htm)
 Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 
 
-# Domain Creator (One Of The Technique for Hosting)
+# DOMAIN AND BROWSERS CREATOR (One Of The Technique for Hosting)
 ![Source output](media/output.png)
 
 ![Source output](media/output2.png)
 
-#LICENSE
+# LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
 
    	
