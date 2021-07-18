@@ -44,7 +44,8 @@
 # OPEN SOURCE GUIDENCE FOR RESEARCHERS
 	This open source guideline is as stated, for help open sources researchers for build their own system parcers. 
 	This guideline and logic method shortern and provided by Alexander Eric.
-	BATTERY NOT INLCUDED.
+	
+	BATTERY NOT INLCUDED FOR RESEARCH AND THIS GUIDELINE COMMERCIAL.
 	
 ## REFERENCES   	
 ContainRef | Link
