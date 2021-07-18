@@ -42,12 +42,20 @@
    	ALEXANDER ANAK ERIC@ERIC LAPIN
 	
 # REFERENCES   	
-Reference | Source | Link
+Contain Reference | Link
 -----|-------|-------------
-Football| ![Source output](media/source-output.png)  | [FOOTBALL](https://my-mg.github.io/BrowsX/football.htm)
+Index | [Index](https://my-mg.github.io/BrowsX/)
+Football | [Football](https://my-mg.github.io/BrowsX/football.htm)
+Base | [Base](https://my-mg.github.io/BrowsX/maximize.htm)
+Interface | [Interface II](https://my-mg.github.io/BrowsX/inbrow.htm)
+Design | [Design Ref](https://my-mg.github.io/BrowsX/dsg.html)
+Move Bar | [Move Bar](https://my-mg.github.io/BrowsX/movebar.htm)
+Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 
+![Source output](media/output.png)
+![Source output](media/output2.png)
 
+#LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
 
-Click here to [DEMO](https://my-mg.github.io/BrowsX/) | Click here to [Interface II](https://my-mg.github.io/BrowsX/inbrow.htm) | Click Here for [Design Ref](https://my-mg.github.io/BrowsX/dsg.html) | Click Here for [Base](https://my-mg.github.io/BrowsX/maximize.htm) | Click Here [MOVE BAR](https://my-mg.github.io/BrowsX/movebar.htm) | Click Here [Football](https://my-mg.github.io/BrowsX.football.htm) | Click Here [ErrorPageGame](https://my-mg.github.io/BrowsX/LoadGame.htm)
    	
