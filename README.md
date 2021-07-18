@@ -53,7 +53,9 @@ Move Bar | [Move Bar](https://my-mg.github.io/BrowsX/movebar.htm)
 Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 
 
-# DOMAIN AND BROWSERS CREATOR (One Of The Technique for Hosting)
+# DOMAIN CREATORS AND BROWSERS CREATORS 
+## One Of The Technique for Hosting
+------------------------------------------------
 ![Source output](media/output.png)
 
 ![Source output](media/output2.png)
