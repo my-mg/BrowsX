@@ -26,7 +26,7 @@
     identification within third-party archives.
     
 ## MUST READ     
-    FACT
+    About
    	1. Demo publish for guideline and researchers.
 	2. This is one of technique of building own domains.
 	3. Not required 3D Glass Vission for view.
@@ -37,7 +37,7 @@
 	   This guideline, research and demos shall give you some ideas of building more
 	   realistic system.
 	6. This demo showing better and realistic experiences and ideas for researchers.
-       7. This Demo is build, restruct and license by Alexander Eric@Eric Lapin. 
+        7. This Demo is build, restruct and license by Alexander Eric@Eric Lapin. 
 	
 	Sincerely
    	ALEXANDER ANAK ERIC@ERIC LAPIN
