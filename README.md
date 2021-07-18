@@ -38,9 +38,11 @@
 	Sincerely
    	ALEXANDER ANAK ERIC@ERIC LAPIN
 
-# OPEN SOURCES RESEARCHS
-
-## OPEN SOURCE GUIDENCE FOR RESEARCHERS
+# ABOUT DEMO
+	This Library contain some hint for answers for one of the techniques to build domains and browsers.
+	Powered by archituring using many libraries. Demo build by Alexander Eric. 
+	
+## OPEN SOURCE GUIDENCES FOR RESEARCHERS
 	This open source guideline is as stated, for help open sources researchers for build their own system parcers. 
 	This guideline and logic method shortern and provided by Alexander Eric.
 	
