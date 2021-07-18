@@ -67,6 +67,7 @@ Design | [Design Ref](https://my-mg.github.io/BrowsX/dsg.html)
 Move Bar | [Move Bar](https://my-mg.github.io/BrowsX/movebar.htm)
 Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 Traffic Router | [Traffic Router](https://my-mg.github.io/BrowsX/Router/) 
+Music Player | [Music Player](https://my-mg.github.io/BrowsX/player.htm)
 
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
@@ -86,6 +87,9 @@ Traffic Router | [Traffic Router](https://my-mg.github.io/BrowsX/Router/)
 
 ## Router
 ![Source output](media/router.png)
+
+## Player 
+![Source output](media/mplayer.png)
 
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
