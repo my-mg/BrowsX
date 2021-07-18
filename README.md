@@ -43,7 +43,7 @@
 	
 ## REFERENCES   	
 ContainRef | Link
------|--------------
+--------|---------------------------------------------------------
 Index | [Index](https://my-mg.github.io/BrowsX/)
 Football | [Football](https://my-mg.github.io/BrowsX/football.htm)
 Base | [Base](https://my-mg.github.io/BrowsX/maximize.htm)
@@ -52,7 +52,7 @@ Design | [Design Ref](https://my-mg.github.io/BrowsX/dsg.html)
 Move Bar | [Move Bar](https://my-mg.github.io/BrowsX/movebar.htm)
 Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 
-#Image For Refences:
+##Image For Refences:
 ![Source output](media/output.png)
 ![Source output](media/output2.png)
 
