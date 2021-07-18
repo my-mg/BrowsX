@@ -89,5 +89,3 @@ Traffic Router | [Traffic Router](https://my-mg.github.io/BrowsX/Router/)
 
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
-
-   	
