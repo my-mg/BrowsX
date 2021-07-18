@@ -10,8 +10,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PLAYER@ALEXANDER ERIC</title>
  <link rel='stylesheet' href='https://jplayer.org/latest/dist/skin/pink.flag/css/jplayer.pink.flag.min.css'>
-  
-
+  <script>
+var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+function mischandler(){
+return false;
+}
+function mousehandler(e){
+var myevent = (isNS) ? e : event;
+var eventbutton = (isNS) ? myevent.which : myevent.button;
+if((eventbutton==2)||(eventbutton==3)) return false;
+}
+document.oncontextmenu = mischandler;
+document.onmousedown = mousehandler;
+document.onmouseup = mousehandler;
+</script>
   <script>
   window.console = window.console || function(t) {};
 </script>
