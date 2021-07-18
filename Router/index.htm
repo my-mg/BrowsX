@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-my">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Traffic Con</title>
+    <link rel="icon" href="https://i.ibb.co/FDzB2tN/logos.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.6/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+    <link rel="stylesheet" href="css/loadmin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/loadtest.css" rel="stylesheet">
+    <script src="js/load-test.jsx" type="text/babel">
+    </script>
+    <script>
+        var clock = new Vue({
+            el: "#clock",
+            data: {
+                time: "",
+                date: ""
+            }
+        });
+
+        var week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+        var timerID = setInterval(updateTime, 1000);
+        updateTime();
+        function updateTime() {
+            var cd = new Date();
+            clock.time =
+                zeroPadding(cd.getHours(), 2) +
+                ":" +
+                zeroPadding(cd.getMinutes(), 2) +
+                ":" +
+                zeroPadding(cd.getSeconds(), 2);
+            clock.date =
+                zeroPadding(cd.getFullYear(), 4) +
+                "-" +
+                zeroPadding(cd.getMonth() + 1, 2) +
+                "-" +
+                zeroPadding(cd.getDate(), 2) +
+                " " +
+                week[cd.getDay()];
+        }
+
+        function zeroPadding(num, digit) {
+            var zero = "";
+            for (var i = 0; i < digit; i++) {
+                zero += "0";
+            }
+            return (zero + num).slice(-digit);
+        }
+
+    </script>
+    <script>
+        var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+        if (navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN || Event.MOUSEUP);
+        function mischandler() {
+            return false;
+        }
+        function mousehandler(e) {
+            var myevent = (isNS) ? e : event;
+            var eventbutton = (isNS) ? myevent.which : myevent.button;
+            if ((eventbutton == 2) || (eventbutton == 3)) return false;
+        }
+        document.oncontextmenu = mischandler;
+        document.onmousedown = mousehandler;
+        document.onmouseup = mousehandler;
+    </script>
+    <script type="text/javascript">
+        function startTime() {
+            var today = new Date()
+            var h = today.getHours()
+            var m = today.getMinutes()
+            var s = today.getSeconds()
+
+
+            //to add a zero in front of numbers<10
+
+            m = checkTime(m)
+            s = checkTime(s)
+
+            document.getElementById('clock').innerHTML = h + ":" + m + ":" + s
+            t = setTimeout('startTime()', 500)
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i }
+            return i
+        }
+
+        window.onload = startTime;
+
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="well">
+        <h1><img src="https://i.ibb.co/FDzB2tN/logos.png" width="40" height="40" />TRAFFIC ROUTERS </h1>
+        <p><b><div id="clock" align='left'></b></p>
+    </div>
+    </div>
+    <div id="loadtest"></div>
+</div>
+</body>
+</html>
