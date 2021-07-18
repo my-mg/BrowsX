@@ -28,16 +28,16 @@
 ## MUST READ     
     FACT
    	1. Demo publish for guideline and researchers.
-	  2. This is one of technique of building own domains.
-    3. Not required 3D Glass Vission for view.
-    4. I know this good but the readme things read as 'memes'
-  	5. This is good opportunity for anyone that want for out from 
-	     being host by '.gov', '.com', '.org' and others domains makers.
-	     Or if you are boring and thinking about having others domains instead,
-	     This guideline, research and demos shall give you some ideas of building more
-	     realistic system.
-	  6. This demo showing better and realistic experiences and ideas for researchers.
-    7. This Demo is build, restruct and license by Alexander Eric@Eric Lapin. 
+	2. This is one of technique of building own domains.
+	3. Not required 3D Glass Vission for view.
+	4. I know this good but the readme things read as 'memes'
+	5. This is good opportunity for anyone that want for out from 
+	   being host by '.gov', '.com', '.org' and others domains makers.
+	   Or if you are boring and thinking about having others domains instead,
+	   This guideline, research and demos shall give you some ideas of building more
+	   realistic system.
+	6. This demo showing better and realistic experiences and ideas for researchers.
+        7. This Demo is build, restruct and license by Alexander Eric@Eric Lapin. 
 	
 	Sincerely
    	ALEXANDER ANAK ERIC@ERIC LAPIN
