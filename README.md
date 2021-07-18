@@ -39,12 +39,16 @@
    	ALEXANDER ANAK ERIC@ERIC LAPIN
 
 # ABOUT DEMO
-	This Library contain some hint for answers for one of the techniques to build domains and browsers.
-	Powered by archituring using many libraries. Demo build by Alexander Eric. 
+	This Library contain some hint for answers for one of 
+	the techniques to build domains and browsers.  Powered by 
+	redo archituring using many libraries. 
+	Demo build by Alexander Eric. 
 	
 ## OPEN SOURCE GUIDENCES FOR RESEARCHERS
-	This open source guideline is as stated, for help open sources researchers for build their own system parcers. 
-	This guideline and logic method shortern and provided by Alexander Eric.
+	This open source guideline is as stated, for help open 
+	sources researchers for build their own system parcers. 
+	This guideline and logic method shortern and provided by 
+	Alexander Eric.
 	
 	BATTERY NOT INLCUDED FOR THIS OPEN SEARCH RESEARCH AND GUIDELINES BY ALEXANDER ERIC.
 	
@@ -65,13 +69,15 @@ Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 ## Parser System Method
 ![Source output](media/output.png)
 
-	Original domain was as at "https://www.11v11.com/teams/malaysia/option/ranking/", But the System shows at
-	sele-hosted and sele-build browsers are showing "https://match.ranking.org.fam" instead of original domain.
+	Original domain was as at "https://www.11v11.com/teams/malaysia/option/ranking/", 
+	But the System shows at sele-hosted and sele-build browsers are showing 
+	"https://match.ranking.org.fam" instead of original domain.
 
 ![Source output](media/output2.png)
 
-	Original domain was as at "https://my-mg.github.io/BrowsX/inbrow.htm", But the System shows at
-	sele-hosted and sele-build browsers are showing "https://project.os.com.alex" instead of original domain. 
+	Original domain was as at "https://my-mg.github.io/BrowsX/inbrow.htm", 
+	But the System shows at sele-hosted and sele-build browsers are showing 
+	"https://project.os.com.alex" instead of original domain. 
 	
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
