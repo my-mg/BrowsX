@@ -42,8 +42,9 @@
    	ALEXANDER ANAK ERIC@ERIC LAPIN
 
 # OPEN SOURCE GUIDENCE FOR RESEARCHERS
-	This open source guideline is as stated, for help open sources researchers for 
-	build their own system parcers.
+	This open source guideline is as stated, for help open sources researchers for build their own system parcers. 
+	This guideline and logic method shortern and provided by Alexander Eric.
+	BATTERY NOT INLCUDED.
 	
 ## REFERENCES   	
 ContainRef | Link
