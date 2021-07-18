@@ -66,6 +66,7 @@ Interface | [Interface II](https://my-mg.github.io/BrowsX/inbrow.htm)
 Design | [Design Ref](https://my-mg.github.io/BrowsX/dsg.html)
 Move Bar | [Move Bar](https://my-mg.github.io/BrowsX/movebar.htm)
 Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
+Traffic Router | [Traffic Router](https://my-mg.github.io/BrowsX/Router/) 
 
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
@@ -82,7 +83,10 @@ Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 	Original domain was as at "https://my-mg.github.io/BrowsX/inbrow.htm", 
 	But the System shows at sele-hosted and sele-build browsers are showing 
 	"https://project.os.com.alex" instead of original domain. 
-	
+
+## Router
+![Source output](media/router.png)
+
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
 
