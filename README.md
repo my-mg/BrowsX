@@ -1,21 +1,18 @@
-# BrowsX [ABSTRACTION LIBRARY COMPONENT AND SAMPLE]
+# BrowsX 
 
     L I C E N S E
-    Version 2.0, xx February 2021
+    Version 3.0, 18 July 2021
     By Alexander Eric@Eric Lapin
     HARAM HARAM SOFTWARE INC
 			   
     TOOLS INFORMATIONS
     * This tools was publish without any Halal Certification 
     * Category of tools: Non Halal Software Development
-    * Any Software publish also not baptize from any church reverence
-    * Sincerely, non-halal software writter, Alexander Eric.
+    * Any Software publish also not baptize from any church,mosque or any prayer place's reverences
+    * Sincerely, non-halal software writter: Alexander Eric.
 			  
-    
 
-    
-
-# COPYRIGHT HARAM-HARAM SOFTWARE
+## COPYRIGHT HARAM-HARAM SOFTWARE
 
     APPENDIX: How to apply the Non-Halal Certificate License to your build.
    
@@ -28,7 +25,7 @@
     same "printed page" as the copyright notice for easier
     identification within third-party archives.
     
-# MUST READ     
+## MUST READ     
     FACT
    	1. No one care about the license.
    	2. But it just about either you do real copy paste or not.
@@ -41,11 +38,13 @@
 	Sincerely
    	ALEXANDER ANAK ERIC@ERIC LAPIN
 
-# OPEN SOURCE GUIDENCE FOR RESEARCHERS
+# OPEN SOURCES RESEARCHS
+
+## OPEN SOURCE GUIDENCE FOR RESEARCHERS
 	This open source guideline is as stated, for help open sources researchers for build their own system parcers. 
 	This guideline and logic method shortern and provided by Alexander Eric.
 	
-	BATTERY NOT INLCUDED FOR THIS RESEARCH AND THIS GUIDELINE COMMERCIAL.
+	BATTERY NOT INLCUDED FOR THIS OPEN SEARCH RESEARCH AND GUIDELINES BY ALEXANDER ERIC.
 	
 ## REFERENCES   	
 ContainRef | Link
