@@ -40,6 +40,10 @@
 
 	Sincerely
    	ALEXANDER ANAK ERIC@ERIC LAPIN
+
+# OPEN SOURCE GUIDENCE FOR RESEARCHERS
+	This open source guideline is as stated, for help open sources researchers for 
+	build their own system parcers.
 	
 ## REFERENCES   	
 ContainRef | Link
@@ -58,8 +62,14 @@ Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 ## Parser System Method
 ![Source output](media/output.png)
 
+	Original domain was as at "https://www.11v11.com/teams/malaysia/option/ranking/", But the System shows at
+	sele-hosted and sele-build browsers are showing "https://match.ranking.org.fam" instead of original domain
+
 ![Source output](media/output2.png)
 
+	Original domain was as at "https://my-mg.github.io/BrowsX/inbrow.htm", But the System shows at
+	sele-hosted and sele-build browsers are showing "https://project.os.com.alex" instead of original domain 
+	
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
 
