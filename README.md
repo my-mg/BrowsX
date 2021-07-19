@@ -90,7 +90,7 @@ Video Player | [Video Player](https://my-mg.github.io/BrowsX/live/plugin.htm)
 ## Router
 ![Source output](media/router.png)
 
-## Player 
+## Audio Player 
 ![Source output](media/mplayer.png)
 
 ## Video Player
