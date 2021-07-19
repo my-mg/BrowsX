@@ -68,6 +68,7 @@ Move Bar | [Move Bar](https://my-mg.github.io/BrowsX/movebar.htm)
 Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 Traffic Router | [Traffic Router](https://my-mg.github.io/BrowsX/Router/) 
 Music Player | [Music Player](https://my-mg.github.io/BrowsX/player.htm)
+Video Player | [Video Player](https://my-mg.github.io/BrowsX/live/plugin.htm)
 
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
