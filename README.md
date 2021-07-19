@@ -92,6 +92,9 @@ Music Player | [Music Player](https://my-mg.github.io/BrowsX/player.htm)
 ## Player 
 ![Source output](media/mplayer.png)
 
+## Video Player
+![Source output](media/vplay.png)
+
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
 
