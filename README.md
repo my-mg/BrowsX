@@ -69,7 +69,7 @@ Error Page | [Error Page](https://my-mg.github.io/BrowsX/LoadGame.htm)
 Traffic Router | [Traffic Router](https://my-mg.github.io/BrowsX/Router/) 
 Music Player | [Music Player](https://my-mg.github.io/BrowsX/player.htm)
 Video Player | [Video Player](https://my-mg.github.io/BrowsX/live/plugin.htm)
-
+OS Window Setting | [OS Setting](https://my-mg.github.io/BrowsX/setting/boot.htm) 
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
 ------------------------------------------------
@@ -95,6 +95,9 @@ Video Player | [Video Player](https://my-mg.github.io/BrowsX/live/plugin.htm)
 
 ## Video Player
 ![Source output](media/vplay.png)
+
+## Video Player
+![Source output](media/boot.png)
 
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
