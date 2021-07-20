@@ -99,7 +99,7 @@ OS Window Setting | [OS Setting](https://my-mg.github.io/BrowsX/setting/boot.htm
 ## OS Window Setting
 ![Source output](media/boot.png)
 	
-	At the ReadMe, displaying the old pictures. The new update consist of:
+	At the ReadMe, displaying the old image. The new update consist of:
 		IP Reading for Internet System Information
 		Time of current Date
 
