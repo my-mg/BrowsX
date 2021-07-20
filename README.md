@@ -96,7 +96,7 @@ OS Window Setting | [OS Setting](https://my-mg.github.io/BrowsX/setting/boot.htm
 ## Video Player
 ![Source output](media/vplay.png)
 
-## Video Player
+## OS Window Setting
 ![Source output](media/boot.png)
 
 # LICENSE
