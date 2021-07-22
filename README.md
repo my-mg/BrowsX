@@ -70,6 +70,7 @@ Traffic Router | [Traffic Router](https://my-mg.github.io/BrowsX/Router/)
 Music Player | [Music Player](https://my-mg.github.io/BrowsX/player.htm)
 Video Player | [Video Player](https://my-mg.github.io/BrowsX/live/plugin.htm)
 OS Window Setting | [OS Setting](https://my-mg.github.io/BrowsX/setting/boot.htm) 
+Directory Check | [DirCheck](https://my-mg.github.io/BrowsX/dir/dircheck.htm)
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
 ------------------------------------------------
