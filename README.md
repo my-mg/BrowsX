@@ -109,6 +109,9 @@ MpX | [MpX](https://my-mg.github.io/BrowsX/live/mpx.htm)
 ## Directory Access
 ![Source output](media/dircheck.png)
 
+## MPX-PlugIn
+![Source output](media/mpx.png)
+
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
 
