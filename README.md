@@ -104,6 +104,9 @@ Directory Check | [DirCheck](https://my-mg.github.io/BrowsX/dir/dircheck.htm)
 		IP Reading for Internet System Information
 		Time of current Date
 
+## Directory Access
+![Source output](media/dircheck.png)
+
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
 
