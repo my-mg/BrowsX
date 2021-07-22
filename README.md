@@ -71,6 +71,7 @@ Music Player | [Music Player](https://my-mg.github.io/BrowsX/player.htm)
 Video Player | [Video Player](https://my-mg.github.io/BrowsX/live/plugin.htm)
 OS Window Setting | [OS Setting](https://my-mg.github.io/BrowsX/setting/boot.htm) 
 Directory Check | [DirCheck](https://my-mg.github.io/BrowsX/dir/dircheck.htm)
+Engine Direct | [EngineDirect](https://my-mg.github.io/BrowsX/dir/rd.htm)
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
 ------------------------------------------------
