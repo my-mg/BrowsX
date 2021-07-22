@@ -1,0 +1,1806 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="icon" href="https://i.ibb.co/FDzB2tN/logos.png"/>
+  <title>MpX@ALEXANDER ERIC</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+  
+<style>
+@charset "UTF-8";
+@keyframes spin-art {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+*,
+*:before,
+*:after,
+*:focus,
+*:hover {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #003d99;
+  color: #CFD0C8;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  font-size: 16px;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+#art {
+  display: flex;
+  height: 22vh;
+  box-shadow: 0 3px 10px 0 rgba(20, 21, 18, 0.3);
+  overflow: hidden;
+}
+#art .player {
+  position: relative;
+  width: 20vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+#art .player img {
+  position: absolute;
+  width: 90%;
+  height: calc(20vw * .9);
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+}
+#art .player:after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  top: calc(50% - 2vw);
+  left: calc(50% - 2vw);
+  background: #003d99;
+  height: 4vw;
+  width: 4vw;
+  border-radius: 50%;
+}
+#art .player.playing img {
+  top: 50%;
+  left: 50%;
+  animation: spin-art 3000ms linear infinite;
+}
+#art .wide {
+  width: 80vw;
+}
+#art .wide img {
+  height: 130%;
+  width: 100%;
+}
+
+#playlist {
+  width: 100vw;
+  height: 63vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#playlist table {
+  width: 100%;
+}
+#playlist table th,
+#playlist table td {
+  padding: 10px 3%;
+  vertical-align: middle;
+  text-align: left;
+}
+#playlist table th {
+  color: #868975;
+  font-size: 0.9em;
+  padding-top: 15px;
+  cursor: default;
+}
+#playlist table tr {
+  cursor: pointer;
+}
+#playlist table tr td {
+  border-top: 1px solid #36372F;
+  transition: background 0.3s ease;
+}
+#playlist table tr td.play-pause {
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
+#playlist table tr td.play-pause:before {
+  position: absolute;
+  content: "";
+  font-family: FontAwesome;
+  height: 26px;
+  width: 26px;
+  top: calc(50% - 13px);
+  left: calc(50% - 13px);
+  z-index: 3;
+  font-size: 1em;
+  color: #F3F3F1;
+  border-radius: 50%;
+  padding: 5px;
+  padding-left: 9px;
+  box-shadow: inset 0 0 0 1px #F3F3F1;
+}
+#playlist table tr td.play-pause:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: rgba(54, 55, 47, 0.75);
+}
+#playlist table tr td.play-pause:before, #playlist table tr td.play-pause:after {
+  visibility: hidden;
+}
+#playlist table tr td.play-pause img {
+  height: 40px;
+  width: 40px;
+}
+#playlist table tr td:nth-child(2) {
+  color: #F3F3F1;
+}
+#playlist table tr.playing td {
+  background: #1a1a16;
+  color: #5FBFA4;
+}
+#playlist table tr.playing td:nth-child(2) {
+  color: #A7DCCD;
+}
+#playlist table tr:hover td {
+  background: #36372F;
+}
+#playlist table tr:hover td.play-pause:before, #playlist table tr:hover td.play-pause:after {
+  visibility: visible;
+}
+
+#interactions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #003d99;
+  height: 15vh;
+  overflow: hidden;
+  padding: 20px 0;
+  box-shadow: 0 -3px 10px 0 rgba(20, 21, 18, 0.3);
+}
+
+.tracking-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tracking-wrap .song-current-time {
+  text-align: right;
+}
+.tracking-wrap .song-length {
+  text-align: left;
+}
+.tracking-wrap .song-current-time,
+.tracking-wrap .song-length {
+  width: 10vw;
+  letter-spacing: 1px;
+  font-size: 0.8em;
+}
+
+.range {
+  clear: both;
+  -webkit-appearance: none;
+  background: #36372F;
+  cursor: pointer;
+  height: 3px;
+  margin: 0;
+  vertical-align: bottom;
+  width: 76vw;
+  transition: height 0.5s ease;
+  transition-delay: 1s;
+}
+.range:focus {
+  outline: none;
+}
+.range:hover {
+  height: 10px;
+  transition: height 0.3s ease;
+}
+.range:hover::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  transition: height 0.3s ease, width 0.3s ease;
+  transition-delay: 0;
+}
+.range::-webkit-slider-thumb {
+  width: 0;
+  height: 0;
+  -webkit-appearance: none;
+  background: #F3F3F1;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 5px #eaeaea;
+  transition: height 0.5s ease, width 0.5s ease;
+  transition-delay: 1s;
+}
+
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+#controls {
+  width: 80vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  padding-top: 15px;
+}
+#controls > span {
+  font-size: 1em;
+  padding: 13px;
+  margin: 0 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+#controls > span.play-pause {
+  font-size: 1.1em;
+  padding: 10px;
+  padding-left: 15px;
+  box-shadow: inset 0 0 0 1px #CFD0C8;
+}
+#controls > span.play-pause.on {
+  padding-left: 12px;
+  padding-right: 12px;
+  box-shadow: inset 0 0 0 1px #A7DCCD;
+}
+#controls > span:before {
+  transition: text-shadow 0.3s ease;
+}
+#controls > span.on {
+  color: #5FBFA4;
+  border-color: #5FBFA4;
+}
+#controls > span:hover {
+  color: #F3F3F1;
+  transform: scale(1.1);
+}
+#controls > span:hover:before {
+  text-shadow: 0 0 5px #F3F3F1;
+}
+#controls > span:hover.on {
+  color: #A7DCCD;
+  border-color: #A7DCCD;
+}
+
+#volume {
+  max-width: 18vw;
+  padding: 20px 5% 0 0;
+  display: flex;
+  align-items: center;
+}
+#volume .fa-volume-down {
+  font-size: 0.75em;
+}
+#volume .fa-volume-up {
+  font-size: 0.9em;
+}
+#volume .volume-slider {
+  width: 10vw;
+  margin: 0 1vw;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <section id="art">
+  <div class="player">
+    <img>
+  </div>
+  <div class="wide">
+    <img>
+  </div>
+</section>
+
+<section id="playlist">
+  <table id="playlist" class="no-select">
+    <thead>
+      <th>&nbsp;</th>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th><span class="fa fa-clock-o"></span></th>
+    </thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<footer id="interactions">
+  <div class="tracking-wrap">
+    <span class="song-current-time">--:--</span>
+    <input class="tracking-slider range" type="range" min="0" value="0" step="1">
+    <span class="song-length">--:--</span>
+  </div>
+  
+  <div class="controls-bar">
+    <section id="controls">
+      <span class="fa fa-random shuffle"></span>
+      <span class="fa fa-fast-backward previous"></span>
+      <span class="fa fa-play play-pause"></span>
+      <span class="fa fa-fast-forward next"></span>
+      <span class="fa fa-repeat repeat on"></span>
+    </section>
+    
+    <div id="volume">
+      <span class="fa fa-volume-down"></span>
+      <input class="volume-slider range" type="range" max="1" min="0" step="0.01" value="0.8">
+      <span class="fa fa-volume-up"></span>
+    </div>
+  </div>
+</footer>
+
+<audio id="player"></audio>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js'></script>
+      <script id="rendered-js" >
+'use strict';
+
+/**
+ * A music player ... cause why not.
+ * Hotkeys:
+ *   a - previous
+ *   d / n - next
+ *   s / p - play / pause
+ *   e / r - repeat
+ *   q - shuffle
+ *
+ * @author Holly Springsteen
+ */
+
+const colors = {
+  aqua: {
+    25: '#A7DCCD',
+    50: '#5FBFA4',
+    80: '#2F7561' },
+
+  metal: {
+    5: '#F3F3F1',
+    20: '#CFD0C8',
+    50: '#868975',
+    80: '#36372F',
+    90: '#003d99' } };
+
+
+
+// Control button elements
+const buttons = {
+  shuffle: document.querySelector('#controls .shuffle'),
+  previous: document.querySelector('#controls .previous'),
+  playPause: document.querySelector('#controls .play-pause'),
+  next: document.querySelector('#controls .next'),
+  repeat: document.querySelector('#controls .repeat') };
+
+
+// Range & Time elements
+const songCurrentTime = document.querySelector('.song-current-time');
+const songLength = document.querySelector('.song-length');
+const trackingSlider = document.querySelector('.tracking-slider');
+const volumeSlider = document.querySelector('.volume-slider');
+
+// Art
+const artPlayer = document.querySelector('#art .player');
+const playerArt = document.querySelector('#art .player img');
+const wideArt = document.querySelector('#art .wide img');
+
+// Playlist
+const playlistBody = document.querySelector('#playlist tbody');
+let playlistPlay = document.querySelectorAll('#playlist .play-pause');
+let listItems = document.querySelectorAll('#playlist tbdoy tr');
+
+// Audio Element
+const audio = document.getElementById('player');
+
+// Base route for archive url
+const archiveBase = 'http://archive.org/download/';
+
+/**
+ * A base list of songs and the meta data for them.
+ *
+{
+  title: '',
+  artist: '',
+  duration: 0,
+  album: {
+    title: '',
+    art: {
+      square: '',
+      wide: '',
+    },
+  },
+  url: `${archiveBase}`,
+},
+ */
+const songList = [
+{
+  title: 'FM',
+  artist: 'FM',
+  duration: 000,
+  album: {
+    title: 'FMnet',
+    art: {
+      square: 'https://i.ibb.co/FDzB2tN/logos.png',
+      wide: 'https://i.ibb.co/FDzB2tN/logos.png' } },
+
+
+  url: `http://radio.wiramaster.my:8050/mp3` },
+
+];
+
+
+
+/**
+ * Based on the class list for a given element toggle the class(es) received.
+ * Can accept both string with classes separated by spaces and an array of classes.
+ *
+ * @param {} element The dom element for which to toggle classes.
+ * @param {string|string[]} classes The classes to be toggled on or off.
+ */
+function toggleClasses(element, classes) {
+  const currentClasses = new Set(element.classList);
+  // Separate string formatted classes into an array or accept array param
+  const newClasses = _.isString(classes) ? classes.split(' ') : classes;
+
+  for (const className of newClasses) {
+    if (currentClasses.has(className)) {
+      element.classList.remove(className);
+    } else {
+      element.classList.add(className);
+    }
+  }
+}
+
+/**
+ * Toggle a boolean value.
+ *
+ * @param {boolean} boolean The boolean value to be toggled true or false.
+ * @return {boolean} Returns the opposite boolean value to the received.
+ */
+function toggleBoolean(boolean) {
+  return !boolean;
+}
+
+/**
+ * Convert seconds into a usable format for time.
+ *
+ * @param {number|string} seconds The amount of seconds to convert.
+ * @return {string} Returns a time formatted string (--:--:--).
+ */
+function secondsToHms(seconds) {
+  const time = {
+    hours: String(Math.floor(Number(seconds) / 3600)),
+    minutes: String(Math.floor(Number(seconds) % 3600 / 60)),
+    seconds: String(Math.floor(Number(seconds) % 3600 % 60)) };
+
+
+  if (time.hours && time.hours < 10) {
+    time.hours = `0${time.hours}`;
+  }
+  if (time.minutes && time.minutes < 10) {
+    time.minutes = `0${time.minutes}`;
+  }
+  if (time.seconds && time.seconds < 10) {
+    time.seconds = `0${time.seconds}`;
+  }
+
+  if (time.hours !== '00') {
+    return `${time.hours}:${time.minutes}:${time.seconds}`;
+  } else {
+    return `${time.minutes}:${time.seconds}`;
+  }
+}
+
+/**
+ * The base setup for any given audio player.
+ */
+class Player {
+  constructor() {
+    this.playing = new Set(buttons.playPause.classList).has('on');
+    this.shuffle = new Set(buttons.shuffle.classList).has('on');
+    this.repeat = new Set(buttons.repeat.classList).has('on');
+
+    this.songIndex = 0;
+    this.previousSong = songList.length - 1;
+
+    this.song = songList[this.songIndex];
+
+    this.randomOrder = new Set();
+    this.randomIndex = 0;
+
+    this.volume = 0.8;
+  }
+
+  /**
+   * Update the meta data for the current song.
+   *
+   * @param {number} songIndex Optional param to force set the index of the song.
+   */
+  updateSong(songIndex) {
+    this.previousSong = this.songIndex;
+    this.songIndex = songIndex || this.songIndex;
+    this.song = songList[this.songIndex];
+    const song = this.song;
+
+    audio.src = song.url;
+    trackingSlider.value = 0;
+    this.updateSongRangeValues();
+    songLength.innerHTML = secondsToHms(song.duration);
+    trackingSlider.max = song.duration;
+
+    playerArt.src = song.album.art.square;
+    wideArt.src = song.album.art.wide;
+
+    document.querySelector(`tr[data-index="${this.previousSong}"]`).classList.remove('playing');
+    toggleClasses(document.querySelector(`tr[data-index="${this.songIndex}"]`), 'playing');
+  }
+
+  /**
+   * Play the audio.
+   */
+  play() {
+    audio.play();
+  }
+
+  /**
+   * Pause the audio.
+   */
+  pause() {
+    audio.pause();
+  }
+
+  /**
+   * Seek in the audio, update the time based on range value selected.
+   */
+  seek() {
+    audio.currentTime = Number(trackingSlider.value);
+    songCurrentTime.innerHTML = secondsToHms(audio.currentTime);
+  }
+
+  /**
+   * Update the range values based on the current time in the song.
+   */
+  updateSongRangeValues() {
+    const value = trackingSlider.value / this.song.duration * 100;
+    const buffer = 0;
+
+    songCurrentTime.innerHTML = secondsToHms(trackingSlider.value);
+
+    trackingSlider.style.background = `linear-gradient(to right, ${colors.aqua[50]} 0%, ${colors.aqua[50]} ${value}%, ${colors.metal[50]} ${value}%, ${colors.metal[50]} ${buffer}%, ${colors.metal[80]} ${buffer}%, ${colors.metal[80]} 100%)`;
+  }
+
+  /**
+   * Adjust the volume.
+   */
+  adjustVolume() {
+    const { value } = volumeSlider;
+    const buffer = 0;
+
+    audio.volume = value;
+
+    volumeSlider.style.background = `linear-gradient(to right, ${colors.aqua[80]} 0%, ${colors.aqua[80]} ${value * 100}%, ${colors.metal[50]} ${value * 100}%, ${colors.metal[50]} ${buffer}%, ${colors.metal[80]} ${buffer}%, ${colors.metal[80]} 100%)`;
+  }}
+
+
+/**
+ * The setup for any set of controls for the player.
+ */
+class Controls extends Player {
+  /**
+   * Play or pause the current list item.
+   */
+  playPause() {
+    this.playing = toggleBoolean(this.playing);
+    toggleClasses(buttons.playPause, 'on fa-play fa-pause');
+    toggleClasses(artPlayer, 'playing');
+
+    const currentClasses = new Set(buttons.playPause.classList);
+
+    if (currentClasses.has('on')) {
+      this.play();
+    } else {
+      this.pause();
+    }
+  }
+
+  /**
+   * Go to the next item in the list.
+   */
+  next() {
+    this.previousSong = this.songIndex;
+    let playNext = true;
+
+    toggleClasses(document.querySelector(`tr[data-index="${this.songIndex}"]`), 'playing');
+
+    if (this.shuffle) {
+      this.randomIndex++;
+
+      if (this.randomIndex >= this.randomOrder.size) {
+        this.randomIndex = 0;
+
+        playNext = this.repeat;
+      }
+
+      this.songIndex = Array.from(this.randomOrder)[this.randomIndex];
+    } else {
+      this.songIndex++;
+
+      if (this.songIndex >= songList.length) {
+        this.songIndex = 0;
+
+        playNext = this.repeat;
+      }
+    }
+
+    this.updateSong();
+
+    if (this.playing) {
+      if (playNext) {
+        this.play();
+      } else {
+        this.playPause();
+      }
+    }
+  }
+
+  /**
+   * Go to the previous item in the list.
+   */
+  previous() {
+    toggleClasses(document.querySelector(`tr[data-index="${this.songIndex}"]`), 'playing');
+
+    if (this.shuffle) {
+      if (this.randomIndex === 0) {
+        this.randomIndex = this.randomOrder.size;
+      }
+      this.randomIndex--;
+
+      this.songIndex = Array.from(this.randomOrder)[this.randomIndex];
+    } else {
+      if (this.songIndex === 0) {
+        this.songIndex = songList.length;
+      }
+      this.songIndex--;
+    }
+
+    this.updateSong();
+
+    if (this.playing) {
+      this.play();
+    }
+  }
+
+  /**
+   * Shuffle the list, play in a random order.
+   */
+  toggleShuffle() {
+    this.shuffle = toggleBoolean(this.shuffle);
+    toggleClasses(buttons.shuffle, 'on');
+    const currentClasses = new Set(buttons.shuffle.classList);
+
+    if (currentClasses.has('on')) {
+      this.randomOrder = new Set();
+      this.randomIndex = 0;
+
+      let randomIndex = this.songIndex;
+
+      for (let index = 0; index < songList.length; index++) {if (window.CP.shouldStopExecution(0)) break;
+        // While loop to ensure that the index being added to the random order is unique, else changes the index value
+        while (this.randomOrder.has(randomIndex)) {if (window.CP.shouldStopExecution(1)) break;
+          randomIndex = Math.floor(Math.random() * songList.length);
+        }window.CP.exitedLoop(1);
+
+        this.randomOrder.add(randomIndex);
+      }window.CP.exitedLoop(0);
+    }
+  }
+
+  /**
+   * Repeat/loop the list that is currently playing.
+   */
+  toggleRepeat() {
+    this.repeat = toggleBoolean(this.repeat);
+    toggleClasses(buttons.repeat, 'on');
+  }}
+
+
+
+// Instantiate the controls
+const controls = new Controls();
+
+// Add event listeners for the buttons
+buttons.playPause.addEventListener('click', () => {
+  controls.playPause();
+});
+buttons.next.addEventListener('click', () => {
+  controls.next();
+});
+buttons.previous.addEventListener('click', () => {
+  controls.previous();
+});
+buttons.shuffle.addEventListener('click', () => {
+  controls.toggleShuffle();
+});
+buttons.repeat.addEventListener('click', () => {
+  controls.toggleRepeat();
+});
+
+
+audio.onended = () => {
+  // Once a song is over play next song.
+  controls.next();
+};
+audio.ontimeupdate = () => {
+  trackingSlider.value = audio.currentTime;
+  controls.updateSongRangeValues();
+};
+
+// Update the range values on change or moving the scrubber.
+trackingSlider.addEventListener('change', () => {
+  controls.updateSongRangeValues();
+  controls.seek();
+});
+trackingSlider.addEventListener('mousemove', () => {
+  controls.updateSongRangeValues();
+});
+
+volumeSlider.addEventListener('change', () => {
+  controls.adjustVolume();
+});
+volumeSlider.addEventListener('mousemove', () => {
+  controls.adjustVolume();
+});
+
+// That's right ... hotkeys!
+document.onkeypress = event => {
+  switch (event.keyCode) {
+    // a - previous
+    case 97:{
+        controls.previous();
+        break;
+      }
+    // d / n - next
+    case 100:
+    case 110:{
+        controls.next();
+        break;
+      }
+    // s / p - play / pause
+    case 115:
+    case 112:{
+        controls.playPause();
+        break;
+      }
+    // e / r - repeat
+    case 101:
+    case 114:{
+        controls.toggleRepeat();
+        break;
+      }
+    // q - shuffle
+    case 113:{
+        controls.toggleShuffle();
+        break;
+      }}
+
+};
+
+
+/**
+ * Build the playlist from the give array of songs.
+ */
+function buildPlaylist() {
+  // Add the songs to the dom
+  let html = '';
+  songList.forEach((song, index) => {
+    html += `
+<tr data-index="${index}">
+  <td class="play-pause"><img src="${song.album.art.square}"></td>
+  <td>${song.title}</td>
+  <td>${song.artist}</td>
+  <td>${song.album.title}</td>
+  <td>${secondsToHms(song.duration)}</td>
+</tr>
+`;
+  });
+  playlistBody.innerHTML = html;
+
+  // Update the list items
+  listItems = document.querySelectorAll('#playlist tbody tr');
+  playlistPlay = document.querySelectorAll('#playlist .play-pause');
+
+  // Add event listeners to the list items
+  for (const listItem of listItems) {
+    listItem.addEventListener('click', event => {
+      const songIndex = event.target.parentElement.dataset.index;
+      controls.updateSong(songIndex);
+
+      if (controls.playing) {
+        controls.play();
+      }
+    });
+
+    listItem.addEventListener('dblclick', event => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (!controls.playing) {
+        controls.playPause();
+      }
+    });
+  }
+
+  for (const playlistPlayButton of playlistPlay) {
+    playlistPlayButton.addEventListener('click', event => {
+      if (!controls.playing) {
+        controls.playPause();
+      }
+    });
+  }
+}
+
+
+// Initiate the setup.
+window.onload = () => {
+  buildPlaylist();
+  controls.updateSong();
+  controls.adjustVolume();
+};
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="icon" href="https://i.ibb.co/FDzB2tN/logos.png"/>
+  <title>MpX@ALEXANDER ERIC</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+  
+<style>
+@charset "UTF-8";
+@keyframes spin-art {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+*,
+*:before,
+*:after,
+*:focus,
+*:hover {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #003d99;
+  color: #000099;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  font-size: 16px;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+#art {
+  display: flex;
+  height: 22vh;
+  box-shadow: 0 3px 10px 0 rgba(20, 21, 18, 0.3);
+  overflow: hidden;
+}
+#art .player {
+  position: relative;
+  width: 20vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+#art .player img {
+  position: absolute;
+  width: 90%;
+  height: calc(20vw * .9);
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+}
+#art .player:after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  top: calc(50% - 2vw);
+  left: calc(50% - 2vw);
+  background: #003d99;
+  height: 4vw;
+  width: 4vw;
+  border-radius: 50%;
+}
+#art .player.playing img {
+  top: 50%;
+  left: 50%;
+  animation: spin-art 3000ms linear infinite;
+}
+#art .wide {
+  width: 80vw;
+}
+#art .wide img {
+  height: 130%;
+  width: 100%;
+}
+
+#playlist {
+  width: 100vw;
+  height: 63vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#playlist table {
+  width: 100%;
+}
+#playlist table th,
+#playlist table td {
+  padding: 10px 3%;
+  vertical-align: middle;
+  text-align: left;
+}
+#playlist table th {
+  color: #868975;
+  font-size: 0.9em;
+  padding-top: 15px;
+  cursor: default;
+}
+#playlist table tr {
+  cursor: pointer;
+}
+#playlist table tr td {
+  border-top: 1px solid #36372F;
+  transition: background 0.3s ease;
+}
+#playlist table tr td.play-pause {
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
+#playlist table tr td.play-pause:before {
+  position: absolute;
+  content: "";
+  font-family: FontAwesome;
+  height: 26px;
+  width: 26px;
+  top: calc(50% - 13px);
+  left: calc(50% - 13px);
+  z-index: 3;
+  font-size: 1em;
+  color: #F3F3F1;
+  border-radius: 50%;
+  padding: 5px;
+  padding-left: 9px;
+  box-shadow: inset 0 0 0 1px #F3F3F1;
+}
+#playlist table tr td.play-pause:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: rgba(54, 55, 47, 0.75);
+}
+#playlist table tr td.play-pause:before, #playlist table tr td.play-pause:after {
+  visibility: hidden;
+}
+#playlist table tr td.play-pause img {
+  height: 40px;
+  width: 40px;
+}
+#playlist table tr td:nth-child(2) {
+  color: #F3F3F1;
+}
+#playlist table tr.playing td {
+  background: #1a1a16;
+  color: #5FBFA4;
+}
+#playlist table tr.playing td:nth-child(2) {
+  color: #A7DCCD;
+}
+#playlist table tr:hover td {
+  background: #36372F;
+}
+#playlist table tr:hover td.play-pause:before, #playlist table tr:hover td.play-pause:after {
+  visibility: visible;
+}
+
+#interactions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #003d99;
+  height: 15vh;
+  overflow: hidden;
+  padding: 20px 0;
+  box-shadow: 0 -3px 10px 0 rgba(20, 21, 18, 0.3);
+}
+
+.tracking-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tracking-wrap .song-current-time {
+  text-align: right;
+}
+.tracking-wrap .song-length {
+  text-align: left;
+}
+.tracking-wrap .song-current-time,
+.tracking-wrap .song-length {
+  width: 10vw;
+  letter-spacing: 1px;
+  font-size: 0.8em;
+}
+
+.range {
+  clear: both;
+  -webkit-appearance: none;
+  background: #36372F;
+  cursor: pointer;
+  height: 3px;
+  margin: 0;
+  vertical-align: bottom;
+  width: 76vw;
+  transition: height 0.5s ease;
+  transition-delay: 1s;
+}
+.range:focus {
+  outline: none;
+}
+.range:hover {
+  height: 10px;
+  transition: height 0.3s ease;
+}
+.range:hover::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  transition: height 0.3s ease, width 0.3s ease;
+  transition-delay: 0;
+}
+.range::-webkit-slider-thumb {
+  width: 0;
+  height: 0;
+  -webkit-appearance: none;
+  background: #F3F3F1;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 5px #eaeaea;
+  transition: height 0.5s ease, width 0.5s ease;
+  transition-delay: 1s;
+}
+
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+#controls {
+  width: 80vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  padding-top: 15px;
+}
+#controls > span {
+  font-size: 1em;
+  padding: 13px;
+  margin: 0 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+#controls > span.play-pause {
+  font-size: 1.1em;
+  padding: 10px;
+  padding-left: 15px;
+  box-shadow: inset 0 0 0 1px #000099;
+}
+#controls > span.play-pause.on {
+  padding-left: 12px;
+  padding-right: 12px;
+  box-shadow: inset 0 0 0 1px #A7DCCD;
+}
+#controls > span:before {
+  transition: text-shadow 0.3s ease;
+}
+#controls > span.on {
+  color: #5FBFA4;
+  border-color: #5FBFA4;
+}
+#controls > span:hover {
+  color: #F3F3F1;
+  transform: scale(1.1);
+}
+#controls > span:hover:before {
+  text-shadow: 0 0 5px #F3F3F1;
+}
+#controls > span:hover.on {
+  color: #A7DCCD;
+  border-color: #A7DCCD;
+}
+
+#volume {
+  max-width: 18vw;
+  padding: 20px 5% 0 0;
+  display: flex;
+  align-items: center;
+}
+#volume .fa-volume-down {
+  font-size: 0.75em;
+}
+#volume .fa-volume-up {
+  font-size: 0.9em;
+}
+#volume .volume-slider {
+  width: 10vw;
+  margin: 0 1vw;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <section id="art">
+  <div class="player">
+    <img>
+  </div>
+  <div class="wide">
+    <img>
+  </div>
+</section>
+
+<section id="playlist">
+  <table id="playlist" class="no-select">
+    <thead>
+      <th>&nbsp;</th>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th><span class="fa fa-clock-o"></span></th>
+    </thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<footer id="interactions">
+  <div class="tracking-wrap">
+    <span class="song-current-time">--:--</span>
+    <input class="tracking-slider range" type="range" min="0" value="0" step="1">
+    <span class="song-length">--:--</span>
+  </div>
+  
+  <div class="controls-bar">
+    <section id="controls">
+      <span class="fa fa-random shuffle"></span>
+      <span class="fa fa-fast-backward previous"></span>
+      <span class="fa fa-play play-pause"></span>
+      <span class="fa fa-fast-forward next"></span>
+      <span class="fa fa-repeat repeat on"></span>
+    </section>
+    
+    <div id="volume">
+      <span class="fa fa-volume-down"></span>
+      <input class="volume-slider range" type="range" max="1" min="0" step="0.01" value="0.8">
+      <span class="fa fa-volume-up"></span>
+    </div>
+  </div>
+</footer>
+
+<audio id="player"></audio>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js'></script>
+      <script id="rendered-js" >
+'use strict';
+
+/**
+ * A music player ... cause why not.
+ * Hotkeys:
+ *   a - previous
+ *   d / n - next
+ *   s / p - play / pause
+ *   e / r - repeat
+ *   q - shuffle
+ *
+ * @author Holly Springsteen
+ */
+
+const colors = {
+  aqua: {
+    25: '#A7DCCD',
+    50: '#5FBFA4',
+    80: '#2F7561' },
+
+  metal: {
+    5: '#F3F3F1',
+    20: '#000099',
+    50: '#868975',
+    80: '#36372F',
+    90: '#003d99' } };
+
+
+
+// Control button elements
+const buttons = {
+  shuffle: document.querySelector('#controls .shuffle'),
+  previous: document.querySelector('#controls .previous'),
+  playPause: document.querySelector('#controls .play-pause'),
+  next: document.querySelector('#controls .next'),
+  repeat: document.querySelector('#controls .repeat') };
+
+
+// Range & Time elements
+const songCurrentTime = document.querySelector('.song-current-time');
+const songLength = document.querySelector('.song-length');
+const trackingSlider = document.querySelector('.tracking-slider');
+const volumeSlider = document.querySelector('.volume-slider');
+
+// Art
+const artPlayer = document.querySelector('#art .player');
+const playerArt = document.querySelector('#art .player img');
+const wideArt = document.querySelector('#art .wide img');
+
+// Playlist
+const playlistBody = document.querySelector('#playlist tbody');
+let playlistPlay = document.querySelectorAll('#playlist .play-pause');
+let listItems = document.querySelectorAll('#playlist tbdoy tr');
+
+// Audio Element
+const audio = document.getElementById('player');
+
+// Base route for archive url
+const archiveBase = 'http://archive.org/download/';
+
+/**
+ * A base list of songs and the meta data for them.
+ *
+{
+  title: '',
+  artist: '',
+  duration: 0,
+  album: {
+    title: '',
+    art: {
+      square: '',
+      wide: '',
+    },
+  },
+  url: `${archiveBase}`,
+},
+ */
+const songList = [
+{
+  title: 'FMnet',
+  artist: 'FMnet',
+  duration: '000',
+  album: {
+    title: 'FMnet',
+    art: {
+      square: 'https://i.ibb.co/FDzB2tN/logos.png',
+      wide: 'https://i.ibb.co/FDzB2tN/logos.png' } },
+
+
+  url: `http://radio.wiramaster.my:8050/mp3` },
+
+];
+
+
+
+/**
+ * Based on the class list for a given element toggle the class(es) received.
+ * Can accept both string with classes separated by spaces and an array of classes.
+ *
+ * @param {} element The dom element for which to toggle classes.
+ * @param {string|string[]} classes The classes to be toggled on or off.
+ */
+function toggleClasses(element, classes) {
+  const currentClasses = new Set(element.classList);
+  // Separate string formatted classes into an array or accept array param
+  const newClasses = _.isString(classes) ? classes.split(' ') : classes;
+
+  for (const className of newClasses) {
+    if (currentClasses.has(className)) {
+      element.classList.remove(className);
+    } else {
+      element.classList.add(className);
+    }
+  }
+}
+
+/**
+ * Toggle a boolean value.
+ *
+ * @param {boolean} boolean The boolean value to be toggled true or false.
+ * @return {boolean} Returns the opposite boolean value to the received.
+ */
+function toggleBoolean(boolean) {
+  return !boolean;
+}
+
+/**
+ * Convert seconds into a usable format for time.
+ *
+ * @param {number|string} seconds The amount of seconds to convert.
+ * @return {string} Returns a time formatted string (--:--:--).
+ */
+function secondsToHms(seconds) {
+  const time = {
+    hours: String(Math.floor(Number(seconds) / 3600)),
+    minutes: String(Math.floor(Number(seconds) % 3600 / 60)),
+    seconds: String(Math.floor(Number(seconds) % 3600 % 60)) };
+
+
+  if (time.hours && time.hours < 10) {
+    time.hours = `0${time.hours}`;
+  }
+  if (time.minutes && time.minutes < 10) {
+    time.minutes = `0${time.minutes}`;
+  }
+  if (time.seconds && time.seconds < 10) {
+    time.seconds = `0${time.seconds}`;
+  }
+
+  if (time.hours !== '00') {
+    return `${time.hours}:${time.minutes}:${time.seconds}`;
+  } else {
+    return `${time.minutes}:${time.seconds}`;
+  }
+}
+
+/**
+ * The base setup for any given audio player.
+ */
+class Player {
+  constructor() {
+    this.playing = new Set(buttons.playPause.classList).has('on');
+    this.shuffle = new Set(buttons.shuffle.classList).has('on');
+    this.repeat = new Set(buttons.repeat.classList).has('on');
+
+    this.songIndex = 0;
+    this.previousSong = songList.length - 1;
+
+    this.song = songList[this.songIndex];
+
+    this.randomOrder = new Set();
+    this.randomIndex = 0;
+
+    this.volume = 0.8;
+  }
+
+  /**
+   * Update the meta data for the current song.
+   *
+   * @param {number} songIndex Optional param to force set the index of the song.
+   */
+  updateSong(songIndex) {
+    this.previousSong = this.songIndex;
+    this.songIndex = songIndex || this.songIndex;
+    this.song = songList[this.songIndex];
+    const song = this.song;
+
+    audio.src = song.url;
+    trackingSlider.value = 0;
+    this.updateSongRangeValues();
+    songLength.innerHTML = secondsToHms(song.duration);
+    trackingSlider.max = song.duration;
+
+    playerArt.src = song.album.art.square;
+    wideArt.src = song.album.art.wide;
+
+    document.querySelector(`tr[data-index="${this.previousSong}"]`).classList.remove('playing');
+    toggleClasses(document.querySelector(`tr[data-index="${this.songIndex}"]`), 'playing');
+  }
+
+  /**
+   * Play the audio.
+   */
+  play() {
+    audio.play();
+  }
+
+  /**
+   * Pause the audio.
+   */
+  pause() {
+    audio.pause();
+  }
+
+  /**
+   * Seek in the audio, update the time based on range value selected.
+   */
+  seek() {
+    audio.currentTime = Number(trackingSlider.value);
+    songCurrentTime.innerHTML = secondsToHms(audio.currentTime);
+  }
+
+  /**
+   * Update the range values based on the current time in the song.
+   */
+  updateSongRangeValues() {
+    const value = trackingSlider.value / this.song.duration * 100;
+    const buffer = 0;
+
+    songCurrentTime.innerHTML = secondsToHms(trackingSlider.value);
+
+    trackingSlider.style.background = `linear-gradient(to right, ${colors.aqua[50]} 0%, ${colors.aqua[50]} ${value}%, ${colors.metal[50]} ${value}%, ${colors.metal[50]} ${buffer}%, ${colors.metal[80]} ${buffer}%, ${colors.metal[80]} 100%)`;
+  }
+
+  /**
+   * Adjust the volume.
+   */
+  adjustVolume() {
+    const { value } = volumeSlider;
+    const buffer = 0;
+
+    audio.volume = value;
+
+    volumeSlider.style.background = `linear-gradient(to right, ${colors.aqua[80]} 0%, ${colors.aqua[80]} ${value * 100}%, ${colors.metal[50]} ${value * 100}%, ${colors.metal[50]} ${buffer}%, ${colors.metal[80]} ${buffer}%, ${colors.metal[80]} 100%)`;
+  }}
+
+
+/**
+ * The setup for any set of controls for the player.
+ */
+class Controls extends Player {
+  /**
+   * Play or pause the current list item.
+   */
+  playPause() {
+    this.playing = toggleBoolean(this.playing);
+    toggleClasses(buttons.playPause, 'on fa-play fa-pause');
+    toggleClasses(artPlayer, 'playing');
+
+    const currentClasses = new Set(buttons.playPause.classList);
+
+    if (currentClasses.has('on')) {
+      this.play();
+    } else {
+      this.pause();
+    }
+  }
+
+  /**
+   * Go to the next item in the list.
+   */
+  next() {
+    this.previousSong = this.songIndex;
+    let playNext = true;
+
+    toggleClasses(document.querySelector(`tr[data-index="${this.songIndex}"]`), 'playing');
+
+    if (this.shuffle) {
+      this.randomIndex++;
+
+      if (this.randomIndex >= this.randomOrder.size) {
+        this.randomIndex = 0;
+
+        playNext = this.repeat;
+      }
+
+      this.songIndex = Array.from(this.randomOrder)[this.randomIndex];
+    } else {
+      this.songIndex++;
+
+      if (this.songIndex >= songList.length) {
+        this.songIndex = 0;
+
+        playNext = this.repeat;
+      }
+    }
+
+    this.updateSong();
+
+    if (this.playing) {
+      if (playNext) {
+        this.play();
+      } else {
+        this.playPause();
+      }
+    }
+  }
+
+  /**
+   * Go to the previous item in the list.
+   */
+  previous() {
+    toggleClasses(document.querySelector(`tr[data-index="${this.songIndex}"]`), 'playing');
+
+    if (this.shuffle) {
+      if (this.randomIndex === 0) {
+        this.randomIndex = this.randomOrder.size;
+      }
+      this.randomIndex--;
+
+      this.songIndex = Array.from(this.randomOrder)[this.randomIndex];
+    } else {
+      if (this.songIndex === 0) {
+        this.songIndex = songList.length;
+      }
+      this.songIndex--;
+    }
+
+    this.updateSong();
+
+    if (this.playing) {
+      this.play();
+    }
+  }
+
+  /**
+   * Shuffle the list, play in a random order.
+   */
+  toggleShuffle() {
+    this.shuffle = toggleBoolean(this.shuffle);
+    toggleClasses(buttons.shuffle, 'on');
+    const currentClasses = new Set(buttons.shuffle.classList);
+
+    if (currentClasses.has('on')) {
+      this.randomOrder = new Set();
+      this.randomIndex = 0;
+
+      let randomIndex = this.songIndex;
+
+      for (let index = 0; index < songList.length; index++) {if (window.CP.shouldStopExecution(0)) break;
+        // While loop to ensure that the index being added to the random order is unique, else changes the index value
+        while (this.randomOrder.has(randomIndex)) {if (window.CP.shouldStopExecution(1)) break;
+          randomIndex = Math.floor(Math.random() * songList.length);
+        }window.CP.exitedLoop(1);
+
+        this.randomOrder.add(randomIndex);
+      }window.CP.exitedLoop(0);
+    }
+  }
+
+  /**
+   * Repeat/loop the list that is currently playing.
+   */
+  toggleRepeat() {
+    this.repeat = toggleBoolean(this.repeat);
+    toggleClasses(buttons.repeat, 'on');
+  }}
+
+
+
+// Instantiate the controls
+const controls = new Controls();
+
+// Add event listeners for the buttons
+buttons.playPause.addEventListener('click', () => {
+  controls.playPause();
+});
+buttons.next.addEventListener('click', () => {
+  controls.next();
+});
+buttons.previous.addEventListener('click', () => {
+  controls.previous();
+});
+buttons.shuffle.addEventListener('click', () => {
+  controls.toggleShuffle();
+});
+buttons.repeat.addEventListener('click', () => {
+  controls.toggleRepeat();
+});
+
+
+audio.onended = () => {
+  // Once a song is over play next song.
+  controls.next();
+};
+audio.ontimeupdate = () => {
+  trackingSlider.value = audio.currentTime;
+  controls.updateSongRangeValues();
+};
+
+// Update the range values on change or moving the scrubber.
+trackingSlider.addEventListener('change', () => {
+  controls.updateSongRangeValues();
+  controls.seek();
+});
+trackingSlider.addEventListener('mousemove', () => {
+  controls.updateSongRangeValues();
+});
+
+volumeSlider.addEventListener('change', () => {
+  controls.adjustVolume();
+});
+volumeSlider.addEventListener('mousemove', () => {
+  controls.adjustVolume();
+});
+
+// That's right ... hotkeys!
+document.onkeypress = event => {
+  switch (event.keyCode) {
+    // a - previous
+    case 97:{
+        controls.previous();
+        break;
+      }
+    // d / n - next
+    case 100:
+    case 110:{
+        controls.next();
+        break;
+      }
+    // s / p - play / pause
+    case 115:
+    case 112:{
+        controls.playPause();
+        break;
+      }
+    // e / r - repeat
+    case 101:
+    case 114:{
+        controls.toggleRepeat();
+        break;
+      }
+    // q - shuffle
+    case 113:{
+        controls.toggleShuffle();
+        break;
+      }}
+
+};
+
+
+/**
+ * Build the playlist from the give array of songs.
+ */
+function buildPlaylist() {
+  // Add the songs to the dom
+  let html = '';
+  songList.forEach((song, index) => {
+    html += `
+<tr data-index="${index}">
+  <td class="play-pause"><img src="${song.album.art.square}"></td>
+  <td>${song.title}</td>
+  <td>${song.artist}</td>
+  <td>${song.album.title}</td>
+  <td>${secondsToHms(song.duration)}</td>
+</tr>
+`;
+  });
+  playlistBody.innerHTML = html;
+
+  // Update the list items
+  listItems = document.querySelectorAll('#playlist tbody tr');
+  playlistPlay = document.querySelectorAll('#playlist .play-pause');
+
+  // Add event listeners to the list items
+  for (const listItem of listItems) {
+    listItem.addEventListener('click', event => {
+      const songIndex = event.target.parentElement.dataset.index;
+      controls.updateSong(songIndex);
+
+      if (controls.playing) {
+        controls.play();
+      }
+    });
+
+    listItem.addEventListener('dblclick', event => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (!controls.playing) {
+        controls.playPause();
+      }
+    });
+  }
+
+  for (const playlistPlayButton of playlistPlay) {
+    playlistPlayButton.addEventListener('click', event => {
+      if (!controls.playing) {
+        controls.playPause();
+      }
+    });
+  }
+}
+
+
+// Initiate the setup.
+window.onload = () => {
+  buildPlaylist();
+  controls.updateSong();
+  controls.adjustVolume();
+};
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
