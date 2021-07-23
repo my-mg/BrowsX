@@ -73,6 +73,7 @@ OS Window Setting | [OS Setting](https://my-mg.github.io/BrowsX/setting/boot.htm
 Directory Check | [DirCheck](https://my-mg.github.io/BrowsX/dir/dircheck.htm)
 Engine Direct | [EngineDirect](https://my-mg.github.io/BrowsX/dir/rd.htm)
 MpX | [MpX](https://my-mg.github.io/BrowsX/live/mpx.htm)
+Divider Browsers | [Div Browsers](https://my-mg.github.io/BrowsX/main/)
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
 ------------------------------------------------
@@ -111,6 +112,9 @@ MpX | [MpX](https://my-mg.github.io/BrowsX/live/mpx.htm)
 
 ## MPX-PlugIn
 ![Source output](media/mpx.png)
+
+## Divider
+![Source output](media/div.png)
 
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
