@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="" />
+
+
+  <title>CALCULATOR BY ALEXANDER ERIC</title>
+  
+  
+  
+  
+<style>
+body,
+html {
+	margin: 0;
+	padding: 0;
+	background: #00796b;
+}
+
+/* STOLEN :) */
+@font-face {
+	font-family: "Digital";
+	src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot");
+	src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix")
+			format("embedded-opentype"),
+		url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2")
+			format("woff2"),
+		url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff")
+			format("woff"),
+		url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf")
+			format("truetype"),
+		url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7")
+			format("svg");
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+}
+
+.calculator {
+	position: relative;
+	width: 400px;
+	margin: 0 auto;
+	background: #111;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 2px;
+	grid-template-areas:
+		"screen screen screen screen"
+		"ac ac . ."
+		". . . ."
+		". . . ."
+		". . . ."
+		"zero zero . .";
+	justify-content: space-evenly;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+	padding: 10px;
+	transition: all 0.5s ease;
+}
+
+.calculator.loading {
+	cursor: not-allowed;
+	opacity: 0.8;
+}
+
+.calculator.loading:before {
+	content: "Loading..";
+	color: #eee;
+	position: absolute;
+	text-align: center;
+	padding-top: 30px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #323232;
+	opacity: 0.5;
+	cursor: not-allowed;
+	font-size: 3em;
+	font-family: monospace;
+}
+
+.calculator .button {
+	background: #323232;
+	color: white;
+	font-weight: 700;
+	width: 98px;
+	height: 90px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.6rem;
+	font-family: monospace;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	transition: all 0.3s ease;
+	box-sizing: border-box;
+	border: 0;
+	cursor: pointer;
+}
+
+.calculator .button:hover {
+	border: 1px solid #747474;
+}
+
+.container .calculator.loading .button {
+	cursor: not-allowed;
+}
+
+.calculator .screen {
+	grid-area: screen;
+	width: 100%;
+	height: 100%;
+	color: white;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 2.2em;
+	font-family: "digital", monospace;
+	transition: all 0s ease;
+}
+.calculator .ac {
+	grid-area: ac;
+	width: 198px;
+	background: maroon;
+}
+
+.calculator .zero {
+	grid-area: zero;
+	width: 198px;
+}
+
+.calculator .operator {
+	background: #222222;
+}
+
+.calculator .equal {
+	background: #2e5c83;
+}
+
+.screen.error {
+	background: #fc05056b;
+}
+
+small {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 0.7rem;
+	letter-spacing: 2px;
+	font-family: monospace;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	font-weight: 700;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div class="container" x-data="data">
+	<div class="calculator loading" x-ref="calculator">
+		<span class="screen" x-ref="display" id="display" x-text="input">0</span>
+
+		<span class="button ac" id="clear" @click="clear">RESET</span>
+		<span class="button operator" id="backspace" @click="backspace">←</span>
+		<span class="button operator" id="divide" @click="typeOperator($el, 'divide')">/</span>
+
+		<span class="button" id="seven" @click="typeNumber($el, 7)">7</span>
+		<span class="button" id="eight" @click="typeNumber($el, 8)">8</span>
+		<span class="button" id="nine" @click="typeNumber($el, 9)">9</span>
+		<span class="button operator" id="multiply" @click="typeOperator($el, 'multiply')">x</span>
+
+		<span class="button" id="four" @click="typeNumber($el, 4)">4</span>
+		<span class="button" id="five" @click="typeNumber($el, 5)">5</span>
+		<span class="button" id="six" @click="typeNumber($el, 6)">6</span>
+		<span class="button operator" id="subtract" @click="typeOperator($el, 'subtract')">-</span>
+
+		<span class="button" id="one" @click="typeNumber($el, 1)">1</span>
+		<span class="button" id="two" @click="typeNumber($el, 2)">2</span>
+		<span class="button" id="three" @click="typeNumber($el, 3)">3</span>
+		<span class="button operator" id="add" @click="typeOperator($el, 'add')">+</span>
+
+		<span class="button zero" id="zero" @click="typeNumber($el, 0)">0</span>
+		<span class="button" id="decimal" @click="decimal">.</span>
+		<span class="button equal" id="equals" @click="calculate">=</span>
+	</div>
+	
+	<p>Created By:Edit By Alexander Eric</a></p>
+</div>
+
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+    <script src="timeout.js"></script>
+
+  <script src='https://unpkg.com/alpinejs@3.0.6/dist/cdn.min.js'></script>
+      <script id="rendered-js" >
+const LIMIT = 25;
+document.addEventListener("alpine:initializing", () => {
+  Alpine.data("data", () => ({
+    input: "0",
+    inputIsError: false,
+    // Clears the screen to ZERO (0)
+    clear() {
+      this.input = "0";
+      this.inputIsError = false;
+    },
+    // Type Number event
+    typeNumber(el, value) {
+      this.checkIfInputIsError();
+      let id = el ? el.getAttribute("id") : null;
+      if (this.input.length < LIMIT) {
+        if (value === 0) {
+          if (this.input !== "0") {
+            // If not already ZERO only
+            this.input += "0";
+          }
+        }
+        else {
+            if (value > 0 && value < 10) {
+              if (this.input === "0") {
+                this.input = value.toString();
+              } else {
+                this.input += value.toString();
+              }
+            }
+          }
+      }
+      else {
+          this.blinkError();
+        }
+    },
+    typeOperator(el, action) {
+      this.checkIfInputIsError();
+      if (this.input.length < LIMIT) {
+        let lastChar = this.input.substr(-1);
+        if (lastChar.search(/[-\+\*/]/) === 0 && action !== "subtract") {
+          this.input = this.input.substr(0, this.input.length - 1);
+          this.typeOperator(el, action);
+        } else {
+          if (action === "divide") {
+            this.input += "/";
+          } else if (action === "multiply") {
+            this.input += "*";
+          } else if (action === "add") {
+            this.input += "+";
+          } else if (action === "subtract") {
+            if (lastChar !== "-") {
+              if (this.input === "0") {
+                this.input = "-";
+              } else {
+                this.input += "-";
+              }
+            }
+          }
+        }
+      } else {
+        this.blinkError();
+      }
+    },
+    calculate() {
+      this.checkIfInputIsError();
+      try {
+        if (this.input.substr(-1).search(/[-\+\*/]/) === 0) {
+          this.input = this.input.substr(0, this.input.length - 1);
+        }
+        let output = this.parse(this.input);
+        this.input = output.toString();
+        if (
+        !Number.isFinite(output) ||
+        isNaN(output) ||
+        typeof output != "number")
+        {
+          this.inputIsError = true;
+          this.blinkError();
+        }
+      } catch (e) {
+        console.log(e);
+        this.blinkError();
+      }
+    },
+    blinkError() {
+      this.$refs.display.classList.add("error");
+      setTimeout(() => {
+        this.$refs.display.classList.remove("error");
+      }, 150);
+    },
+    parse(input) {
+      return Function(`'use strict'; return (${input})`)();
+    },
+    checkIfInputIsError() {
+      if (this.inputIsError) {
+        this.clear();
+      }
+    },
+    backspace() {
+      this.checkIfInputIsError();
+      if (this.input.length <= 1) {
+        this.input = "0";
+      } else {
+        this.input = this.input.substr(0, this.input.length - 1);
+      }
+    },
+    decimal() {
+      this.checkIfInputIsError();
+      if (this.input.length < LIMIT) {
+        let lastChar = this.input.substr(-1);
+        if (lastChar !== ".") {
+          if (lastChar.search(/[-\+\*/]/) === 0) {
+            this.input += "0.";
+          } else {
+            let operands = this.input.split(/[-\+\*/]/);
+            if (
+            operands &&
+            operands.length > 0 &&
+            operands[operands.length - 1].includes("."))
+            {
+              return;
+            } else {
+              this.input += ".";
+            }
+          }
+        }
+      } else {
+        this.blinkError();
+      }
+    },
+
+    init() {
+      this.$nextTick(() => {
+        // Assign Key events to trigger functions
+        // TODO: I could animate respective UI button on Keyboard keyup.
+        document.addEventListener("keyup", e => {
+          let key = e.key.toString().toLowerCase();
+          if (key.match(/[0-9]/)?.length === 1) {
+            this.typeNumber(null, parseInt(key));
+          } else if (key === "backspace") {
+            this.backspace();
+          } else if (key === "=" || key === "enter") {
+            this.calculate();
+          } else if (key === "escape") {
+            this.clear();
+          } else if (key === "/") {
+            this.typeOperator(null, "divide");
+          } else if (key === "*") {
+            this.typeOperator(null, "multiply");
+          } else if (key === "+") {
+            this.typeOperator(null, "add");
+          } else if (key === "-") {
+            this.typeOperator(null, "subtract");
+          } else if (key === ".") {
+            this.decimal();
+          }
+        });
+        // ON LOAD remove the loading class
+        // LOADING WAS added as alpine may not be loaded in first seconds to milliseconds
+        this.$refs.calculator.classList.remove("loading");
+      });
+    } }));
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  Alpine.start();
+});
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
