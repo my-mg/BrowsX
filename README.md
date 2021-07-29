@@ -74,6 +74,7 @@ Directory Check | [DirCheck](https://my-mg.github.io/BrowsX/dir/dircheck.htm)
 Engine Direct | [EngineDirect](https://my-mg.github.io/BrowsX/dir/rd.htm)
 MpX | [MpX](https://my-mg.github.io/BrowsX/live/mpx.htm)
 Divider Browsers | [Div Browsers](https://my-mg.github.io/BrowsX/main/)
+Aux Pedal | [AuxPedal](https://my-mg.github.io/BrowsX/app/aux/)
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
 ------------------------------------------------
