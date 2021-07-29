@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<link rel="icon" href="https://my-mg.github.io/host/logo.png"/>
+    <title>MG Aux Effect</title>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="MG Pedalboard by Alexander Eric">
+    <meta name="keywords" content="MG Pedalboard by Alexander Eric">
+    <meta name="author" content="ALEXANDER ERIC">
+    <!-- styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" type="text/css">
+    <link rel="stylesheet" href="./css/ionicons.css" type="text/css">
+    <link rel="stylesheet" href="./css/styles.css" type="text/css">
+    <link rel="stylesheet" href="./css/pedal.css" type="text/css">
+<script>
+        var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+        if (navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN || Event.MOUSEUP);
+        function mischandler() {
+            return false;
+        }
+        function mousehandler(e) {
+            var myevent = (isNS) ? e : event;
+            var eventbutton = (isNS) ? myevent.which : myevent.button;
+            if ((eventbutton == 2) || (eventbutton == 3)) return false;
+        }
+        document.oncontextmenu = mischandler;
+        document.onmousedown = mousehandler;
+        document.onmouseup = mousehandler;
+    </script>
+  </head>
+  <body class="start">
+
+    <!-- TODO: better pedal styling (custom font etc.) -->
+    <!-- TODO: drag function on mobile browsers -->
+    <!-- TODO: add tuner -->
+
+
+    <!-- header -->
+    <header>
+      <div id="title"><img src="https://my-mg.github.io/host/logo.png" width="60" height="60" /><font color="orange">MG AUX EFFECT</font></div>
+    </header>
+
+    <!-- content -->
+    <main>
+
+      <div id="getready"><i class="icon ion-ios-play"></i></div>
+
+      <div id="message">Please allow microphone access.</div>
+
+      <div id="intro" class="hideselect">
+
+        <p>
+          <i class="icon ion-ios-mic-outline"></i>
+          <select id="selectinput" name="inputs"></select>
+
+          <span class="tooltip"><i class="icon ion-ios-information-outline"></i>
+            <span class="tooltiptext">
+             <b>MG AUX Effect Request shall request for mic access. This software is really easy for be use by musicians. This Software is created by Alexander Eric@Eric Lapin. To start, Click the Play Symbol Button, Allow the Microphone Access, and then, simply click the "+" symbols. Pick effects and start recording and download your audio record. Then Save and Play on your devices.
+            </b></span>
+          </span>
+
+        </p>
+
+      </div>
+
+
+      <div id="addpedal"><i class="icon ion-ios-plus-empty"></i></div>
+      <div id="delpedal"><i class="icon ion-ios-trash-outline"></i></div>
+      <div id="more"><i class="icon ion-ios-more-outline"></i></div>
+      <div id="share"><i class="icon ion-ios-upload-outline"></i></div>
+
+      <div id="record"></div>
+      <div id="recordshare">
+        <i class="icon ion-ios-download-outline"></i>
+        <i class="icon ion-social-dropbox-outline"></i>
+        <i class="icon ion-ios-cloud-outline"></i>
+        <i class="icon ion-ios-close-outline"></i>
+        <span></span>
+      </div>
+
+      <div id="pedalboard"></div>
+
+      <div id="allpedals"></div>
+
+      <a id="qrcodelink"><img id="qrcode"></img></a>
+      <input id="sharelink" readonly>
+
+    </main>
+
+    <!-- footer -->
+    <footer>
+      <span id="copyright"><a href="https://www.facebook.com/alexandereric.on.fb"><b> &#169; 2021 Alexander Eric</b></a></span>
+      <span id="footlinks">
+        Other Features: <a href="http://mgaux.ml/"> <button><b>Voice Recording</b></button></a>
+      </span>
+    </footer>
+
+
+    <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+    <!-- <script src="js/velocity.js"></script> -->
+    <script src="js/tone.js"></script>
+    <!-- <script src="js/lame.js"></script> -->
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
+    <script src="js/recorder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.3/dropbox.min.js"></script>
+    <script src="js/qr.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- for the noscript guys -->
+    <noscript>
+      <h1>Please enable JavaScript.</h1>
+    </noscript>
+
+  </body>
+</html>
