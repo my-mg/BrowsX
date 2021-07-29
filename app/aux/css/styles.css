@@ -1,0 +1,421 @@
+/* general */
+body {
+  background: #666666;
+  cursor: default;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 3vh;
+  line-height: 1.4;
+  margin: 0px;
+  padding: 0px;
+}
+a {
+  color: #ff9900;
+ text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  margin: 0;
+}
+textarea:focus, input:focus {
+  outline: none;
+}
+
+/* tooltip */
+.tooltip {
+  display: inline-block;
+  position: relative;
+}
+.tooltip .tooltiptext {
+  background-color: #737373;
+  border: 1px solid #ff9900;
+  border-radius: 6px;
+  bottom: 25%;
+  left: 15%;
+  opacity: 0;
+  padding: 1vh;
+  position: fixed;
+  text-align: justify;
+  transition: all .4s;
+  visibility: hidden;
+  width: 70%;
+  z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* header */
+header {
+}
+#title {
+  font-size: 8vh;
+  position: fixed;
+  text-align: center;
+  top: 10vh;
+  transition: all .4s;
+  width: 100%;
+}
+.showallpedals #title,
+.normal #title,
+.showshare #title {
+  font-size: 7vh;
+  top: 2vh;
+}
+
+
+/* content */
+main {
+}
+#getready {
+  border: 0.35vh solid transparent;
+  border-radius: 18vh;
+  box-sizing: border-box;
+  display: none;
+  font-size: 17vh;
+  height: 18vh;
+  line-height: 17vh;
+  margin-left: 105vw;
+  margin-top: calc(50vh - 9vh);
+  opacity: .7;
+  position: fixed;
+  text-align: center;
+  transition: all .4s;
+  width: 18vh;
+  z-index: 1;
+}
+#getready:hover {
+  opacity: 1;
+  transform: translate(5%, 0);
+}
+.start #getready {
+  margin-left: calc(50vw - 9vh);
+}
+
+#message {
+  font-size: 5vh;
+  left: 5%;
+  position: fixed;
+  text-align: center;
+  top: calc(50vh - 2.5vh);
+  transition: all .4s;
+  width: 90%;
+}
+
+#addpedal {
+  border: 0.35vh solid transparent;
+  border-radius: 8vh;
+  box-sizing: border-box;
+  font-size: 7.5vh;
+  height: 8vh;
+  line-height: 7.5vh;
+  margin: 0;
+  opacity: .7;
+  position: fixed;
+  right: 3vh;
+  text-align: center;
+  top: -8vh;
+  transition: all .4s;
+  width: 8vh;
+  z-index: 1;
+}
+#addpedal:hover {
+  opacity: 1;
+}
+.showallpedals #addpedal,
+.showshare #addpedal {
+  border-color: #ff9900;
+  top: 2.75vh;
+  transform: rotate(45deg);
+}
+.normal #addpedal {
+  border-color: transparent;
+  top: 2.75vh;
+  transform: none;
+}
+.showmore #addpedal {
+  right: 10vh;
+}
+.deletepedal #addpedal {
+  top: -8vh;
+}
+
+#delpedal {
+  font-size: 5.5vh;
+  height: 6vh;
+  line-height: 6vh;
+  margin: 0;
+  opacity: .7;
+  position: fixed;
+  right: 12vh;
+  text-align: center;
+  top: -7vh;
+  transition: all .4s;
+  width: 7vh;
+  z-index: 1;
+}
+#delpedal:hover {
+  opacity: 1;
+}
+.normal #delpedal {
+  top: 3.9vh;
+}
+.showmore #delpedal {
+  right: 18vh;
+}
+.deletepedal #delpedal {
+  color: #EF5350;
+  right: 3vh;
+}
+
+#more {
+  font-size: 5.5vh;
+  height: 6vh;
+  line-height: 6vh;
+  margin: 0;
+  opacity: .7;
+  position: fixed;
+  right: 20vh;
+  text-align: center;
+  top: -7vh;
+  transform: rotate(90deg);
+  transition: all .4s;
+  width: 7vh;
+  z-index: 1;
+}
+#more:hover {
+  opacity: 1;
+}
+.normal #more {
+  top: 3.9vh;
+}
+.showmore #more {
+  right: 25vh;
+  transform: none;
+}
+.deletepedal #more {
+  top: -8vh;
+}
+
+#share {
+  font-size: 5.5vh;
+  height: 6vh;
+  line-height: 6vh;
+  margin: 0;
+  opacity: .7;
+  position: fixed;
+  right: -7vh;
+  text-align: center;
+  top: 3.9vh;
+  transition: all .4s;
+  width: 7vh;
+  z-index: 1;
+}
+#share:hover {
+  opacity: 1;
+}
+.showmore #share {
+  right: 3vh;
+}
+
+#record {
+  background: #ff9900;
+  border-radius: 6vh;
+  height: 6vh;
+  margin: 0;
+  opacity: .7;
+  position: fixed;
+  left: 3vh;
+  text-align: center;
+  top: -6vh;
+  transition: all .4s;
+  width: 6vh;
+  z-index: 1;
+}
+#record:hover {
+  background: #F44336;
+}
+.normal #record {
+  top: 4vh;
+}
+#record.recording {
+  background: #F44336;
+  border-radius: 0.5vh;
+}
+#record.recording:hover {
+  opacity: 1;
+}
+
+#recordshare {
+  background-color: #37476D;
+  border: 1px solid #ff9900;
+  border-radius: 6px;
+  font-size: 6vh;
+  margin: 0;
+  opacity: .7;
+  padding: 0 1vh;
+  position: fixed;
+  left: 3vh;
+  top: 12vh;
+  transform: translate(-130%, 0);
+  transition: all .4s;
+  z-index: 1;
+}
+.normal #recordshare.show {
+  transform: none;
+}
+#recordshare i {
+  margin: 0 1vh;
+  opacity: .7;
+  transition: all .4s;
+}
+#recordshare i:hover {
+  opacity: 1;
+}
+#recordshare span {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* introduction and help */
+#intro {
+  font-size: 2.5vh;
+  margin-top: 105vh;
+  opacity: 0;
+  position: fixed;
+  text-align: center;
+  transition: all .4s;
+  width: 100%;
+  z-index: 1;
+}
+#intro .ion-ios-mic-outline,
+#intro .ion-ios-information-outline {
+  font-size: 6vh;
+}
+#selectinput {
+  border: 1px solid #ff9900;
+  background: transparent;
+  color: #ff9900;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 3vh;
+  margin: 0 3vh;
+  outline: none;
+  padding: 0.3vh;
+  transform: translate(0, -1.3vh);
+}
+#selectinput option {
+  background: #37476D;
+}
+#intro.hideselect #selectinput,
+#intro.hideselect .ion-ios-mic-outline {
+  display: none;
+}
+.start #intro {
+  margin-top: 75vh;
+  opacity: 1;
+}
+
+/* the only true pedalboard */
+#pedalboard {
+  left: 52%;
+  position: fixed;
+  top: 54%;
+  transform: translate(-50%, 100%);
+  transition: all .4s;
+  width: 96%;
+  white-space: nowrap;
+}
+.normal #pedalboard {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+/* overview with all pedals */
+#allpedals {
+  left: 52%;
+  position: fixed;
+  top: 54%;
+  transform: translate(50%, -50%);
+  transition: all .4s;
+  width: 96%;
+  white-space: nowrap;
+}
+.showallpedals #allpedals {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+#allpedals .pedal:hover {
+  transform: translate(0, -1vh);
+}
+
+
+#qrcode {
+  height: auto;
+  left: 50vw;
+  max-width: 100vw;
+  position: fixed;
+  top: 110vh;
+  transform: translate(-50%, 0);
+  transition: all .4s;
+  width: 60vh;
+}
+.showshare #qrcode {
+  top: 19vh;
+}
+
+#sharelink {
+  background-color: transparent;
+  border: 0px solid;
+  color: #ff9900;
+  font-family: inherit;
+  font-size: 4vh;
+  left: 50vw;
+  position: fixed;
+  text-align: center;
+  top: 110vh;
+  transform: translate(-50%, 0);
+  transition: all .4s;
+  width: 70vw;
+}
+.showshare #sharelink {
+  top: 86vh;
+}
+
+
+/* footer */
+footer {
+  bottom: 0px;
+  font-size: 2vh;
+  left: 0;
+  position: fixed;
+  width: 100%;
+}
+#copyright {
+  margin-left: 1%;
+}
+#footlinks {
+  margin-right: 1%;
+  position: fixed;
+  right: 0;
+}
+#footlinks a:hover {
+  opacity: .7;
+  transition: all .4s;
+}
+
+
+/* responsive */
+@media screen and (max-aspect-ratio: 1/1) {
+
+  .showallpedals #title,
+  .normal #title,
+  .showshare #title {
+    top: -10vh;
+  }
+
+}
