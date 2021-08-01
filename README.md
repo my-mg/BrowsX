@@ -121,6 +121,9 @@ Home Page | [HomePage](https://my-mg.github.io/BrowsX/main/home.htm)
 ## HOME PAGE
 ![Source output](media/winhome.png)
 
+![Source output](media/winhome2.png)
+
+
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
    
