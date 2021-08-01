@@ -118,6 +118,9 @@ Home Page | [HomePage](https://my-mg.github.io/BrowsX/main/home.htm)
 ## Divider
 ![Source output](media/div.png)
 
+## HOME PAGE
+![Source output](media/winhome.png)
+
 # LICENSE
 License by [Alexander Anak Eric@Eric Lapin](https://www.facebook.com/alexandereric.on.fb/)
    
