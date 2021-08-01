@@ -59,7 +59,8 @@
 ## REFERENCES   	
 ContainRef | Link
 --------|---------------------------------------------------------
-Index | [Index](https://my-mg.github.io/BrowsX/)
+Index | [Index](https://my-mg.github.io/BrowsX/main/)
+maximize | [Maximize](https://my-mg.github.io/BrowsX/)
 Football | [Football](https://my-mg.github.io/BrowsX/football.htm)
 Base | [Base](https://my-mg.github.io/BrowsX/maximize.htm)
 Interface | [Interface II](https://my-mg.github.io/BrowsX/inbrow.htm)
