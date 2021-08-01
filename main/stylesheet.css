@@ -3,7 +3,7 @@ body {
 	padding : 0;
 	padding-left : 10px;
 	padding-right : 8px;
-	background-color : #a6a6a6;
+	background-color : #404040;
 	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif; 
 	font-size : 100%; 
     font-size : 0.7em;
@@ -218,7 +218,7 @@ pre, code {
 
 body {
 	color : #333333;
-	background-color :#a6a6a6;
+	background-color :#f2f2f2;
 }
 
 
@@ -302,4 +302,13 @@ hr {
 .NavBarCell3    { 
 	background-color:#dcdcdc;
 }
+.button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
 
+.button:hover {
+  background-color: #008CBA;
+  color: white;
+}
