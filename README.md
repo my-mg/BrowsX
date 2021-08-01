@@ -75,6 +75,7 @@ Engine Direct | [EngineDirect](https://my-mg.github.io/BrowsX/dir/rd.htm)
 MpX | [MpX](https://my-mg.github.io/BrowsX/live/mpx.htm)
 Divider Browsers | [Div Browsers](https://my-mg.github.io/BrowsX/main/)
 Aux Pedal | [AuxPedal](https://my-mg.github.io/BrowsX/app/aux/)
+Home Page | [HomePage](https://my-mg.github.io/BrowsX/main/home.htm)
 
 # DOMAIN CREATORS AND BROWSERS CREATORS 
 ------------------------------------------------
