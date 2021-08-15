@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+link rel="apple-touch-icon" type="image/png" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<meta name="apple-mobile-web-app-title" content="Rehack Browser By Alexander Eric">
+<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<link rel="mask-icon" type="" href="https://i.ibb.co/FDzB2tN/logos.png" color="#111" />
+<title>REHACK@ALEXANDER ERIC</title>
+    <link rel="Stylesheet" href="css/common.css" />
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript">
+        function setSslState(sslState) {
+            var params = { sslState: sslState, remember: document.getElementById("rememberSslState").checked };
+            var sslStateUri = "/api/authorize/setSslState?" + $.param(params);
+            document.location.href = sslStateUri;
+        }
+    </script>
+</head>
+<body id="root">
+    <div class="wdp-error">
+        <h1>Confirm security settings</h1>
+        <br />
+        You've enabled a password for Windows Device Portal but have not set up a secure (HTTPS) connection.  Be aware that an Http-only connection to Windows Device Portal sends your username and password over the network unencrypted.
+        <br />
+        <br />
+        <a href="https://aka.ms/WDPSecureConnection">Configure a secure connection</a>
+        <br />
+        <br />
+        <button class="commonButton" id="continueButton" onclick="setSslState('http');">Continue with an unsecured connection</button>
+        <br />
+        <input type="checkbox" id="rememberSslState" /><label for="rememberSslState">Don't show again</label>
+    </div>
+</body>
+</html>
