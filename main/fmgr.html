@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<meta name="apple-mobile-web-app-title" content="Rehack Browser By Alexander Eric">
+<link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/FDzB2tN/logos.png" />
+<link rel="mask-icon" type="" href="https://i.ibb.co/FDzB2tN/logos.png" color="#111" />
+<title>REHACK@ALEXANDER ERIC</title>
+  <link rel='stylesheet' href='https://unpkg.com/devextreme@19.2-next/dist/css/dx.common.css'>
+<link rel='stylesheet' href='https://unpkg.com/devextreme@19.2-next/dist/css/dx.light.css'>
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div class="dx-viewport demo-container">
+        <div id="file-manager"></div>
+    </div>
+    <script src="/timeout.js"></script>
+
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://unpkg.com/devextreme@19.2-next/dist/js/dx.all.js'></script>
+      <script id="rendered-js" >
+$(function () {
+  $("#file-manager").dxFileManager({
+    name: "fileManager",
+    fileProvider: fileSystem,
+    height: 450,
+    permissions: {
+      create: true,
+      copy: true,
+      move: true,
+      remove: true,
+      rename: true } });
+
+
+});
+
+var fileSystem = [
+{
+  name: "Documents",
+  isDirectory: true,
+  items: [
+  {
+    name: "Projects",
+    isDirectory: true,
+    items: [
+    {
+      name: "About.rtf",
+      isDirectory: false,
+      size: 1024 },
+
+    {
+      name: "Passwords.rtf",
+      isDirectory: false,
+      size: 2048 }] },
+
+
+
+  {
+    name: "About.xml",
+    isDirectory: false,
+    size: 1024 },
+
+  {
+    name: "Managers.rtf",
+    isDirectory: false,
+    size: 2048 },
+
+  {
+    name: "LicenseByAlexanderEric.txt",
+    isDirectory: false,
+    size: 3072 }] },
+
+
+
+{
+  name: "Images",
+  isDirectory: true,
+  items: [
+  {
+    name: "logo.png",
+    isDirectory: false,
+    size: 20480 },
+
+  {
+    name: "LicenseByAlexanderEric.gif",
+    isDirectory: false,
+    size: 10240 }] },
+
+
+
+{
+  name: "System",
+  isDirectory: true,
+  items: [
+  {
+    name: "ByAlexanderEric.txt",
+    isDirectory: false,
+    size: 3072 },
+
+  {
+    name: "PasswordList.txt",
+    isDirectory: false,
+    size: 5120 }] },
+
+
+
+{
+  name: "LicenseByAlexanderEric.rtf",
+  isDirectory: false,
+  size: 1024 },
+
+{
+  name: "LicenseByAlexanderEric.txt",
+  isDirectory: false,
+  size: 2048 }];
+    </script>
+
+  
+
+</body>
+
+</html>
+ 
