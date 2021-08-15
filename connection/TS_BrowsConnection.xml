@@ -1,6 +1,6 @@
-Import-LocalizedData -BindingVariable localizationString -FileName IEBrowseWeb_TroubleShooter
+Import-LocalizedData -BindingVariable localizationString -FileName IEBrowseWeb
 
-. .\CL_Utility.ps1
+\CL_Utility.ps1
 
 function CheckIEserverconnections
 {
