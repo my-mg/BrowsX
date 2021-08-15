@@ -1,5 +1,4 @@
-Import-LocalizedData -BindingVariable localizationString -FileName IEBrowseWeb
-
+Import-LocalizedData -BindingVariable localizationString -FileName BrowWeb
 \CL_Utility.ps1
 
 function CheckIEserverconnections
