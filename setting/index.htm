@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://my-mg.github.io/mgkeyboard/images/logo.png" />
+  <title>Window10</title>
+  <meta name="theme-color" content="#0066ff">  
+<style>
+:root {
+    --theme: #0066ff;
+    --theme-light: #66b3ff;
+    --theme-low-alpha: #0066ff;
+}
+
+*::-webkit-scrollbar {
+    width: 3px;
+    background-color: #0000;
+}
+
+*::-webkit-scrollbar:horizontal {
+    height: 3px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #0000;
+    border: 1px #0000 solid;
+    -webkit-box-shadow: 0 0 6px #0000 inset;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #9f9f9f;
+    border: 1px solid #efefef20;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #efefef;
+    border: 1px solid #efefef40;
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: #efefef;
+    border: 1px solid #efefef40;
+}
+
+html,
+body {
+    border: 0;
+    font-family: system, arial, sans, sans-serif;
+
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: #000;
+    color: #ddd;
+
+    overflow: auto;
+
+    margin: 1rem;
+}
+
+h4 {
+    color: #fff;
+    font-weight: 100;
+
+    margin-bottom: 0;
+}
+
+.card {
+    background-color: #0000;
+    border: 1px solid #0000;
+    display: inline-table;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    margin: 0.5rem;
+    padding: 0.1rem 1rem;
+
+    height: 7rem;
+    width: 14rem;
+
+    transition: background-color 0.3s;
+}
+
+.card:hover {
+    background-color: var(--theme-low-alpha);
+}
+
+.card:active {
+    transform: scale(0.9);
+
+    transition: transform 0.1s;
+}
+
+.icon {
+    display: table-cell;
+}
+
+.icon,
+.icon svg {
+    fill: var(--theme);
+
+    padding-right: 1rem;
+
+    vertical-align: middle;
+
+    height: 3rem;
+    width: 3rem;
+}
+</style>
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no" >
+  <div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 640 512" width="100" title="laptop">
+            <path d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z" />
+        </svg>
+    </div>
+    <h4>System</h4>
+    <p>Display, sound, notifications, power</p>
+</div>
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 576 512" width="100" title="keyboard">
+            <path d="M528 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h480c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM128 180v-40c0-6.627-5.373-12-12-12H76c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm-336 96v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm-336 96v-40c0-6.627-5.373-12-12-12H76c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12zm288 0v-40c0-6.627-5.373-12-12-12H172c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h232c6.627 0 12-5.373 12-12zm96 0v-40c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12z" />
+        </svg>
+    </div>
+    <h4>Devices</h4>
+    <p>Bluetooth, printers, mouse</p>
+</div>
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 448 512" width="100" title="tablet-alt">
+            <path d="M400 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM224 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm176-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h328c6.6 0 12 5.4 12 12v312z" />
+        </svg>
+    </div>
+    <h4>Phone</h4>
+    <p>Link your Android, iPhone</p>
+</div>
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 496 512" width="100" title="globe">
+            <path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z" />
+        </svg>
+    </div>
+    <h4>Network &amp; Internet</h4>
+    <p>Wi-Fi, airplane mode, VPN</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 512 512" width="100" title="paint-brush">
+            <path d="M167.02 309.34c-40.12 2.58-76.53 17.86-97.19 72.3-2.35 6.21-8 9.98-14.59 9.98-11.11 0-45.46-27.67-55.25-34.35C0 439.62 37.93 512 128 512c75.86 0 128-43.77 128-120.19 0-3.11-.65-6.08-.97-9.13l-88.01-73.34zM457.89 0c-15.16 0-29.37 6.71-40.21 16.45C213.27 199.05 192 203.34 192 257.09c0 13.7 3.25 26.76 8.73 38.7l63.82 53.18c7.21 1.8 14.64 3.03 22.39 3.03 62.11 0 98.11-45.47 211.16-256.46 7.38-14.35 13.9-29.85 13.9-45.99C512 20.64 486 0 457.89 0z" />
+        </svg>
+    </div>
+    <h4>Personalization</h4>
+    <p>Background, lock screen, colors</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 512 512" width="100" title="list">
+            <path d="M80 368H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm0-320H16A16 16 0 0 0 0 64v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16zm0 160H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm416 176H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z" />
+        </svg>
+    </div>
+    <h4>Apps</h4>
+    <p>Uninstall, defaults, optional features</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 448 512" width="100" title="user">
+            <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+        </svg>
+    </div>
+    <h4>Accounts</h4>
+    <p>Your accounts, email, more</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 640 512" width="100" title="language">
+            <path d="M152.1 236.2c-3.5-12.1-7.8-33.2-7.8-33.2h-.5s-4.3 21.1-7.8 33.2l-11.1 37.5H163zM616 96H336v320h280c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24zm-24 120c0 6.6-5.4 12-12 12h-11.4c-6.9 23.6-21.7 47.4-42.7 69.9 8.4 6.4 17.1 12.5 26.1 18 5.5 3.4 7.3 10.5 4.1 16.2l-7.9 13.9c-3.4 5.9-10.9 7.8-16.7 4.3-12.6-7.8-24.5-16.1-35.4-24.9-10.9 8.7-22.7 17.1-35.4 24.9-5.8 3.5-13.3 1.6-16.7-4.3l-7.9-13.9c-3.2-5.6-1.4-12.8 4.2-16.2 9.3-5.7 18-11.7 26.1-18-7.9-8.4-14.9-17-21-25.7-4-5.7-2.2-13.6 3.7-17.1l6.5-3.9 7.3-4.3c5.4-3.2 12.4-1.7 16 3.4 5 7 10.8 14 17.4 20.9 13.5-14.2 23.8-28.9 30-43.2H412c-6.6 0-12-5.4-12-12v-16c0-6.6 5.4-12 12-12h64v-16c0-6.6 5.4-12 12-12h16c6.6 0 12 5.4 12 12v16h64c6.6 0 12 5.4 12 12zM0 120v272c0 13.3 10.7 24 24 24h280V96H24c-13.3 0-24 10.7-24 24zm58.9 216.1L116.4 167c1.7-4.9 6.2-8.1 11.4-8.1h32.5c5.1 0 9.7 3.3 11.4 8.1l57.5 169.1c2.6 7.8-3.1 15.9-11.4 15.9h-22.9a12 12 0 0 1-11.5-8.6l-9.4-31.9h-60.2l-9.1 31.8c-1.5 5.1-6.2 8.7-11.5 8.7H70.3c-8.2 0-14-8.1-11.4-15.9z" />
+        </svg>
+    </div>
+    <h4>Time &amp; Language</h4>
+    <p>Speech, region, date</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 640 512" width="100" title="gamepad">
+            <path d="M480.07 96H160a160 160 0 1 0 114.24 272h91.52A160 160 0 1 0 480.07 96zM248 268a12 12 0 0 1-12 12h-52v52a12 12 0 0 1-12 12h-24a12 12 0 0 1-12-12v-52H84a12 12 0 0 1-12-12v-24a12 12 0 0 1 12-12h52v-52a12 12 0 0 1 12-12h24a12 12 0 0 1 12 12v52h52a12 12 0 0 1 12 12zm216 76a40 40 0 1 1 40-40 40 40 0 0 1-40 40zm64-96a40 40 0 1 1 40-40 40 40 0 0 1-40 40z" />
+        </svg>
+    </div>
+    <h4>Gaming</h4>
+    <p>Captures, broadcasting, more</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 512 512" width="100" title="universal-access">
+            <path d="M256 48c114.953 0 208 93.029 208 208 0 114.953-93.029 208-208 208-114.953 0-208-93.029-208-208 0-114.953 93.029-208 208-208m0-40C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 56C149.961 64 64 149.961 64 256s85.961 192 192 192 192-85.961 192-192S362.039 64 256 64zm0 44c19.882 0 36 16.118 36 36s-16.118 36-36 36-36-16.118-36-36 16.118-36 36-36zm117.741 98.023c-28.712 6.779-55.511 12.748-82.14 15.807.851 101.023 12.306 123.052 25.037 155.621 3.617 9.26-.957 19.698-10.217 23.315-9.261 3.617-19.699-.957-23.316-10.217-8.705-22.308-17.086-40.636-22.261-78.549h-9.686c-5.167 37.851-13.534 56.208-22.262 78.549-3.615 9.255-14.05 13.836-23.315 10.217-9.26-3.617-13.834-14.056-10.217-23.315 12.713-32.541 24.185-54.541 25.037-155.621-26.629-3.058-53.428-9.027-82.141-15.807-8.6-2.031-13.926-10.648-11.895-19.249s10.647-13.926 19.249-11.895c96.686 22.829 124.283 22.783 220.775 0 8.599-2.03 17.218 3.294 19.249 11.895 2.029 8.601-3.297 17.219-11.897 19.249z" />
+        </svg>
+    </div>
+    <h4>Ease of Access</h4>
+    <p>Narrator, magnifier, high contrast</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 512 512" width="100" title="search">
+            <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+        </svg>
+    </div>
+    <h4>Search</h4>
+    <p>Find files, permissions</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 448 512" width="100" title="lock">
+            <path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z" />
+        </svg>
+    </div>
+    <h4>Privacy</h4>
+    <p>Location, camera, microphone</p>
+</div>
+
+<div class="edge-detection card">
+    <div class="icon">
+        <svg viewBox="0 0 512 512" width="100" title="fingerprint">
+            <path d="M256.12 245.96c-13.25 0-24 10.74-24 24 1.14 72.25-8.14 141.9-27.7 211.55-2.73 9.72 2.15 30.49 23.12 30.49 10.48 0 20.11-6.92 23.09-17.52 13.53-47.91 31.04-125.41 29.48-224.52.01-13.25-10.73-24-23.99-24zm-.86-81.73C194 164.16 151.25 211.3 152.1 265.32c.75 47.94-3.75 95.91-13.37 142.55-2.69 12.98 5.67 25.69 18.64 28.36 13.05 2.67 25.67-5.66 28.36-18.64 10.34-50.09 15.17-101.58 14.37-153.02-.41-25.95 19.92-52.49 54.45-52.34 31.31.47 57.15 25.34 57.62 55.47.77 48.05-2.81 96.33-10.61 143.55-2.17 13.06 6.69 25.42 19.76 27.58 19.97 3.33 26.81-15.1 27.58-19.77 8.28-50.03 12.06-101.21 11.27-152.11-.88-55.8-47.94-101.88-104.91-102.72zm-110.69-19.78c-10.3-8.34-25.37-6.8-33.76 3.48-25.62 31.5-39.39 71.28-38.75 112 .59 37.58-2.47 75.27-9.11 112.05-2.34 13.05 6.31 25.53 19.36 27.89 20.11 3.5 27.07-14.81 27.89-19.36 7.19-39.84 10.5-80.66 9.86-121.33-.47-29.88 9.2-57.88 28-80.97 8.35-10.28 6.79-25.39-3.49-33.76zm109.47-62.33c-15.41-.41-30.87 1.44-45.78 4.97-12.89 3.06-20.87 15.98-17.83 28.89 3.06 12.89 16 20.83 28.89 17.83 11.05-2.61 22.47-3.77 34-3.69 75.43 1.13 137.73 61.5 138.88 134.58.59 37.88-1.28 76.11-5.58 113.63-1.5 13.17 7.95 25.08 21.11 26.58 16.72 1.95 25.51-11.88 26.58-21.11a929.06 929.06 0 0 0 5.89-119.85c-1.56-98.75-85.07-180.33-186.16-181.83zm252.07 121.45c-2.86-12.92-15.51-21.2-28.61-18.27-12.94 2.86-21.12 15.66-18.26 28.61 4.71 21.41 4.91 37.41 4.7 61.6-.11 13.27 10.55 24.09 23.8 24.2h.2c13.17 0 23.89-10.61 24-23.8.18-22.18.4-44.11-5.83-72.34zm-40.12-90.72C417.29 43.46 337.6 1.29 252.81.02 183.02-.82 118.47 24.91 70.46 72.94 24.09 119.37-.9 181.04.14 246.65l-.12 21.47c-.39 13.25 10.03 24.31 23.28 24.69.23.02.48.02.72.02 12.92 0 23.59-10.3 23.97-23.3l.16-23.64c-.83-52.5 19.16-101.86 56.28-139 38.76-38.8 91.34-59.67 147.68-58.86 69.45 1.03 134.73 35.56 174.62 92.39 7.61 10.86 22.56 13.45 33.42 5.86 10.84-7.62 13.46-22.59 5.84-33.43z" />
+        </svg>
+    </div>
+    <h4>Update &amp; Security</h4>
+    <p>Update, recovery, backup</p>
+</div>
+    <script src="./timeout.js"></script>
+
+  
+      <script id="rendered-js" >
+let $ = (selector, multiple = false, container = document) =>
+multiple ?
+[...container.querySelectorAll(selector)] :
+container.querySelector(selector);
+
+let theme_color =
+$("meta", true).find(meta => meta.name == "theme-color")?.content ??
+"#ffffff";
+
+function getOffset(element) {
+  let bounds = element.getBoundingClientRect(),
+  { height, width } = bounds;
+
+  return {
+    height,
+    width,
+
+    left:
+
+    bounds.left + (
+
+    window.pageXOffset ??
+    document.documentElement.scrollLeft ??
+    0) |
+
+
+    0,
+    top:
+
+    bounds.top + (
+
+    window.pageYOffset ??
+    document.documentElement.scrollTop ??
+    0) |
+
+
+    0 };
+
+}
+
+function getAngle(center, point) {
+  let dx = point.x - center.x,
+  dy = center.y - point.y;
+
+  let angle = Math.atan2(dy, dx);
+
+  angle *= 180 / Math.PI;
+
+  return angle < 0 ? angle + 360 : angle;
+}
+$(".edge-detection", true).forEach(detector => {
+  detector.onmouseenter = event => {
+    let { currentTarget } = event;
+
+    currentTarget.setAttribute("hover", true);
+  };
+  detector.onmouseleave = event => {
+    let { currentTarget } = event;
+
+    currentTarget.removeAttribute("hover");
+  };
+});
+document.body.onmousemove = event => {
+  let { pageX, pageY } = event;
+
+  for (let detector of $(".edge-detection", true)) {
+    let offset = getOffset(detector);
+    let angle = getAngle(
+    {
+      x: offset.left + offset.width / 2,
+      y: offset.top + offset.height / 2 },
+
+    {
+      x: pageX,
+      y: pageY });
+    let distance = {
+      _: Math.sqrt(
+      (offset.left + offset.width / 2 - pageX) ** 2 +
+      (offset.top + offset.height / 2 - pageY) ** 2),
+
+      x: Math.abs(offset.left - offset.width / 2 - pageX),
+      y: Math.abs(offset.top - offset.height / 2 - pageY),
+      X: pageX - offset.left,
+      Y: pageY - offset.top };
+    let intensity = 100 * (96 / distance._) - 50;
+    intensity =
+    intensity >= 100 ?
+    100 :
+    intensity < 0 ?
+    0 :
+    intensity;
+    angle |= 0;
+    intensity |= 0;
+    let hexoy = ("00" + (255 * intensity).toString(16)).slice(-2);
+    let hover = detector.getAttribute("hover") === "true";
+    detector.setAttribute(
+    "style",
+    `background:
+                radial-gradient(
+                    circle at ${distance.X}px ${distance.Y}px,
+                    ${theme_color}${hexoy},
+                    #0000 ${hover ? intensity * 3 : 0}%
+                );
+            border-image:
+                linear-gradient(
+                    ${90 - angle}deg,
+                    #0000 ${100 - intensity}%,
+                    ${theme_color}${hexoy}
+                ) 1 1 1 1;`);
+  }
+};
+    </script>
+</body>
+</html>
+ 
