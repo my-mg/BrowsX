@@ -1,5 +1,4 @@
 <html lang="en" class="android chrome81 js js">
- <!--<![endif]-->
  <head> 
   <meta charset="utf-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
@@ -28,14 +27,6 @@ div#terminal {
   position: relative;
   margin: auto;
 <style>
- </head> 
- <body>
-<div id="terminalWrapper">
-  <div id="terminal">
-    <div id="fileBar"><a class="btn" href="#">&#10005;</a><a class="btn stnd" href="#">&#9472;</a><a class="btn stnd" href="#">&#9723;</a><span>root@user:~</span></div>
-    <div id="terminalOutput"></div>
-  </div>
-</div>
 <script>
 var commandList = ['cat', 'clear', 'help', 'ls', 'man', 'ps'];
 var ls = 'list all files in the current directory.';
@@ -49,7 +40,7 @@ this['about.txt'] = 'This production involve all engineers at Malaysia that inte
 this['projects.txt'] = 'Malaysia Local Commamd Line Library is a command line that was base made at Malaysia.';
 this['found.txt'] = 'Alexander Eric, as boring project.';
 var files = ['about.txt', 'projects.txt'];
-var allFiles = ['about.txt', 'projects.txt', 'loremipsum.txt'];
+var allFiles = ['about.txt', 'projects.txt', 'found.txt'];
 var user = 'root@user:~$';
 var commandHistory = [];
 var commandIndex = -1;
@@ -68,5 +59,13 @@ function currentBrowser() {
     is_safari = false;
   } else if ((is_chrome) && (is_opera)) {
 </script>
+ </head> 
+ <body>
+<div id="terminalWrapper">
+  <div id="terminal">
+    <div id="fileBar"><a class="btn" href="#">&#10005;</a><a class="btn stnd" href="#">&#9472;</a><a class="btn stnd" href="#">&#9723;</a><span>root@user:~</span></div>
+    <div id="terminalOutput"></div>
+  </div>
+</div>
 </body>
 </html>
