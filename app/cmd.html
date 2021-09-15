@@ -1,0 +1,72 @@
+<html lang="en" class="android chrome81 js js">
+ <!--<![endif]-->
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta name="csrf-param" content="authenticity_token"> 
+  <meta name="csrf-token" content="csrf-param-token"> 
+  <title>Terminal</title> 
+    <script nonce="">
+</script> 
+<style>
+  html, body {
+  padding: 0;
+  margin: 0;
+  background: -webkit-linear-gradient(45deg, #260e1e 0%, #f57453 100%);
+  background: -moz-linear-gradient(45deg, #260e1e 0%, #f57453 100%);
+  background: -o-linear-gradient(45deg, #260e1e 0%, #f57453 100%);
+}
+
+div#terminalWrapper {
+  height: 100vh;
+  position: relative;
+}
+
+div#terminal {
+  min-width: 250px;
+  min-height: 300px;
+  position: relative;
+  margin: auto;
+<style>
+ </head> 
+ <body>
+<div id="terminalWrapper">
+  <div id="terminal">
+    <div id="fileBar"><a class="btn" href="#">&#10005;</a><a class="btn stnd" href="#">&#9472;</a><a class="btn stnd" href="#">&#9723;</a><span>root@user:~</span></div>
+    <div id="terminalOutput"></div>
+  </div>
+</div>
+<script>
+var commandList = ['cat', 'clear', 'help', 'ls', 'man', 'ps'];
+var ls = 'list all files in the current directory.';
+var help = 'list possible terminal commands.';
+var cat = 'cat [filename] will print the contents of that file.';
+var clear = 'clear all text in the terminal.';
+var reverse = 'reverse to the previous section of the page.';
+var man = 'describe a file';
+var ps = 'list the current processes';
+this['about.txt'] = 'This production involve all engineers at Malaysia that interested at building something new for new generations. Locally at Malaysia.';
+this['projects.txt'] = 'Malaysia Local Commamd Line Library is a command line that was base made at Malaysia.';
+this['found.txt'] = 'Alexander Eric, as boring project.';
+var files = ['about.txt', 'projects.txt'];
+var allFiles = ['about.txt', 'projects.txt', 'loremipsum.txt'];
+var user = 'root@user:~$';
+var commandHistory = [];
+var commandIndex = -1;
+
+function currentBrowser() {
+  var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+  var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+  var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+  var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+  var is_edge = navigator.userAgent.indexOf("Edge") > -1;
+  var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+  if (is_chrome && is_safari && is_edge) {
+    is_chrome = false;
+    is_safari = false;
+  } else if ((is_chrome) && (is_safari)) {
+    is_safari = false;
+  } else if ((is_chrome) && (is_opera)) {
+</script>
+</body>
+</html>
