@@ -1,34 +1,3 @@
-<html lang="en" class="android chrome81 js js">
- <head> 
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <meta name="csrf-param" content="authenticity_token"> 
-  <meta name="csrf-token" content="csrf-param-token"> 
-  <title>Terminal</title> 
-<link rel="stylesheet" href="stylesheet/css">
-<style>
-  html,
-body {
-  padding: 0;
-  margin: 0;
-  background: -webkit-linear-gradient(45deg, #260e1e 0%, #f57453 100%);
-  background: -moz-linear-gradient(45deg, #260e1e 0%, #f57453 100%);
-  background: -o-linear-gradient(45deg, #260e1e 0%, #f57453 100%);
-}
-
-div#terminalWrapper {
-  height: 100vh;
-  position: relative;
-}
-
-div#terminal {
-  min-width: 250px;
-  min-height: 300px;
-  position: relative;
-  margin: auto;
-<style>
- </head> 
-<script>
 var commandList = ["cat", "clear", "help", "ls", "man", "ps"];
 var ls = "list all files in the current directory.";
 var help = "list possible terminal commands.";
@@ -59,14 +28,3 @@ function currentBrowser() {
   if (is_chrome && is_safari && is_edge) {
     is_chrome = false;
     is_safari = false;
-</script>
- <body translate="no">
-<div id="terminalWrapper">
-  <div id="terminal">
-    <div id="fileBar"><a class="btn" href="#">&#10005;</a><a class="btn stnd" href="#">&#9472;</a><a class="btn stnd" href="#">&#9723;</a><span>root@user:~</span></div>
-    <div id="terminalOutput"></div>
-  </div>
-</div>
-</body>
-<footer>TO BE CONT, USING HP NOW</footer>
-</html>
